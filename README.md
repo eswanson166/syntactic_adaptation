@@ -1,2 +1,2 @@
-# syntactic_adaptation
+# Syntactic Adaptation
 Investigating syntactic adaptation in English
