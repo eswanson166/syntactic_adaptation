@@ -37,7 +37,7 @@ function make_slides(f) {
           exp.go();
         }
         else {
-          wrong_soundtests.push(comp_ans);
+          exp.wrong_soundtests.push(comp_ans);
           $("#compBlankError").hide();
           $("#compResponse").val('');
           $("#compWrongError").show();
@@ -163,7 +163,7 @@ function init_explogic() {
 
   exp.run_trial = function(){
     var trial_audio = document.getElementById('trial_audio');
-    trial_audio.src = 'audio/' + recording_name + '.mp3';
+    trial_audio.src = 'audio/' + recording_name + '.wav';
     $('#trial_compQ').html(recording_q);
     var answerText = '';
     answerText = answerText.concat('<input type="radio" name="answer_choices" value="'+pos_options[0]+'">&emsp;'+pos_options[0]+'</input>');
