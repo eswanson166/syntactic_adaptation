@@ -1,4 +1,4 @@
-var recordings= [
+var words= [
 {item: "neem", trial_type: "main", correct_ans: "none"},
 {item: "vash", trial_type: "main", correct_ans: "none"},
 {item: "moop", trial_type: "main", correct_ans: "none"},

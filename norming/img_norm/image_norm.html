@@ -24,7 +24,7 @@
     <br>
     <p id='logo-text'>Stanford Language and Cognition Lab</p>
     <p class="block-text">In this experiment, you will answer a few
-      questions about spoken sentences. The whole
+      questions about some images. The whole
     experiment should take about 5 minutes in total.</p>
     <!--button type="button" onClick="this.blur(); exp.go()">Start
     </button-->
@@ -45,40 +45,39 @@
     participation will not receive any personal information about you.</p>
   </div>
 
-  <div class="slide" id="sound_test">
+  <div class="slide" id="img_check">
     <br>
-    <h2>Sound test</h2>
-    <p class="block-text" id="soundtest_text">Press the play button to listen to the audio recording. Then, answer the question based on the recording. If you do not respond correctly you will be asked to listen again. You must enter the correct answer before continuing.</p>
-    <audio id="soundtest_audio" controls src='soundtest.wav' onplay="_s.compQuestion()"> </audio>
+    <h2>Image check</h2>
+    <p class="block-text" id="img_check_text">What animal is shown in the photo below?
+      <br>
+      <br>
+    <img id="cat_photo" src='cat.jpg' width='300' height='200'>
     <br>
     <br>
-    <p class="block-text" id="compQ" hidden>What animal scared Maria?
-    <br>  
-    <br>  
-    <input class="answertext" type="text" id="compResponse" hidden></input> </p>
+    <input class="answertext" type="text" id="compResponse"></input> </p>
     <br>
-    <button id="compButton" class="button" hidden onclick="_s.checkAnswer()">Continue</button>
+    <button id="compButton" class="button" onclick="_s.checkAnswer()">Continue</button>
     <p id="compBlankError" style="color:red" hidden>Please answer the question.</p>
-    <p id="compWrongError" style="color:red" hidden>Please listen again and answer the question correctly.</p>
+    <p id="compWrongError" style="color:red" hidden>Please try again.</p>
   </div>
 
   <div class="slide" id="instructions">
     <br>
     <h2>Instructions</h2>
-    <p class="block-text" id="instructions_text">You will listen to an audio recording and then answer a question about one of the words in the recording. There are not always right or wrong answers, so please make your best guess.</p>
+    <p class="block-text" id="instructions_text">You will see two images and select the one you think someone would be more likely to talk about.</p>
     <button id="continue_button" class="button" onclick="_s.start_task()">Continue</button>
     </div>
 
     <div class="slide" id="single_trial">
     <br>
-    <h2>Listen to the audio and answer the question!</h2>
+    <h2>Look at the images and answer the question!</h2>
     <audio id="trial_audio" controls> </audio>
     <br>
     <br>
     <p class="block-text" id='trial_compQ' hidden>{{}}
     </p>
     <div class="block-text" id="answer_choices" hidden>{{}}</div>
-    <button id="trialContinueButton" class="button" onclick="_s.next_trial()"hidden>Continue</button>
+    <button id="continue_button" class="button" onclick="_s.next_trial()"hidden>Continue</button>
     <p id="responseBlankError" style="color:red" hidden>Please answer the question.</p>
     </div>
 
@@ -132,7 +131,7 @@
     <script src="js/exp_run/uniqueturker.js"></script>
 
     <!-- main experiment logic: -->
-    <script src="js/exp_run/audio_norm.js"></script>
+    <script src="js/exp_run/image_norm.js"></script>
 
     <!--CSS-->
     <!--link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css"/-->
@@ -140,7 +139,7 @@
     <!--link rel="stylesheet" href="css/bootstrap.min.css"-->
 
     <!-- experiment files for stimuli-->
-    <script src="js/exp_files/recordings.js"></script> <!-- list of descriptors, each constitutes an individual trial -->
+    <script src="js/exp_files/images.js"></script> <!-- list of descriptors, each constitutes an individual trial -->
 
     <!-- INSERT UNIQUE TURKER ID HERE -->
     <script type="text/JavaScript">
@@ -152,5 +151,6 @@
       }});
     </script>
 
+  
 </body>
 </html>

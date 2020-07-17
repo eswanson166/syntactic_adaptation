@@ -8,37 +8,20 @@ function make_slides(f) {
   	}
   });
 
-  slides.sound_test = slide({
-  	name: "sound_test",
-
-    compQuestion: function(e){
-      $("#compQ").hide();
-      $("#compButton").hide()
-      $("#compResponse").hide()
-      $("#compBlankError").hide()
-      var soundtest_audio = document.getElementById("soundtest_audio");
-        soundtest_audio.addEventListener('ended', function(){
-          $("#compQ").show();
-          $("#compButton").show();
-          $("#compResponse").show();
-          $("#compWrongError").hide();
-        })
-      },
+  slides.img_check = slide({
+  	name: "img_check",
 
     checkAnswer: function(e){
       var comp_ans = $("#compResponse").val();
       if (! comp_ans || comp_ans == '') {
+        $("#compWrongError").hide();
         $("#compBlankError").show();
       }
-      else if ((!comp_ans.toUpperCase().includes("SPIDER"))){
-        exp.wrong_soundtests.push(comp_ans);
+      else if ((!comp_ans.toUpperCase().includes("CAT"))){
+        exp.wrong_img_tests.push(comp_ans);
         $("#compBlankError").hide();
         $("#compResponse").val('');
         $("#compWrongError").show();
-        $("#compQ").hide();
-        $("#compButton").hide();
-        $("#compResponse").hide();
-        soundtest_audio.currentTime = 0;
       }
       else {
         exp.trial_no = 0;
@@ -60,11 +43,8 @@ function make_slides(f) {
     present_handle: function(recording) {
       this.trial_start = Date.now();
       exp.trial_no += 1;
-      recording_name = recording.item;
-      correct_answer = recording.correct_ans;
-      trial_type = recording.trial_type;
-      recording_q = 'What does "' + recording_name + '" refer to?';
-      pos_options = _.shuffle(['An object that a girl has', 'An action that girls are doing']);
+      pair_name = img_pair.item;
+      $("#imgwrapper").show();
       exp.run_trial();
     },
 
@@ -116,7 +96,7 @@ function make_slides(f) {
           age : $("#participantage").val(),
           gender : $("#gender").val(),
           comments : $("#comments").val(),
-          wrong_soundtests : exp.wrong_soundtests,
+          wrong_img_tests : exp.wrong_img_tests,
           time_in_minutes : (Date.now() - exp.startT)/60000
         };
         exp.go();
@@ -143,10 +123,10 @@ function make_slides(f) {
 
 function init_explogic() {
   exp.recordings = _.shuffle(recordings);
-  exp.wrong_soundtests = [];
+  exp.wrong_img_tests = [];
   exp.data_trials = [];
 
-  exp.structure=["consent", "sound_test", "instructions", "single_trial",  "subj_info", "thanks"];
+  exp.structure=["consent", "img_check", "instructions", "single_trial",  "subj_info", "thanks"];
   exp.slides = make_slides(exp);
   exp.nQs = utils.get_exp_length();
 
@@ -173,7 +153,37 @@ function init_explogic() {
           $("#answer_choices").show();
           $("#trialContinueButton").show();
         })
-}
+  }
+
+  exp.display_imgs = function(){
+    if (document.getElementById("img_table") != null){
+      $("#img_table tr").remove();
+    }
+    var table = document.createElement("table");
+    var tr = document.createElement('tr');
+
+    var cellwidth = MIN_WINDOW_WIDTH/NUM_COLS
+    $("#continue_button").offset({top: (window.innerHeight/2)-(BUTTON_HEIGHT/2), left: (window.innerWidth/2)-(CTE_BUTTON_WIDTH/2)})
+    $("#next_button").offset({top: (window.innerHeight/2)-(BUTTON_HEIGHT/2), left: (window.innerWidth/2)-(NXT_BUTTON_WIDTH/2)})
+
+
+    // create table with img elements on L and R side. show these for 2 seconds (as a 'preview') and then show the Continue button to play audio
+    for (i = 0; i < NUM_COLS; i++) {
+      var img_td = document.createElement('td');
+      img_td.style.width = cellwidth+'px';
+
+      var img_fname = img_fnames[descriptor_name][i]
+      var img = document.createElement('img');
+      img.src = 'static/imgs/'+img_fname+'.png';
+      img.id = img_fname;
+
+      // place images at L and R
+      if (img.id == img_fnames[descriptor_name][0]){
+        img.style.marginRight = (cellwidth - IMG_WIDTH)  + 'px';
+      } else {
+        img.style.marginLeft = (cellwidth - IMG_WIDTH)  + 'px';
+        console.log('img.style.marginLeft = ' + img.style.marginLeft)
+      }
 
   // EXPERIMENT RUN
   $('.slide').hide(); //hide everything
