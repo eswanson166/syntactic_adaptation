@@ -39,44 +39,34 @@ function make_slides(f) {
 
   slides.single_trial = slide({
     name: "single_trial",
-    present: exp.recordings,
-    present_handle: function(recording) {
+    present: exp.img_pairs,
+    present_handle: function(img_pair) {
       this.trial_start = Date.now();
       exp.trial_no += 1;
-      pair_name = img_pair.item;
+      img_pair_name = img_pair.item;
+      imgs_pair = img_pair.pair;
       $("#imgwrapper").show();
-      exp.run_trial();
+      $("#trial_continue_button").hide();
+      exp.display_imgs();
     },
 
     next_trial : function(e){
-      if ($('input[type=radio]:checked').size() == 0) {
-        $("#responseBlankError").show();
-      } else {
-        $("#responseBlankError").hide();
-        $("#trial_compQ").hide();
-        $("#answer_choices").hide();
-        $("#trialContinueButton").hide();
-        exp.clicked = $('input[type=radio]:checked').val();
+        $("#continue_button").hide();
         exp.keep_going = false;
         this.log_responses();
-        console.log(exp.data_trials);
         _stream.apply(this);
         exp.clicked = null;
-      }
     },
 
     log_responses: function(e){
       exp.data_trials.push({
         'trial_num': exp.trial_no,
-        'word': recording_name,
-        'part_speech1': pos_options[0],
-        'part_speech2': pos_options[1],
-        'selected_answer': exp.clicked,
-        'correct_answer' : correct_answer,
-        'trial_type': trial_type,
+        'selected_img': exp.clicked,
+        'selected_img_type': exp.selected_img_type,
         'current_windowW': window.innerWidth,
         'current_windowH': window.innerHeight
       })
+      console.log(exp.data_trials);
     } 
     
   });
@@ -122,7 +112,17 @@ function make_slides(f) {
 
 
 function init_explogic() {
-  exp.recordings = _.shuffle(recordings);
+
+  PRECISION_CUTOFF = 50;
+  NUM_COLS = 2;
+  MIN_WINDOW_WIDTH = 800;
+  BUTTON_HEIGHT = 30;
+  CTE_BUTTON_WIDTH = 100;
+  NXT_BUTTON_WIDTH = 50;
+  IMG_HEIGHT = 300;
+  IMG_WIDTH = 300;
+
+  exp.img_pairs = _.shuffle(img_pairs);
   exp.wrong_img_tests = [];
   exp.data_trials = [];
 
@@ -137,23 +137,10 @@ function init_explogic() {
     screenW: screen.width,
     windowH: window.innerHeight,
     windowW: window.innerWidth,
+    imageH: IMG_HEIGHT,
+    imageW: IMG_WIDTH
   };
 
-  exp.run_trial = function(){
-    var trial_audio = document.getElementById('trial_audio');
-    trial_audio.src = 'audio/' + recording_name + '.wav';
-    $('#trial_compQ').html(recording_q);
-    var answerText = '';
-    answerText = answerText.concat('<input type="radio" name="answer_choices" value="'+pos_options[0]+'">&emsp;'+pos_options[0]+'</input>');
-    answerText = answerText.concat('<br><input type="radio" name="answer_choices" value="'+pos_options[1]+'">&emsp;'+pos_options[1]+'</input>');
-    $('#answer_choices').html(answerText);
-    var trial_audio = document.getElementById("trial_audio");
-        trial_audio.addEventListener('ended', function(){
-          $("#trial_compQ").show();
-          $("#answer_choices").show();
-          $("#trialContinueButton").show();
-        })
-  }
 
   exp.display_imgs = function(){
     if (document.getElementById("img_table") != null){
@@ -163,27 +150,56 @@ function init_explogic() {
     var tr = document.createElement('tr');
 
     var cellwidth = MIN_WINDOW_WIDTH/NUM_COLS
-    $("#continue_button").offset({top: (window.innerHeight/2)-(BUTTON_HEIGHT/2), left: (window.innerWidth/2)-(CTE_BUTTON_WIDTH/2)})
-    $("#next_button").offset({top: (window.innerHeight/2)-(BUTTON_HEIGHT/2), left: (window.innerWidth/2)-(NXT_BUTTON_WIDTH/2)})
+    //$("#continue_button").offset({top: (window.innerHeight/2)-(BUTTON_HEIGHT/2), left: (window.innerWidth/2)-(CTE_BUTTON_WIDTH/2)})
 
+    var imgs = _.shuffle(imgs_pair);
 
     // create table with img elements on L and R side. show these for 2 seconds (as a 'preview') and then show the Continue button to play audio
     for (i = 0; i < NUM_COLS; i++) {
       var img_td = document.createElement('td');
       img_td.style.width = cellwidth+'px';
 
-      var img_fname = img_fnames[descriptor_name][i]
+      var img_name = imgs[i]
       var img = document.createElement('img');
-      img.src = 'static/imgs/'+img_fname+'.png';
-      img.id = img_fname;
+      img.src = 'images/'+img_name+'.png';
+      img.alt = img_name;
+      img.height = IMG_WIDTH;
+      img.width = IMG_HEIGHT;
 
       // place images at L and R
-      if (img.id == img_fnames[descriptor_name][0]){
+      if (img_name == imgs[0]){
         img.style.marginRight = (cellwidth - IMG_WIDTH)  + 'px';
+        img.id = "left_img";
       } else {
         img.style.marginLeft = (cellwidth - IMG_WIDTH)  + 'px';
-        console.log('img.style.marginLeft = ' + img.style.marginLeft)
+        img.id = "right_img";
       }
+
+      img.times_clicked = 0
+
+      img.onclick = function(){
+        var id = $(this).attr("id");
+        var name = $(this).attr("alt");
+        if (id == "left_img"){
+          $(this).css("border","2px solid red");
+          $("#right_img").css("border","2px solid white");
+        }
+        else {
+          $(this).css("border","2px solid red");
+          $("#left_img").css("border","2px solid white");
+        }
+        exp.clicked = name;
+        exp.selected_img_type = img_types[name];
+        $("#trial_continue_button").show();
+      };
+
+      img_td.appendChild(img);
+      tr.appendChild(img_td);
+    }
+    table.setAttribute('id', 'img_table')
+    table.appendChild(tr);
+    document.getElementById("imgwrapper").appendChild(table);
+  };
 
   // EXPERIMENT RUN
   $('.slide').hide(); //hide everything

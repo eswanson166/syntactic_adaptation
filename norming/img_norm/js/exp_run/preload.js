@@ -19,7 +19,7 @@ var preload = function(resources, options /* afterEach, after, width */) {
 			return;
 		}
 		var imageExp = /.jpg|.jpeg|.gif|.png|.bmp|.tif|.tiff/,
-				audioExp = /.mp3/,
+				audioExp = /.mp3|.wav/,
 				obj, embedTag;
 		
 		if (filename.match(imageExp)) {

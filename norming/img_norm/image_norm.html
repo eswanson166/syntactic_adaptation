@@ -69,16 +69,11 @@
     </div>
 
     <div class="slide" id="single_trial">
-    <br>
     <h2>Look at the images and answer the question!</h2>
-    <audio id="trial_audio" controls> </audio>
-    <br>
-    <br>
-    <p class="block-text" id='trial_compQ' hidden>{{}}
+    <p class="block-text" id='trialQ'>Which image would someone be more likely to talk about?
     </p>
-    <div class="block-text" id="answer_choices" hidden>{{}}</div>
-    <button id="continue_button" class="button" onclick="_s.next_trial()"hidden>Continue</button>
-    <p id="responseBlankError" style="color:red" hidden>Please answer the question.</p>
+    <div class ="imgwrapper" id="imgwrapper"></div>
+    <button id="trial_continue_button" class="button" onclick="_s.next_trial()">Continue</button>
     </div>
 
     <div class="slide"  id="subj_info" align="left">
@@ -139,7 +134,8 @@
     <!--link rel="stylesheet" href="css/bootstrap.min.css"-->
 
     <!-- experiment files for stimuli-->
-    <script src="js/exp_files/images.js"></script> <!-- list of descriptors, each constitutes an individual trial -->
+    <script src="js/exp_files/img_pairs.js"></script> <!-- list of image pairs, each constitutes an individual trial -->
+    <script src="js/exp_files/img_types.js"></script><!-- tells whether each image is an action or object -->
 
     <!-- INSERT UNIQUE TURKER ID HERE -->
     <script type="text/JavaScript">
