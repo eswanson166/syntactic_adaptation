@@ -228,12 +228,12 @@ function make_slides(f) {
 
 
 function init_explogic() {
-  exp.recordings_eng = _.shuffle(recordings_eng);
+  exp.recordings_eng = recordings_eng;
   exp.recordings_alien = _.shuffle(recordings_alien);
   exp.wrong_soundtests = [];
   exp.data_trials = [];
 
-  exp.structure=[/*"consent", "sound_test", "instructions_eng",*/ "eng_trial", "instructions_alien", "alien_trial", "subj_info", "thanks"];
+  exp.structure=["consent", "sound_test", "instructions_eng", "eng_trial", "instructions_alien", "alien_trial", "subj_info", "thanks"];
   exp.slides = make_slides(exp);
   exp.nQs = utils.get_exp_length();
 
