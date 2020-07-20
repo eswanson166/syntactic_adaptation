@@ -43,11 +43,11 @@ function make_slides(f) {
     present_handle: function(img_pair) {
       this.trial_start = Date.now();
       exp.trial_no += 1;
-      img_pair_name = img_pair.item;
-      imgs_pair = img_pair.pair;
+      left_img = img_pair[0];
+      right_img = img_pair[1];
       $("#imgwrapper").show();
       $("#trial_continue_button").hide();
-      exp.display_imgs();
+      exp.display_imgs(img_pair);
     },
 
     next_trial : function(e){
@@ -61,8 +61,11 @@ function make_slides(f) {
     log_responses: function(e){
       exp.data_trials.push({
         'trial_num': exp.trial_no,
+        'left_img': left_img,
+        'right_img': right_img,
         'selected_img': exp.clicked,
-        'selected_img_type': exp.selected_img_type,
+        'img_type': exp.img_type,
+        'selected_word_type': exp.selected_word_type,
         'current_windowW': window.innerWidth,
         'current_windowH': window.innerHeight
       })
@@ -115,18 +118,51 @@ function init_explogic() {
 
   PRECISION_CUTOFF = 50;
   NUM_COLS = 2;
-  MIN_WINDOW_WIDTH = 800;
+  MIN_WINDOW_WIDTH = 1000;
   BUTTON_HEIGHT = 30;
   CTE_BUTTON_WIDTH = 100;
   NXT_BUTTON_WIDTH = 50;
-  IMG_HEIGHT = 300;
-  IMG_WIDTH = 300;
+  IMG_HEIGHT = 288;
+  IMG_WIDTH = 400;
 
-  exp.img_pairs = _.shuffle(img_pairs);
+  exp.novel_img_pairs = [];
+  exp.img_pairs = [];
+
+  while (true) {
+    exp.fam_img_pairs = [];
+    exp.fam_action_img = _.shuffle(fam_action_imgs);
+    exp.fam_object_img = _.shuffle(fam_object_imgs);
+    for (var i = 0; i < exp.fam_action_img.length; i++) {
+      exp.fam_img_pairs.push([exp.fam_action_img[i], exp.fam_object_img[i]]);
+    }
+
+  function isArrayInArray(arr, item){
+    var item_as_string = JSON.stringify(item);
+
+    var contains = arr.some(function(ele){
+      return JSON.stringify(ele) === item_as_string;
+    });
+    return contains;
+  }
+
+    var read_book = ["read", "book"];
+    var book_read = ["book", "read"];  
+    if (!isArrayInArray(exp.fam_img_pairs, read_book) &&! isArrayInArray(exp.fam_img_pairs, book_read)){
+      break;
+    }
+  }
+
+  exp.novel_action_img = _.shuffle(novel_action_imgs);
+  exp.novel_object_img = _.shuffle(novel_object_imgs);
+  for (var i = 0; i < exp.novel_action_img.length; i++) {
+    exp.novel_img_pairs.push([exp.novel_action_img[i], exp.novel_object_img[i]]);
+  }
+
+  exp.img_pairs = _.shuffle(exp.novel_img_pairs.concat(exp.fam_img_pairs));
   exp.wrong_img_tests = [];
   exp.data_trials = [];
 
-  exp.structure=["consent", "img_check", "instructions", "single_trial",  "subj_info", "thanks"];
+  exp.structure=["consent", /*"img_check", "instructions", */"single_trial",  "subj_info", "thanks"];
   exp.slides = make_slides(exp);
   exp.nQs = utils.get_exp_length();
 
@@ -142,7 +178,7 @@ function init_explogic() {
   };
 
 
-  exp.display_imgs = function(){
+  exp.display_imgs = function(img_pair){
     if (document.getElementById("img_table") != null){
       $("#img_table tr").remove();
     }
@@ -150,24 +186,22 @@ function init_explogic() {
     var tr = document.createElement('tr');
 
     var cellwidth = MIN_WINDOW_WIDTH/NUM_COLS
-    //$("#continue_button").offset({top: (window.innerHeight/2)-(BUTTON_HEIGHT/2), left: (window.innerWidth/2)-(CTE_BUTTON_WIDTH/2)})
-
-    var imgs = _.shuffle(imgs_pair);
+    $("#continue_button").offset({top: (window.innerHeight/2)-(BUTTON_HEIGHT/2), left: (window.innerWidth/2)-(CTE_BUTTON_WIDTH/2)})
 
     // create table with img elements on L and R side. show these for 2 seconds (as a 'preview') and then show the Continue button to play audio
     for (i = 0; i < NUM_COLS; i++) {
       var img_td = document.createElement('td');
       img_td.style.width = cellwidth+'px';
 
-      var img_name = imgs[i]
+      var img_name = img_pair[i]
       var img = document.createElement('img');
-      img.src = 'images/'+img_name+'.png';
+      img.src = 'images/'+img_name+'.jpg';
       img.alt = img_name;
-      img.height = IMG_WIDTH;
-      img.width = IMG_HEIGHT;
+      img.height = IMG_HEIGHT;
+      img.width = IMG_WIDTH;
 
       // place images at L and R
-      if (img_name == imgs[0]){
+      if (img_name == img_pair[0]){
         img.style.marginRight = (cellwidth - IMG_WIDTH)  + 'px';
         img.id = "left_img";
       } else {
@@ -189,7 +223,8 @@ function init_explogic() {
           $("#left_img").css("border","2px solid white");
         }
         exp.clicked = name;
-        exp.selected_img_type = img_types[name];
+        exp.img_type = img_info[name].img_type;
+        exp.selected_word_type = img_info[name].word_type;
         $("#trial_continue_button").show();
       };
 

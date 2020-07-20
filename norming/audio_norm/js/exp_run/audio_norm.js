@@ -47,35 +47,51 @@ function make_slides(f) {
     }
   });
 
-  slides.instructions = slide({
-    name: "instructions",
+  slides.instructions_eng = slide({
+    name: "instructions_eng",
     start_task: function(e){
       exp.go()
     }
   });
 
-  slides.single_trial = slide({
-    name: "single_trial",
-    present: exp.recordings,
+  slides.eng_trial = slide({
+    name: "eng_trial",
+    present: exp.recordings_eng,
     present_handle: function(recording) {
       this.trial_start = Date.now();
       exp.trial_no += 1;
       recording_name = recording.item;
       correct_answer = recording.correct_ans;
-      trial_type = recording.trial_type;
-      recording_q = 'What does "' + recording_name + '" refer to?';
-      pos_options = _.shuffle(['An object that a girl has', 'An action that girls are doing']);
-      exp.run_trial();
+      word_type = recording.word_type;
+      recording_q = 'What does "' + recording_name + '" describe?';
+      pos_options = _.shuffle(['An object', 'An action']);
+      _s.run_trial_eng();
+    },
+
+    run_trial_eng : function(){
+      var trial_audio = document.getElementById('trial_audio_eng');
+      trial_audio.src = 'audio/' + recording_name + '.wav';
+      $('#trial_compQ_eng').html(recording_q);
+      var answerText = '';
+      answerText = answerText.concat('<input type="radio" name="answer_choices_eng" value="'+pos_options[0]+'">&emsp;'+pos_options[0]+'</input>');
+      answerText = answerText.concat('<br><input type="radio" name="answer_choices_eng" value="'+pos_options[1]+'">&emsp;'+pos_options[1]+'</input>');
+      $('#answer_choices_eng').html(answerText);
+      var trial_audio = document.getElementById("trial_audio_eng");
+      trial_audio.addEventListener('ended', function(){
+        $("#trial_compQ_eng").show();
+        $("#answer_choices_eng").show();
+        $("#trialContinueButton_eng").show();
+        })
     },
 
     next_trial : function(e){
       if ($('input[type=radio]:checked').size() == 0) {
-        $("#responseBlankError").show();
+        $("#responseBlankError_eng").show();
       } else {
-        $("#responseBlankError").hide();
-        $("#trial_compQ").hide();
-        $("#answer_choices").hide();
-        $("#trialContinueButton").hide();
+        $("#responseBlankError_eng").hide();
+        $("#trial_compQ_eng").hide();
+        $("#answer_choices_eng").hide();
+        $("#trialContinueButton_eng").hide();
         exp.clicked = $('input[type=radio]:checked').val();
         exp.keep_going = false;
         this.log_responses();
@@ -93,7 +109,77 @@ function make_slides(f) {
         'part_speech2': pos_options[1],
         'selected_answer': exp.clicked,
         'correct_answer' : correct_answer,
-        'trial_type': trial_type,
+        'word_type': word_type,
+        'current_windowW': window.innerWidth,
+        'current_windowH': window.innerHeight
+      })
+    } 
+    
+  });
+
+  slides.instructions_alien = slide({
+    name: "instructions_alien",
+    continue_task: function(e){
+      exp.go()
+    }
+  });
+
+  slides.alien_trial = slide({
+    name: "alien_trial",
+    present: exp.recordings_alien,
+    present_handle: function(recording) {
+      this.trial_start = Date.now();
+      exp.trial_no += 1;
+      recording_name = recording.item;
+      correct_answer = recording.correct_ans;
+      word_type = recording.word_type;
+      recording_q = 'What does "' + recording_name + '" describe?';
+      pos_options = _.shuffle(['An object', 'An action']);
+      _s.run_trial_alien();
+    },
+
+    run_trial_alien : function(){
+      var trial_audio = document.getElementById('trial_audio_alien');
+      trial_audio.src = 'audio/' + recording_name + '.wav';
+      $('#trial_compQ_alien').html(recording_q);
+      var answerText = '';
+      answerText = answerText.concat('<input type="radio" name="answer_choices_eng" value="'+pos_options[0]+'">&emsp;'+pos_options[0]+'</input>');
+      answerText = answerText.concat('<br><input type="radio" name="answer_choices_eng" value="'+pos_options[1]+'">&emsp;'+pos_options[1]+'</input>');
+      $('#answer_choices_alien').html(answerText);
+      var trial_audio = document.getElementById("trial_audio_alien");
+      trial_audio.addEventListener('ended', function(){
+        $("#trial_compQ_alien").show();
+        $("#answer_choices_alien").show();
+        $("#trialContinueButton_alien").show();
+        })
+    },
+
+    next_trial : function(e){
+      if ($('input[type=radio]:checked').size() == 0) {
+        $("#responseBlankError_alien").show();
+      } else {
+        $("#responseBlankError_alien").hide();
+        $("#trial_compQ_alien").hide();
+        $("#answer_choices_alien").hide();
+        $("#trialContinueButton_alien").hide();
+        exp.clicked = $('input[type=radio]:checked').val();
+        exp.keep_going = false;
+        this.log_responses();
+        console.log(exp.data_trials);
+        _stream.apply(this);
+        exp.clicked = null;
+      }
+    },
+
+    log_responses: function(e){
+      exp.data_trials.push({
+        'trial_num': exp.trial_no,
+        'word': recording_name,
+        'part_speech1': pos_options[0],
+        'part_speech2': pos_options[1],
+        'selected_answer': exp.clicked,
+        'correct_answer' : correct_answer,
+        'word_type': word_type,
         'current_windowW': window.innerWidth,
         'current_windowH': window.innerHeight
       })
@@ -142,11 +228,12 @@ function make_slides(f) {
 
 
 function init_explogic() {
-  exp.recordings = _.shuffle(recordings);
+  exp.recordings_eng = _.shuffle(recordings_eng);
+  exp.recordings_alien = _.shuffle(recordings_alien);
   exp.wrong_soundtests = [];
   exp.data_trials = [];
 
-  exp.structure=["consent", "sound_test", "instructions", "single_trial",  "subj_info", "thanks"];
+  exp.structure=[/*"consent", "sound_test", "instructions_eng",*/ "eng_trial", "instructions_alien", "alien_trial", "subj_info", "thanks"];
   exp.slides = make_slides(exp);
   exp.nQs = utils.get_exp_length();
 
@@ -158,22 +245,6 @@ function init_explogic() {
     windowH: window.innerHeight,
     windowW: window.innerWidth,
   };
-
-  exp.run_trial = function(){
-    var trial_audio = document.getElementById('trial_audio');
-    trial_audio.src = 'audio/' + recording_name + '.wav';
-    $('#trial_compQ').html(recording_q);
-    var answerText = '';
-    answerText = answerText.concat('<input type="radio" name="answer_choices" value="'+pos_options[0]+'">&emsp;'+pos_options[0]+'</input>');
-    answerText = answerText.concat('<br><input type="radio" name="answer_choices" value="'+pos_options[1]+'">&emsp;'+pos_options[1]+'</input>');
-    $('#answer_choices').html(answerText);
-    var trial_audio = document.getElementById("trial_audio");
-        trial_audio.addEventListener('ended', function(){
-          $("#trial_compQ").show();
-          $("#answer_choices").show();
-          $("#trialContinueButton").show();
-        })
-}
 
   // EXPERIMENT RUN
   $('.slide').hide(); //hide everything

@@ -18,12 +18,14 @@ var preload = function(resources, options /* afterEach, after, width */) {
 			}
 			return;
 		}
-		var imageExp = /.jpg|.jpeg|.gif|.png|.bmp|.tif|.tiff/,
+		var imageExp = '*/.jpg|.jpeg|.gif|.png|.bmp|.tif|.tiff/',
 				audioExp = /.mp3|.wav/,
 				obj, embedTag;
 		
 		if (filename.match(imageExp)) {
 			obj = new Image();
+			obj.width = 600;
+			obj.height = 500;
 		} else {
 			embedTag = true;
 			obj = document.createElement('iframe');
