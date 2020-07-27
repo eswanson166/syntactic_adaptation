@@ -95,7 +95,7 @@ function make_slides(f) {
         exp.clicked = $('input[type=radio]:checked').val();
         exp.keep_going = false;
         this.log_responses();
-        console.log(exp.data_trials);
+        //console.log(exp.data_trials);
         _stream.apply(this);
         exp.clicked = null;
       }
@@ -110,6 +110,7 @@ function make_slides(f) {
         'selected_answer': exp.clicked,
         'correct_answer' : correct_answer,
         'word_type': word_type,
+        'trial_time': Date.now() - _s.trial_start,
         'current_windowW': window.innerWidth,
         'current_windowH': window.innerHeight
       })
@@ -180,6 +181,7 @@ function make_slides(f) {
         'selected_answer': exp.clicked,
         'correct_answer' : correct_answer,
         'word_type': word_type,
+        'trial_time': Date.now() - _s.trial_start,
         'current_windowW': window.innerWidth,
         'current_windowH': window.innerHeight
       })
@@ -201,6 +203,7 @@ function make_slides(f) {
           language : $("#language").val(),
           age : $("#participantage").val(),
           gender : $("#gender").val(),
+          prolific_id : $("#prolificID").val(),
           comments : $("#comments").val(),
           wrong_soundtests : exp.wrong_soundtests,
           time_in_minutes : (Date.now() - exp.startT)/60000
@@ -255,6 +258,7 @@ function init_explogic() {
       $("#mustaccept").show();
     } else {
       $("#start_button").click(function() {$("#mustaccept").show();});
+      exp.startT = Date.now();
       exp.go();
   }
   })

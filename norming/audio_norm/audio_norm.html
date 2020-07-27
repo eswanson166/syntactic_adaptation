@@ -25,14 +25,14 @@
     <p id='logo-text'>Stanford Language and Cognition Lab</p>
     <p class="block-text">In this experiment, you will answer a few
       questions about spoken sentences. The whole
-    experiment should take about 5 minutes in total.</p>
+    experiment should take about 5 minutes in total. <b> You must be able to play sound to complete this task. </b></p>
     <!--button type="button" onClick="this.blur(); exp.go()">Start
     </button-->
     <button id="start_button" type="button" >Start</button>
     <!--p class="block-text">(Note: you won't be able to preview this HIT before
     accepting it because it's so short.)</p-->
-    <p class="block-text" id="mustaccept"> You must accept the task in order to
-    continue.</p>
+    <!--p class="block-text" id="mustaccept"> You must accept the task in order to
+    continue.</p-->
     <p class="block-text" id="legal">By answering the following questions, you 
     are participating in a study being conducted by the 
     Stanford Department of Linguistics. If you have questions about this research, 
@@ -65,7 +65,7 @@
   <div class="slide" id="instructions_eng">
     <br>
     <h2>Instructions</h2>
-    <p class="block-text" id="instructions_eng_text">First, you will hear some words in English. You will listen to an audio recording and then answer a question about one of the words in the recording.</p>
+    <p class="block-text" id="instructions_eng_text">First, you will listen to some audio recordings in English. Then, you will answer a question about one of the words in the recording.</p>
     <button id="continue_button_eng" class="button" onclick="_s.start_task()">Continue</button>
     </div>
 
@@ -85,7 +85,7 @@
     <div class="slide" id="instructions_alien">
     <br>
     <h2>Instructions</h2>
-    <p class="block-text" id="instructions_alien_text">Now, you will hear some words in an alien language. You will listen to an audio recording and then answer a question about one of the words in the recording. Please make your best guess about the answer.</p>
+    <p class="block-text" id="instructions_alien_text">Now, you will listen to audio recordings that include some words in an alien language. Then, you will answer a question about one of the words in the recording. Please make your best guess about the answer.</p>
     <button id="continue_button_alien" class="button" onclick="_s.continue_task()">Continue</button>
     </div>
 
@@ -119,6 +119,9 @@
           </p>
 
         <p><b>Age: </b><input type="text" id="participantage"/></p>
+        <br>
+
+        <p><b>Prolific ID: </b><input type="text" id="prolificID"/></p>
         <br>
 
         <p><b>(Optional)</b> Do you have any comments about the task (any problems, etc.) ? </p>

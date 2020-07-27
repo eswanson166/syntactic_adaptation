@@ -64,16 +64,21 @@
   <div class="slide" id="instructions">
     <br>
     <h2>Instructions</h2>
-    <p class="block-text" id="instructions_text">You will see two images and select the one you think someone would be more likely to talk about. Some of the images will depict familiar things, and others will be unfamiliar.</p>
+    <p class="block-text" id="instructions_text">You will see two images. After a few seconds of preview, you will select the one you think someone would be more likely to talk about. Some of the images will show familiar things, and others will be unfamiliar.
+    <br>
+    <br>
+    There are no right or wrong answers, so please make your best guess.</p>
     <button id="continue_button" class="button" onclick="_s.start_task()">Continue</button>
     </div>
 
     <div class="slide" id="single_trial">
-    <h2>Look at the images and answer the question!</h2>
-    <p class="block-text" id='trialQ'>Which image would someone be more likely to talk about?
-    </p>
+      <center>
+    <h2>Language study</h2>
+    <p id='previewText'>First, look at the images.</p>
+    <p id='trialQ' style="color:red" hidden>Click on the image someone would be more likely to talk about.</p>
     <div class ="imgwrapper" id="imgwrapper"></div>
     <button id="trial_continue_button" class="button" onclick="_s.next_trial()">Continue</button>
+  </center>
     </div>
 
     <div class="slide"  id="subj_info" align="left">
@@ -93,6 +98,8 @@
           </p>
 
         <p><b>Age: </b><input type="text" id="participantage"/></p>
+
+        <p><b>Prolific ID: </b><input type="text" id="prolificID"/></p>
         <br>
 
         <p><b>(Optional)</b> Do you have any comments about the task (any problems, etc.) ? </p>

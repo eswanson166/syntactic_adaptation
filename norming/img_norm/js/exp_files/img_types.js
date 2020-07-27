@@ -26,7 +26,6 @@ var fam_action_imgs = [
 "cry",
 "draw",
 "drink",
-"walk",
 "sit",
 "sleep",
 "wave"
@@ -40,6 +39,5 @@ var fam_object_imgs = [
 "doll",
 "hat",
 "horse",
-"purse",
 "shoe"
 ]

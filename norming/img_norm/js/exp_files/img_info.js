@@ -20,7 +20,6 @@ var img_info = {
 "cry": {img_type: "familiar", word_type: "verb"},
 "draw": {img_type: "familiar", word_type: "verb"},
 "drink": {img_type: "familiar", word_type: "verb"},
-"walk": {img_type: "familiar", word_type: "verb"},
 "sit": {img_type: "familiar", word_type: "verb"},
 "sleep": {img_type: "familiar", word_type: "verb"},
 "wave": {img_type: "familiar", word_type: "verb"},
@@ -31,6 +30,5 @@ var img_info = {
 "doll": {img_type: "familiar", word_type: "noun"},
 "hat": {img_type: "familiar", word_type: "noun"},
 "horse": {img_type: "familiar", word_type: "noun"},
-"purse": {img_type: "familiar", word_type: "noun"},
 "shoe": {img_type: "familiar", word_type: "noun"}
 }

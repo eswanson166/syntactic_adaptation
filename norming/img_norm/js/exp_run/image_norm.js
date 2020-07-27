@@ -52,10 +52,12 @@ function make_slides(f) {
 
     next_trial : function(e){
         $("#continue_button").hide();
+        $("#trialQ").hide();
         exp.keep_going = false;
         this.log_responses();
         _stream.apply(this);
         exp.clicked = null;
+        exp.endPreview = false;
     },
 
     log_responses: function(e){
@@ -66,10 +68,12 @@ function make_slides(f) {
         'selected_img': exp.clicked,
         'img_type': exp.img_type,
         'selected_word_type': exp.selected_word_type,
+        'preview_time': exp.endPreviewTime - _s.trial_start,
+        'trial_time': Date.now() - exp.endPreviewTime,
         'current_windowW': window.innerWidth,
         'current_windowH': window.innerHeight
       })
-      console.log(exp.data_trials);
+      //console.log(exp.data_trials);
     } 
     
   });
@@ -88,6 +92,7 @@ function make_slides(f) {
           language : $("#language").val(),
           age : $("#participantage").val(),
           gender : $("#gender").val(),
+          prolific_id : $("#prolificID").val(),
           comments : $("#comments").val(),
           wrong_img_tests : exp.wrong_img_tests,
           time_in_minutes : (Date.now() - exp.startT)/60000
@@ -133,7 +138,8 @@ function init_explogic() {
     exp.fam_action_img = _.shuffle(fam_action_imgs);
     exp.fam_object_img = _.shuffle(fam_object_imgs);
     for (var i = 0; i < exp.fam_action_img.length; i++) {
-      exp.fam_img_pairs.push([exp.fam_action_img[i], exp.fam_object_img[i]]);
+      fam_img_pair = _.shuffle([exp.fam_action_img[i], exp.fam_object_img[i]]);
+      exp.fam_img_pairs.push(fam_img_pair);
     }
 
   function isArrayInArray(arr, item){
@@ -155,14 +161,15 @@ function init_explogic() {
   exp.novel_action_img = _.shuffle(novel_action_imgs);
   exp.novel_object_img = _.shuffle(novel_object_imgs);
   for (var i = 0; i < exp.novel_action_img.length; i++) {
-    exp.novel_img_pairs.push([exp.novel_action_img[i], exp.novel_object_img[i]]);
+    novel_img_pair = _.shuffle([exp.novel_action_img[i], exp.novel_object_img[i]]);
+    exp.novel_img_pairs.push(novel_img_pair);
   }
 
   exp.img_pairs = _.shuffle(exp.novel_img_pairs.concat(exp.fam_img_pairs));
   exp.wrong_img_tests = [];
   exp.data_trials = [];
 
-  exp.structure=["consent", /*"img_check", "instructions", */"single_trial",  "subj_info", "thanks"];
+  exp.structure=["consent", "img_check", "instructions", "single_trial",  "subj_info", "thanks"];
   exp.slides = make_slides(exp);
   exp.nQs = utils.get_exp_length();
 
@@ -179,6 +186,8 @@ function init_explogic() {
 
 
   exp.display_imgs = function(img_pair){
+    $("#previewText").show()
+
     if (document.getElementById("img_table") != null){
       $("#img_table tr").remove();
     }
@@ -187,6 +196,13 @@ function init_explogic() {
 
     var cellwidth = MIN_WINDOW_WIDTH/NUM_COLS
     $("#continue_button").offset({top: (window.innerHeight/2)-(BUTTON_HEIGHT/2), left: (window.innerWidth/2)-(CTE_BUTTON_WIDTH/2)})
+
+
+    setTimeout(function(){
+        $("#previewText").hide()
+        $("#trialQ").show()
+        exp.endPreview = true
+        exp.endPreviewTime = Date.now(); }, 2000);
 
     // create table with img elements on L and R side. show these for 2 seconds (as a 'preview') and then show the Continue button to play audio
     for (i = 0; i < NUM_COLS; i++) {
@@ -214,6 +230,7 @@ function init_explogic() {
       img.onclick = function(){
         var id = $(this).attr("id");
         var name = $(this).attr("alt");
+        if (exp.endPreview == true){
         if (id == "left_img"){
           $(this).css("border","2px solid red");
           $("#right_img").css("border","2px solid white");
@@ -226,7 +243,8 @@ function init_explogic() {
         exp.img_type = img_info[name].img_type;
         exp.selected_word_type = img_info[name].word_type;
         $("#trial_continue_button").show();
-      };
+      }
+    };
 
       img_td.appendChild(img);
       tr.appendChild(img_td);
@@ -245,6 +263,7 @@ function init_explogic() {
       $("#mustaccept").show();
     } else {
       $("#start_button").click(function() {$("#mustaccept").show();});
+      exp.startT = Date.now();
       exp.go();
   }
   })
