@@ -1,0 +1,17 @@
+trial_num,left_img,right_img,selected_img,img_type,selected_word_type,preview_time,trial_time,current_windowW,current_windowH,Browser,OS,screenH,screenW,windowH,windowW,imageH,imageW,language,age,gender,comments,wrong_img_tests,time_in_minutes,participant_id
+1,action4,obj3,obj3,novel,noun,2017,7995,1366,663,Chrome,Windows,768,1366,663,1366,288,400,English,23,Male,n/a,[],3.35575,668377
+2,cry,horse,horse,familiar,noun,2014,8537,1366,663,Chrome,Windows,768,1366,663,1366,288,400,English,23,Male,n/a,[],3.35575,668377
+3,action3,obj2,obj2,novel,noun,2009,6017,1366,663,Chrome,Windows,768,1366,663,1366,288,400,English,23,Male,n/a,[],3.35575,668377
+4,hat,sleep,sleep,familiar,verb,2014,7823,1366,663,Chrome,Windows,768,1366,663,1366,288,400,English,23,Male,n/a,[],3.35575,668377
+5,doll,wave,wave,familiar,verb,2009,8520,1366,663,Chrome,Windows,768,1366,663,1366,288,400,English,23,Male,n/a,[],3.35575,668377
+6,draw,book,draw,familiar,verb,2008,8062,1366,663,Chrome,Windows,768,1366,663,1366,288,400,English,23,Male,n/a,[],3.35575,668377
+7,shoe,sit,sit,familiar,verb,2005,6739,1366,663,Chrome,Windows,768,1366,663,1366,288,400,English,23,Male,n/a,[],3.35575,668377
+8,obj6,action8,obj6,novel,noun,2007,7529,1366,663,Chrome,Windows,768,1366,663,1366,288,400,English,23,Male,n/a,[],3.35575,668377
+9,action6,obj8,action6,novel,verb,2006,11945,1366,663,Chrome,Windows,768,1366,663,1366,288,400,English,23,Male,n/a,[],3.35575,668377
+10,box,eat,box,familiar,noun,2004,8082,1366,663,Chrome,Windows,768,1366,663,1366,288,400,English,23,Male,n/a,[],3.35575,668377
+11,obj4,action1,action1,novel,verb,2011,10070,1366,663,Chrome,Windows,768,1366,663,1366,288,400,English,23,Male,n/a,[],3.35575,668377
+12,obj5,action2,action2,novel,verb,2007,11817,1366,663,Chrome,Windows,768,1366,663,1366,288,400,English,23,Male,n/a,[],3.35575,668377
+13,action5,obj7,obj7,novel,noun,2008,4074,1366,663,Chrome,Windows,768,1366,663,1366,288,400,English,23,Male,n/a,[],3.35575,668377
+14,drink,ball,drink,familiar,verb,2017,10177,1366,663,Chrome,Windows,768,1366,663,1366,288,400,English,23,Male,n/a,[],3.35575,668377
+15,obj1,action7,obj1,novel,noun,2011,6542,1366,663,Chrome,Windows,768,1366,663,1366,288,400,English,23,Male,n/a,[],3.35575,668377
+16,read,dog,read,familiar,verb,2010,5054,1366,663,Chrome,Windows,768,1366,663,1366,288,400,English,23,Male,n/a,[],3.35575,668377

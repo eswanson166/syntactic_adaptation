@@ -1,0 +1,17 @@
+trial_num,left_img,right_img,selected_img,img_type,selected_word_type,preview_time,trial_time,current_windowW,current_windowH,Browser,OS,screenH,screenW,windowH,windowW,imageH,imageW,language,age,gender,comments,wrong_img_tests,time_in_minutes,participant_id
+1,action4,obj3,obj3,novel,noun,2013,5532,1536,714,Chrome,Linux,864,1536,706,768,288,400,English,30,Female,,[],1.80485,763639
+2,action8,obj7,obj7,novel,noun,2004,1454,1536,714,Chrome,Linux,864,1536,706,768,288,400,English,30,Female,,[],1.80485,763639
+3,horse,wave,horse,familiar,noun,2004,2358,1536,714,Chrome,Linux,864,1536,706,768,288,400,English,30,Female,,[],1.80485,763639
+4,obj8,action3,obj8,novel,noun,2004,822,1536,714,Chrome,Linux,864,1536,706,768,288,400,English,30,Female,,[],1.80485,763639
+5,obj4,action7,obj4,novel,noun,2004,1241,1536,714,Chrome,Linux,864,1536,706,768,288,400,English,30,Female,,[],1.80485,763639
+6,obj5,action5,obj5,novel,noun,2003,2713,1536,714,Chrome,Linux,864,1536,706,768,288,400,English,30,Female,,[],1.80485,763639
+7,sit,ball,ball,familiar,noun,2004,1127,1536,714,Chrome,Linux,864,1536,706,768,288,400,English,30,Female,,[],1.80485,763639
+8,shoe,eat,eat,familiar,verb,2003,3207,1536,714,Chrome,Linux,864,1536,706,768,288,400,English,30,Female,,[],1.80485,763639
+9,obj6,action2,obj6,novel,noun,2004,1640,1536,714,Chrome,Linux,864,1536,706,768,288,400,English,30,Female,,[],1.80485,763639
+10,box,sleep,sleep,familiar,verb,2003,3564,1536,714,Chrome,Linux,864,1536,706,768,288,400,English,30,Female,,[],1.80485,763639
+11,obj2,action6,obj2,novel,noun,2003,3891,1536,714,Chrome,Linux,864,1536,706,768,288,400,English,30,Female,,[],1.80485,763639
+12,doll,read,read,familiar,verb,2003,2153,1536,714,Chrome,Linux,864,1536,706,768,288,400,English,30,Female,,[],1.80485,763639
+13,book,draw,book,familiar,noun,2004,1891,1536,714,Chrome,Linux,864,1536,706,768,288,400,English,30,Female,,[],1.80485,763639
+14,drink,hat,drink,familiar,verb,2004,1000,1536,714,Chrome,Linux,864,1536,706,768,288,400,English,30,Female,,[],1.80485,763639
+15,action1,obj1,obj1,novel,noun,2002,2415,1536,714,Chrome,Linux,864,1536,706,768,288,400,English,30,Female,,[],1.80485,763639
+16,dog,cry,dog,familiar,noun,2004,830,1536,714,Chrome,Linux,864,1536,706,768,288,400,English,30,Female,,[],1.80485,763639

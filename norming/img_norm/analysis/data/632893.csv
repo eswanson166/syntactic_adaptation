@@ -1,0 +1,17 @@
+trial_num,left_img,right_img,selected_img,img_type,selected_word_type,preview_time,trial_time,current_windowW,current_windowH,Browser,OS,screenH,screenW,windowH,windowW,imageH,imageW,language,age,gender,comments,wrong_img_tests,time_in_minutes,participant_id
+1,read,horse,horse,familiar,noun,2007,4038,1414,754,Safari,Mac,900,1440,754,1414,288,400,English,19,Female,,[],1.9892333333333334,632893
+2,sleep,shoe,sleep,familiar,verb,2003,4663,1414,754,Safari,Mac,900,1440,754,1414,288,400,English,19,Female,,[],1.9892333333333334,632893
+3,action5,obj1,action5,novel,verb,2003,2517,1414,754,Safari,Mac,900,1440,754,1414,288,400,English,19,Female,,[],1.9892333333333334,632893
+4,cry,dog,cry,familiar,verb,2003,1874,1414,754,Safari,Mac,900,1440,754,1414,288,400,English,19,Female,,[],1.9892333333333334,632893
+5,eat,hat,eat,familiar,verb,2003,1318,1414,754,Safari,Mac,900,1440,754,1414,288,400,English,19,Female,,[],1.9892333333333334,632893
+6,sit,box,box,familiar,noun,2003,2988,1414,754,Safari,Mac,900,1440,754,1414,288,400,English,19,Female,,[],1.9892333333333334,632893
+7,doll,drink,doll,familiar,noun,2003,5726,1414,754,Safari,Mac,900,1440,754,1414,288,400,English,19,Female,,[],1.9892333333333334,632893
+8,action3,obj6,obj6,novel,noun,2003,2658,1414,754,Safari,Mac,900,1440,754,1414,288,400,English,19,Female,,[],1.9892333333333334,632893
+9,obj3,action1,action1,novel,verb,2002,1655,1414,754,Safari,Mac,900,1440,754,1414,288,400,English,19,Female,,[],1.9892333333333334,632893
+10,obj7,action6,obj7,novel,noun,2003,4799,1414,754,Safari,Mac,900,1440,754,1414,288,400,English,19,Female,,[],1.9892333333333334,632893
+11,wave,ball,wave,familiar,verb,2003,3909,1414,754,Safari,Mac,900,1440,754,1414,288,400,English,19,Female,,[],1.9892333333333334,632893
+12,obj8,action4,action4,novel,verb,2002,1390,1414,754,Safari,Mac,900,1440,754,1414,288,400,English,19,Female,,[],1.9892333333333334,632893
+13,action2,obj5,action2,novel,verb,2002,1751,1414,754,Safari,Mac,900,1440,754,1414,288,400,English,19,Female,,[],1.9892333333333334,632893
+14,action7,obj4,action7,novel,verb,2002,1686,1414,754,Safari,Mac,900,1440,754,1414,288,400,English,19,Female,,[],1.9892333333333334,632893
+15,action8,obj2,action8,novel,verb,2001,1264,1414,754,Safari,Mac,900,1440,754,1414,288,400,English,19,Female,,[],1.9892333333333334,632893
+16,book,draw,draw,familiar,verb,2003,2259,1414,754,Safari,Mac,900,1440,754,1414,288,400,English,19,Female,,[],1.9892333333333334,632893

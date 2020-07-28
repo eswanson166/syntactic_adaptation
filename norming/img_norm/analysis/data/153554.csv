@@ -1,0 +1,17 @@
+trial_num,left_img,right_img,selected_img,img_type,selected_word_type,preview_time,trial_time,current_windowW,current_windowH,Browser,OS,screenH,screenW,windowH,windowW,imageH,imageW,language,age,gender,comments,wrong_img_tests,time_in_minutes,participant_id
+1,obj5,action4,obj5,novel,noun,2007,4497,1280,618,Chrome,Mac,800,1280,618,1280,288,400,English,28,Female,,[],1.4355833333333334,153554
+2,box,wave,wave,familiar,verb,2003,1977,1280,618,Chrome,Mac,800,1280,618,1280,288,400,English,28,Female,,[],1.4355833333333334,153554
+3,eat,hat,hat,familiar,noun,2006,1623,1280,618,Chrome,Mac,800,1280,618,1280,288,400,English,28,Female,,[],1.4355833333333334,153554
+4,book,cry,cry,familiar,verb,2002,1400,1280,618,Chrome,Mac,800,1280,618,1280,288,400,English,28,Female,,[],1.4355833333333334,153554
+5,obj8,action7,action7,novel,verb,2004,2444,1280,618,Chrome,Mac,800,1280,618,1280,288,400,English,28,Female,,[],1.4355833333333334,153554
+6,action2,obj1,action2,novel,verb,2001,2146,1280,618,Chrome,Mac,800,1280,618,1280,288,400,English,28,Female,,[],1.4355833333333334,153554
+7,draw,horse,horse,familiar,noun,2001,1213,1280,618,Chrome,Mac,800,1280,618,1280,288,400,English,28,Female,,[],1.4355833333333334,153554
+8,action3,obj3,obj3,novel,noun,2001,1761,1280,618,Chrome,Mac,800,1280,618,1280,288,400,English,28,Female,,[],1.4355833333333334,153554
+9,shoe,read,shoe,familiar,noun,2001,1558,1280,618,Chrome,Mac,800,1280,618,1280,288,400,English,28,Female,,[],1.4355833333333334,153554
+10,ball,drink,ball,familiar,noun,2002,1619,1280,618,Chrome,Mac,800,1280,618,1280,288,400,English,28,Female,,[],1.4355833333333334,153554
+11,obj7,action6,action6,novel,verb,2001,1699,1280,618,Chrome,Mac,800,1280,618,1280,288,400,English,28,Female,,[],1.4355833333333334,153554
+12,action1,obj4,obj4,novel,noun,2004,1476,1280,618,Chrome,Mac,800,1280,618,1280,288,400,English,28,Female,,[],1.4355833333333334,153554
+13,obj6,action5,obj6,novel,noun,2003,2752,1280,618,Chrome,Mac,800,1280,618,1280,288,400,English,28,Female,,[],1.4355833333333334,153554
+14,action8,obj2,action8,novel,verb,2006,2087,1280,618,Chrome,Mac,800,1280,618,1280,288,400,English,28,Female,,[],1.4355833333333334,153554
+15,sleep,doll,doll,familiar,noun,2004,2375,1280,618,Chrome,Mac,800,1280,618,1280,288,400,English,28,Female,,[],1.4355833333333334,153554
+16,sit,dog,dog,familiar,noun,2002,1809,1280,618,Chrome,Mac,800,1280,618,1280,288,400,English,28,Female,,[],1.4355833333333334,153554

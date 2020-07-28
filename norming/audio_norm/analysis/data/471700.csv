@@ -1,0 +1,12 @@
+trial_num,word,part_speech1,part_speech2,selected_answer,correct_answer,word_type,trial_time,current_windowW,current_windowH,Browser,OS,screenH,screenW,windowH,windowW,language,age,gender,comments,wrong_soundtests,time_in_minutes,participant_id
+1,ball,An action,An object,An object,An object,familiar,17568,1411,727,Chrome,Mac,900,1440,727,1411,greek ,28,Female,,[],3.274366666666667,471700
+2,eat,An object,An action,An action,An action,familiar,11392,1411,727,Chrome,Mac,900,1440,727,1411,greek ,28,Female,,[],3.274366666666667,471700
+3,sleep,An object,An action,An action,An action,familiar,21301,1411,727,Chrome,Mac,900,1440,727,1411,greek ,28,Female,,[],3.274366666666667,471700
+4,shoe,An object,An action,An object,An object,familiar,12790,1411,727,Chrome,Mac,900,1440,727,1411,greek ,28,Female,,[],3.274366666666667,471700
+5,smick,An action,An object,An object,none,novel,12134,1411,727,Chrome,Mac,900,1440,727,1411,greek ,28,Female,,[],3.274366666666667,471700
+6,fep,An action,An object,An action,none,novel,12244,1411,727,Chrome,Mac,900,1440,727,1411,greek ,28,Female,,[],3.274366666666667,471700
+7,vash,An object,An action,An object,none,novel,13138,1411,727,Chrome,Mac,900,1440,727,1411,greek ,28,Female,,[],3.274366666666667,471700
+8,heth,An action,An object,An action,none,novel,20465,1411,727,Chrome,Mac,900,1440,727,1411,greek ,28,Female,,[],3.274366666666667,471700
+9,dax,An object,An action,An object,none,novel,12196,1411,727,Chrome,Mac,900,1440,727,1411,greek ,28,Female,,[],3.274366666666667,471700
+10,moop,An object,An action,An object,none,novel,10584,1411,727,Chrome,Mac,900,1440,727,1411,greek ,28,Female,,[],3.274366666666667,471700
+11,nup,An object,An action,An object,none,novel,10127,1411,727,Chrome,Mac,900,1440,727,1411,greek ,28,Female,,[],3.274366666666667,471700

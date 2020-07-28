@@ -1,0 +1,17 @@
+trial_num,left_img,right_img,selected_img,img_type,selected_word_type,trial_time,current_windowW,current_windowH,Browser,OS,screenH,screenW,windowH,windowW,imageH,imageW,language,age,gender,comments,wrong_img_tests,time_in_minutes,participant_id
+1,hat,draw,draw,familiar,verb,10528,1536,754,Chrome,Windows,864,1536,754,1536,288,400,English,34,Female,,[],1.8530833333333334,792127
+2,eat,ball,eat,familiar,verb,5225,1536,754,Chrome,Windows,864,1536,754,1536,288,400,English,34,Female,,[],1.8530833333333334,792127
+3,obj5,action8,action8,novel,verb,13388,1536,754,Chrome,Windows,864,1536,754,1536,288,400,English,34,Female,,[],1.8530833333333334,792127
+4,dog,sit,dog,familiar,noun,7624,1536,754,Chrome,Windows,864,1536,754,1536,288,400,English,34,Female,,[],1.8530833333333334,792127
+5,action4,obj8,action4,novel,verb,3824,1536,754,Chrome,Windows,864,1536,754,1536,288,400,English,34,Female,,[],1.8530833333333334,792127
+6,horse,sleep,sleep,familiar,verb,2563,1536,754,Chrome,Windows,864,1536,754,1536,288,400,English,34,Female,,[],1.8530833333333334,792127
+7,obj2,action2,action2,novel,verb,4880,1536,754,Chrome,Windows,864,1536,754,1536,288,400,English,34,Female,,[],1.8530833333333334,792127
+8,cry,doll,cry,familiar,verb,5002,1536,754,Chrome,Windows,864,1536,754,1536,288,400,English,34,Female,,[],1.8530833333333334,792127
+9,box,wave,wave,familiar,verb,3948,1536,754,Chrome,Windows,864,1536,754,1536,288,400,English,34,Female,,[],1.8530833333333334,792127
+10,action7,obj3,obj3,novel,noun,8292,1536,754,Chrome,Windows,864,1536,754,1536,288,400,English,34,Female,,[],1.8530833333333334,792127
+11,action5,obj4,action5,novel,verb,5081,1536,754,Chrome,Windows,864,1536,754,1536,288,400,English,34,Female,,[],1.8530833333333334,792127
+12,action1,obj6,action1,novel,verb,3491,1536,754,Chrome,Windows,864,1536,754,1536,288,400,English,34,Female,,[],1.8530833333333334,792127
+13,read,shoe,read,familiar,verb,3351,1536,754,Chrome,Windows,864,1536,754,1536,288,400,English,34,Female,,[],1.8530833333333334,792127
+14,obj1,action6,action6,novel,verb,2861,1536,754,Chrome,Windows,864,1536,754,1536,288,400,English,34,Female,,[],1.8530833333333334,792127
+15,action3,obj7,action3,novel,verb,3653,1536,754,Chrome,Windows,864,1536,754,1536,288,400,English,34,Female,,[],1.8530833333333334,792127
+16,drink,book,drink,familiar,verb,4118,1536,754,Chrome,Windows,864,1536,754,1536,288,400,English,34,Female,,[],1.8530833333333334,792127

@@ -1,0 +1,12 @@
+trial_num,word,part_speech1,part_speech2,selected_answer,correct_answer,word_type,trial_time,current_windowW,current_windowH,Browser,OS,screenH,screenW,windowH,windowW,language,age,gender,comments,wrong_soundtests,time_in_minutes,participant_id
+1,ball,An object,An action,An object,An object,familiar,16621,362,629,Safari,iPhone/iPod,896,414,719,414,English ,26,Female,,[],3.2965166666666668,446901
+2,eat,An action,An object,An action,An action,familiar,14210,362,629,Safari,iPhone/iPod,896,414,719,414,English ,26,Female,,[],3.2965166666666668,446901
+3,sleep,An object,An action,An action,An action,familiar,14015,362,629,Safari,iPhone/iPod,896,414,719,414,English ,26,Female,,[],3.2965166666666668,446901
+4,shoe,An action,An object,An object,An object,familiar,14883,362,629,Safari,iPhone/iPod,896,414,719,414,English ,26,Female,,[],3.2965166666666668,446901
+5,nup,An action,An object,An object,none,novel,15716,414,719,Safari,iPhone/iPod,896,414,719,414,English ,26,Female,,[],3.2965166666666668,446901
+6,fep,An object,An action,An object,none,novel,12998,414,719,Safari,iPhone/iPod,896,414,719,414,English ,26,Female,,[],3.2965166666666668,446901
+7,heth,An action,An object,An object,none,novel,12366,414,719,Safari,iPhone/iPod,896,414,719,414,English ,26,Female,,[],3.2965166666666668,446901
+8,smick,An action,An object,An object,none,novel,13948,414,719,Safari,iPhone/iPod,896,414,719,414,English ,26,Female,,[],3.2965166666666668,446901
+9,dax,An object,An action,An object,none,novel,14283,414,719,Safari,iPhone/iPod,896,414,719,414,English ,26,Female,,[],3.2965166666666668,446901
+10,moop,An action,An object,An action,none,novel,13864,414,719,Safari,iPhone/iPod,896,414,719,414,English ,26,Female,,[],3.2965166666666668,446901
+11,vash,An object,An action,An object,none,novel,13042,414,719,Safari,iPhone/iPod,896,414,719,414,English ,26,Female,,[],3.2965166666666668,446901

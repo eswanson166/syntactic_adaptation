@@ -1,0 +1,17 @@
+trial_num,left_img,right_img,selected_img,img_type,selected_word_type,preview_time,trial_time,current_windowW,current_windowH,Browser,OS,screenH,screenW,windowH,windowW,imageH,imageW,language,age,gender,comments,wrong_img_tests,time_in_minutes,participant_id
+1,cry,hat,hat,familiar,noun,2012,2540,1707,771,Chrome,Windows,720,1280,771,1707,288,400,English,22,Female,,[],1.3927833333333333,806353
+2,action4,obj4,obj4,novel,noun,2003,2613,1707,771,Chrome,Windows,720,1280,771,1707,288,400,English,22,Female,,[],1.3927833333333333,806353
+3,action6,obj6,action6,novel,verb,2012,2100,1707,771,Chrome,Windows,720,1280,771,1707,288,400,English,22,Female,,[],1.3927833333333333,806353
+4,obj1,action1,obj1,novel,noun,2001,2487,1707,771,Chrome,Windows,720,1280,771,1707,288,400,English,22,Female,,[],1.3927833333333333,806353
+5,shoe,sleep,sleep,familiar,verb,2002,1782,1707,771,Chrome,Windows,720,1280,771,1707,288,400,English,22,Female,,[],1.3927833333333333,806353
+6,doll,drink,drink,familiar,verb,2002,1390,1707,771,Chrome,Windows,720,1280,771,1707,288,400,English,22,Female,,[],1.3927833333333333,806353
+7,obj2,action2,action2,novel,verb,2003,1509,1707,771,Chrome,Windows,720,1280,771,1707,288,400,English,22,Female,,[],1.3927833333333333,806353
+8,wave,box,wave,familiar,verb,2014,1674,1707,771,Chrome,Windows,720,1280,771,1707,288,400,English,22,Female,,[],1.3927833333333333,806353
+9,action5,obj7,obj7,novel,noun,2002,1134,1707,771,Chrome,Windows,720,1280,771,1707,288,400,English,22,Female,,[],1.3927833333333333,806353
+10,sit,ball,sit,familiar,verb,2007,1249,1707,771,Chrome,Windows,720,1280,771,1707,288,400,English,22,Female,,[],1.3927833333333333,806353
+11,obj3,action7,obj3,novel,noun,2005,763,1707,771,Chrome,Windows,720,1280,771,1707,288,400,English,22,Female,,[],1.3927833333333333,806353
+12,draw,dog,draw,familiar,verb,2002,1182,1707,771,Chrome,Windows,720,1280,771,1707,288,400,English,22,Female,,[],1.3927833333333333,806353
+13,action3,obj8,obj8,novel,noun,2002,2526,1707,771,Chrome,Windows,720,1280,771,1707,288,400,English,22,Female,,[],1.3927833333333333,806353
+14,eat,book,eat,familiar,verb,2001,1887,1707,771,Chrome,Windows,720,1280,771,1707,288,400,English,22,Female,,[],1.3927833333333333,806353
+15,horse,read,read,familiar,verb,2003,1597,1707,771,Chrome,Windows,720,1280,771,1707,288,400,English,22,Female,,[],1.3927833333333333,806353
+16,action8,obj5,obj5,novel,noun,2014,1330,1707,771,Chrome,Windows,720,1280,771,1707,288,400,English,22,Female,,[],1.3927833333333333,806353

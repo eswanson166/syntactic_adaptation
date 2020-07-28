@@ -1,0 +1,12 @@
+trial_num,word,part_speech1,part_speech2,selected_answer,correct_answer,word_type,trial_time,current_windowW,current_windowH,Browser,OS,screenH,screenW,windowH,windowW,language,age,gender,comments,wrong_soundtests,time_in_minutes,participant_id
+1,ball,An action,An object,An object,An object,familiar,12120,1438,750,Firefox,Mac,900,1440,750,1438,English,46,Female,,[],2.81455,166703
+2,eat,An object,An action,An action,An action,familiar,11833,1438,750,Firefox,Mac,900,1440,750,1438,English,46,Female,,[],2.81455,166703
+3,sleep,An action,An object,An action,An action,familiar,11520,1438,750,Firefox,Mac,900,1440,750,1438,English,46,Female,,[],2.81455,166703
+4,shoe,An action,An object,An object,An object,familiar,11286,1438,750,Firefox,Mac,900,1440,750,1438,English,46,Female,,[],2.81455,166703
+5,vash,An action,An object,An object,none,novel,16579,1438,750,Firefox,Mac,900,1440,750,1438,English,46,Female,,[],2.81455,166703
+6,heth,An action,An object,An object,none,novel,15115,1438,750,Firefox,Mac,900,1440,750,1438,English,46,Female,,[],2.81455,166703
+7,dax,An action,An object,An action,none,novel,11119,1438,750,Firefox,Mac,900,1440,750,1438,English,46,Female,,[],2.81455,166703
+8,smick,An object,An action,An action,none,novel,13077,1438,750,Firefox,Mac,900,1440,750,1438,English,46,Female,,[],2.81455,166703
+9,fep,An object,An action,An action,none,novel,12162,1438,750,Firefox,Mac,900,1440,750,1438,English,46,Female,,[],2.81455,166703
+10,nup,An action,An object,An object,none,novel,11799,1438,750,Firefox,Mac,900,1440,750,1438,English,46,Female,,[],2.81455,166703
+11,moop,An action,An object,An object,none,novel,10872,1438,750,Firefox,Mac,900,1440,750,1438,English,46,Female,,[],2.81455,166703

@@ -1,0 +1,17 @@
+trial_num,left_img,right_img,selected_img,img_type,selected_word_type,preview_time,trial_time,current_windowW,current_windowH,Browser,OS,screenH,screenW,windowH,windowW,imageH,imageW,language,age,gender,comments,wrong_img_tests,time_in_minutes,participant_id
+1,action4,obj3,obj3,novel,noun,2010,3079,1536,722,Chrome,Windows,864,1536,722,1536,288,400,english,35,Male,,[],1.5284666666666666,641120
+2,sit,book,book,familiar,noun,2004,1713,1536,722,Chrome,Windows,864,1536,722,1536,288,400,english,35,Male,,[],1.5284666666666666,641120
+3,action8,obj8,obj8,novel,noun,2005,4013,1536,722,Chrome,Windows,864,1536,722,1536,288,400,english,35,Male,,[],1.5284666666666666,641120
+4,sleep,horse,sleep,familiar,verb,2003,2051,1536,722,Chrome,Windows,864,1536,722,1536,288,400,english,35,Male,,[],1.5284666666666666,641120
+5,draw,shoe,draw,familiar,verb,2002,2045,1536,722,Chrome,Windows,864,1536,722,1536,288,400,english,35,Male,,[],1.5284666666666666,641120
+6,obj7,action3,obj7,novel,noun,2005,2226,1536,722,Chrome,Windows,864,1536,722,1536,288,400,english,35,Male,,[],1.5284666666666666,641120
+7,action6,obj6,obj6,novel,noun,2004,1630,1536,722,Chrome,Windows,864,1536,722,1536,288,400,english,35,Male,,[],1.5284666666666666,641120
+8,hat,wave,wave,familiar,verb,2004,2152,1536,722,Chrome,Windows,864,1536,722,1536,288,400,english,35,Male,,[],1.5284666666666666,641120
+9,action1,obj2,obj2,novel,noun,2003,1575,1536,722,Chrome,Windows,864,1536,722,1536,288,400,english,35,Male,,[],1.5284666666666666,641120
+10,doll,read,doll,familiar,noun,2005,1453,1536,722,Chrome,Windows,864,1536,722,1536,288,400,english,35,Male,,[],1.5284666666666666,641120
+11,eat,box,box,familiar,noun,2007,1585,1536,722,Chrome,Windows,864,1536,722,1536,288,400,english,35,Male,,[],1.5284666666666666,641120
+12,action5,obj5,obj5,novel,noun,2002,3050,1536,722,Chrome,Windows,864,1536,722,1536,288,400,english,35,Male,,[],1.5284666666666666,641120
+13,dog,drink,dog,familiar,noun,2008,1209,1536,722,Chrome,Windows,864,1536,722,1536,288,400,english,35,Male,,[],1.5284666666666666,641120
+14,obj1,action2,obj1,novel,noun,2005,1454,1536,722,Chrome,Windows,864,1536,722,1536,288,400,english,35,Male,,[],1.5284666666666666,641120
+15,ball,cry,ball,familiar,noun,2004,748,1536,722,Chrome,Windows,864,1536,722,1536,288,400,english,35,Male,,[],1.5284666666666666,641120
+16,action7,obj4,obj4,novel,noun,2003,4335,1536,722,Chrome,Windows,864,1536,722,1536,288,400,english,35,Male,,[],1.5284666666666666,641120

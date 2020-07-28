@@ -1,0 +1,12 @@
+trial_num,word,part_speech1,part_speech2,selected_answer,correct_answer,word_type,current_windowW,current_windowH,Browser,OS,screenH,screenW,windowH,windowW,language,age,gender,comments,wrong_soundtests,time_in_minutes,participant_id
+1,ball,An action,An object,An object,noun,familiar,1407,717,Chrome,Mac,900,1440,717,1407,asdf,df,Female,Elizabeth - test,[],2.9069,799315
+2,eat,An object,An action,An action,verb,familiar,1407,717,Chrome,Mac,900,1440,717,1407,asdf,df,Female,Elizabeth - test,[],2.9069,799315
+3,sleep,An object,An action,An action,verb,familiar,1407,717,Chrome,Mac,900,1440,717,1407,asdf,df,Female,Elizabeth - test,[],2.9069,799315
+4,shoe,An object,An action,An object,noun,familiar,1407,717,Chrome,Mac,900,1440,717,1407,asdf,df,Female,Elizabeth - test,[],2.9069,799315
+5,vash,An object,An action,An object,none,novel,1407,717,Chrome,Mac,900,1440,717,1407,asdf,df,Female,Elizabeth - test,[],2.9069,799315
+6,fep,An object,An action,An action,none,novel,1407,717,Chrome,Mac,900,1440,717,1407,asdf,df,Female,Elizabeth - test,[],2.9069,799315
+7,smick,An action,An object,An action,none,novel,1407,717,Chrome,Mac,900,1440,717,1407,asdf,df,Female,Elizabeth - test,[],2.9069,799315
+8,dax,An object,An action,An object,none,novel,1407,717,Chrome,Mac,900,1440,717,1407,asdf,df,Female,Elizabeth - test,[],2.9069,799315
+9,nup,An object,An action,An action,none,novel,1407,717,Chrome,Mac,900,1440,717,1407,asdf,df,Female,Elizabeth - test,[],2.9069,799315
+10,heth,An action,An object,An object,none,novel,1407,717,Chrome,Mac,900,1440,717,1407,asdf,df,Female,Elizabeth - test,[],2.9069,799315
+11,moop,An object,An action,An action,none,novel,1407,717,Chrome,Mac,900,1440,717,1407,asdf,df,Female,Elizabeth - test,[],2.9069,799315

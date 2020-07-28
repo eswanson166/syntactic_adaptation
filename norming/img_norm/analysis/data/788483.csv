@@ -1,0 +1,17 @@
+trial_num,left_img,right_img,selected_img,img_type,selected_word_type,preview_time,trial_time,current_windowW,current_windowH,Browser,OS,screenH,screenW,windowH,windowW,imageH,imageW,language,age,gender,comments,wrong_img_tests,time_in_minutes,participant_id
+1,dog,read,dog,familiar,noun,2013,16520,1024,704,Safari,Mac,1024,768,704,1024,288,400,English,19,Female,No,[],3.8510833333333334,788483
+2,obj6,action2,obj6,novel,noun,2005,6404,1024,704,Safari,Mac,1024,768,704,1024,288,400,English,19,Female,No,[],3.8510833333333334,788483
+3,eat,shoe,eat,familiar,verb,2013,5305,1024,704,Safari,Mac,1024,768,704,1024,288,400,English,19,Female,No,[],3.8510833333333334,788483
+4,ball,sleep,ball,familiar,noun,2007,1798,1024,704,Safari,Mac,1024,768,704,1024,288,400,English,19,Female,No,[],3.8510833333333334,788483
+5,obj4,action1,action1,novel,verb,2005,6541,958,658,Safari,Mac,1024,768,704,1024,288,400,English,19,Female,No,[],3.8510833333333334,788483
+6,cry,hat,cry,familiar,verb,2006,7515,958,658,Safari,Mac,1024,768,704,1024,288,400,English,19,Female,No,[],3.8510833333333334,788483
+7,action8,obj3,obj3,novel,noun,2006,6293,958,658,Safari,Mac,1024,768,704,1024,288,400,English,19,Female,No,[],3.8510833333333334,788483
+8,obj1,action5,obj1,novel,noun,2006,3950,958,658,Safari,Mac,1024,768,704,1024,288,400,English,19,Female,No,[],3.8510833333333334,788483
+9,obj8,action4,obj8,novel,noun,2012,2532,958,658,Safari,Mac,1024,768,704,1024,288,400,English,19,Female,No,[],3.8510833333333334,788483
+10,obj5,action7,obj5,novel,noun,2005,2685,958,658,Safari,Mac,1024,768,704,1024,288,400,English,19,Female,No,[],3.8510833333333334,788483
+11,action3,obj7,obj7,novel,noun,2011,1822,958,658,Safari,Mac,1024,768,704,1024,288,400,English,19,Female,No,[],3.8510833333333334,788483
+12,draw,book,draw,familiar,verb,2012,4708,958,658,Safari,Mac,1024,768,704,1024,288,400,English,19,Female,No,[],3.8510833333333334,788483
+13,sit,box,box,familiar,noun,2005,1832,958,658,Safari,Mac,1024,768,704,1024,288,400,English,19,Female,No,[],3.8510833333333334,788483
+14,horse,drink,drink,familiar,verb,2005,3600,958,658,Safari,Mac,1024,768,704,1024,288,400,English,19,Female,No,[],3.8510833333333334,788483
+15,action6,obj2,obj2,novel,noun,2006,1979,958,658,Safari,Mac,1024,768,704,1024,288,400,English,19,Female,No,[],3.8510833333333334,788483
+16,doll,wave,doll,familiar,noun,2008,6655,958,658,Safari,Mac,1024,768,704,1024,288,400,English,19,Female,No,[],3.8510833333333334,788483

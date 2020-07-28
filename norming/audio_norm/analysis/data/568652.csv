@@ -1,0 +1,12 @@
+trial_num,word,part_speech1,part_speech2,selected_answer,correct_answer,word_type,trial_time,current_windowW,current_windowH,Browser,OS,screenH,screenW,windowH,windowW,language,age,gender,comments,wrong_soundtests,time_in_minutes,participant_id
+1,ball,An action,An object,An object,An object,familiar,12293,1366,633,Chrome,Windows,768,1366,633,1366,English ,21,Male,,[],3.5903666666666667,568652
+2,eat,An object,An action,An action,An action,familiar,25600,1366,633,Chrome,Windows,768,1366,633,1366,English ,21,Male,,[],3.5903666666666667,568652
+3,sleep,An object,An action,An action,An action,familiar,21148,1366,633,Chrome,Windows,768,1366,633,1366,English ,21,Male,,[],3.5903666666666667,568652
+4,shoe,An action,An object,An object,An object,familiar,13838,1366,633,Chrome,Windows,768,1366,633,1366,English ,21,Male,,[],3.5903666666666667,568652
+5,heth,An action,An object,An action,none,novel,21302,1366,633,Chrome,Windows,768,1366,633,1366,English ,21,Male,,[],3.5903666666666667,568652
+6,vash,An action,An object,An object,none,novel,12902,1366,633,Chrome,Windows,768,1366,633,1366,English ,21,Male,,[],3.5903666666666667,568652
+7,nup,An action,An object,An action,none,novel,12240,1366,633,Chrome,Windows,768,1366,633,1366,English ,21,Male,,[],3.5903666666666667,568652
+8,moop,An object,An action,An action,none,novel,10456,1366,633,Chrome,Windows,768,1366,633,1366,English ,21,Male,,[],3.5903666666666667,568652
+9,smick,An action,An object,An action,none,novel,10204,1366,633,Chrome,Windows,768,1366,633,1366,English ,21,Male,,[],3.5903666666666667,568652
+10,fep,An action,An object,An object,none,novel,9943,1366,633,Chrome,Windows,768,1366,633,1366,English ,21,Male,,[],3.5903666666666667,568652
+11,dax,An object,An action,An action,none,novel,10705,1366,633,Chrome,Windows,768,1366,633,1366,English ,21,Male,,[],3.5903666666666667,568652

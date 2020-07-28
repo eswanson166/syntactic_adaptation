@@ -1,0 +1,17 @@
+trial_num,left_img,right_img,selected_img,img_type,selected_word_type,preview_time,trial_time,current_windowW,current_windowH,Browser,OS,screenH,screenW,windowH,windowW,imageH,imageW,language,age,gender,comments,wrong_img_tests,time_in_minutes,participant_id
+1,sit,doll,doll,familiar,noun,2007,7481,1680,881,Safari,Mac,1050,1680,881,1680,288,400,English,22,Female,,[],1.7674,320122
+2,shoe,wave,wave,familiar,verb,2002,5085,1680,881,Safari,Mac,1050,1680,881,1680,288,400,English,22,Female,,[],1.7674,320122
+3,cry,box,cry,familiar,verb,2003,2929,1680,881,Safari,Mac,1050,1680,881,1680,288,400,English,22,Female,,[],1.7674,320122
+4,drink,dog,drink,familiar,verb,2003,3171,1680,881,Safari,Mac,1050,1680,881,1680,288,400,English,22,Female,,[],1.7674,320122
+5,action8,obj4,obj4,novel,noun,2003,3015,1680,881,Safari,Mac,1050,1680,881,1680,288,400,English,22,Female,,[],1.7674,320122
+6,read,horse,horse,familiar,noun,2002,3030,1680,881,Safari,Mac,1050,1680,881,1680,288,400,English,22,Female,,[],1.7674,320122
+7,obj3,action6,obj3,novel,noun,2002,2356,1680,881,Safari,Mac,1050,1680,881,1680,288,400,English,22,Female,,[],1.7674,320122
+8,obj2,action3,obj2,novel,noun,2002,1743,1680,881,Safari,Mac,1050,1680,881,1680,288,400,English,22,Female,,[],1.7674,320122
+9,ball,sleep,sleep,familiar,verb,2003,2644,1680,881,Safari,Mac,1050,1680,881,1680,288,400,English,22,Female,,[],1.7674,320122
+10,hat,eat,eat,familiar,verb,2001,4349,1680,881,Safari,Mac,1050,1680,881,1680,288,400,English,22,Female,,[],1.7674,320122
+11,obj1,action1,obj1,novel,noun,2001,2290,1680,881,Safari,Mac,1050,1680,881,1680,288,400,English,22,Female,,[],1.7674,320122
+12,obj7,action7,obj7,novel,noun,2003,3199,1680,881,Safari,Mac,1050,1680,881,1680,288,400,English,22,Female,,[],1.7674,320122
+13,book,draw,draw,familiar,verb,2003,2214,1680,881,Safari,Mac,1050,1680,881,1680,288,400,English,22,Female,,[],1.7674,320122
+14,action2,obj8,obj8,novel,noun,2001,1689,1680,881,Safari,Mac,1050,1680,881,1680,288,400,English,22,Female,,[],1.7674,320122
+15,action5,obj6,obj6,novel,noun,2002,1890,1680,881,Safari,Mac,1050,1680,881,1680,288,400,English,22,Female,,[],1.7674,320122
+16,obj5,action4,obj5,novel,noun,2001,1966,1680,881,Safari,Mac,1050,1680,881,1680,288,400,English,22,Female,,[],1.7674,320122

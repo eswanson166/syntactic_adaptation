@@ -1,0 +1,17 @@
+trial_num,left_img,right_img,selected_img,img_type,selected_word_type,preview_time,trial_time,current_windowW,current_windowH,Browser,OS,screenH,screenW,windowH,windowW,imageH,imageW,language,age,gender,comments,wrong_img_tests,time_in_minutes,participant_id
+1,obj2,action4,action4,novel,verb,2019,6784,1366,625,Chrome,Windows,768,1366,625,1366,288,400,ENGLISH,33,Female,NO THANK YOU,[],2.3374333333333333,547591
+2,eat,ball,eat,familiar,verb,2011,5601,1366,625,Chrome,Windows,768,1366,625,1366,288,400,ENGLISH,33,Female,NO THANK YOU,[],2.3374333333333333,547591
+3,obj4,action7,obj4,novel,noun,2005,6794,1366,625,Chrome,Windows,768,1366,625,1366,288,400,ENGLISH,33,Female,NO THANK YOU,[],2.3374333333333333,547591
+4,sit,hat,sit,familiar,verb,2007,4393,1366,625,Chrome,Windows,768,1366,625,1366,288,400,ENGLISH,33,Female,NO THANK YOU,[],2.3374333333333333,547591
+5,read,shoe,shoe,familiar,noun,2011,4614,1366,625,Chrome,Windows,768,1366,625,1366,288,400,ENGLISH,33,Female,NO THANK YOU,[],2.3374333333333333,547591
+6,obj6,action5,action5,novel,verb,2008,3425,1366,625,Chrome,Windows,768,1366,625,1366,288,400,ENGLISH,33,Female,NO THANK YOU,[],2.3374333333333333,547591
+7,action6,obj7,action6,novel,verb,2006,3762,1366,625,Chrome,Windows,768,1366,625,1366,288,400,ENGLISH,33,Female,NO THANK YOU,[],2.3374333333333333,547591
+8,obj1,action8,action8,novel,verb,2005,3636,1366,625,Chrome,Windows,768,1366,625,1366,288,400,ENGLISH,33,Female,NO THANK YOU,[],2.3374333333333333,547591
+9,action2,obj5,obj5,novel,noun,2010,3836,1366,625,Chrome,Windows,768,1366,625,1366,288,400,ENGLISH,33,Female,NO THANK YOU,[],2.3374333333333333,547591
+10,action1,obj8,action1,novel,verb,2010,1959,1366,625,Chrome,Windows,768,1366,625,1366,288,400,ENGLISH,33,Female,NO THANK YOU,[],2.3374333333333333,547591
+11,sleep,box,sleep,familiar,verb,2012,2668,1366,625,Chrome,Windows,768,1366,625,1366,288,400,ENGLISH,33,Female,NO THANK YOU,[],2.3374333333333333,547591
+12,draw,book,book,familiar,noun,2007,3793,1366,625,Chrome,Windows,768,1366,625,1366,288,400,ENGLISH,33,Female,NO THANK YOU,[],2.3374333333333333,547591
+13,horse,cry,cry,familiar,verb,2012,5152,1366,625,Chrome,Windows,768,1366,625,1366,288,400,ENGLISH,33,Female,NO THANK YOU,[],2.3374333333333333,547591
+14,doll,wave,doll,familiar,noun,2006,5924,1366,625,Chrome,Windows,768,1366,625,1366,288,400,ENGLISH,33,Female,NO THANK YOU,[],2.3374333333333333,547591
+15,action3,obj3,obj3,novel,noun,2009,3076,1366,625,Chrome,Windows,768,1366,625,1366,288,400,ENGLISH,33,Female,NO THANK YOU,[],2.3374333333333333,547591
+16,drink,dog,dog,familiar,noun,2008,1562,1366,625,Chrome,Windows,768,1366,625,1366,288,400,ENGLISH,33,Female,NO THANK YOU,[],2.3374333333333333,547591

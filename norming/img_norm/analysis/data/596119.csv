@@ -1,0 +1,17 @@
+trial_num,left_img,right_img,selected_img,img_type,selected_word_type,preview_time,trial_time,current_windowW,current_windowH,Browser,OS,screenH,screenW,windowH,windowW,imageH,imageW,language,age,gender,comments,wrong_img_tests,time_in_minutes,participant_id
+1,hat,drink,drink,familiar,verb,2011,9744,1500,894,Chrome,Windows,1000,1500,894,1500,288,400,english,25,Male,got stuck on the loading screen first time,[],3.392733333333333,596119
+2,action2,obj5,obj5,novel,noun,2008,10223,1500,894,Chrome,Windows,1000,1500,894,1500,288,400,english,25,Male,got stuck on the loading screen first time,[],3.392733333333333,596119
+3,action4,obj3,obj3,novel,noun,2005,8869,1500,894,Chrome,Windows,1000,1500,894,1500,288,400,english,25,Male,got stuck on the loading screen first time,[],3.392733333333333,596119
+4,cry,book,cry,familiar,verb,2005,6550,1500,894,Chrome,Windows,1000,1500,894,1500,288,400,english,25,Male,got stuck on the loading screen first time,[],3.392733333333333,596119
+5,shoe,sit,shoe,familiar,noun,2005,4996,1500,894,Chrome,Windows,1000,1500,894,1500,288,400,english,25,Male,got stuck on the loading screen first time,[],3.392733333333333,596119
+6,obj8,action5,obj8,novel,noun,2005,4925,1500,894,Chrome,Windows,1000,1500,894,1500,288,400,english,25,Male,got stuck on the loading screen first time,[],3.392733333333333,596119
+7,obj2,action8,obj2,novel,noun,2005,8066,1500,894,Chrome,Windows,1000,1500,894,1500,288,400,english,25,Male,got stuck on the loading screen first time,[],3.392733333333333,596119
+8,obj7,action3,obj7,novel,noun,2005,4486,1500,894,Chrome,Windows,1000,1500,894,1500,288,400,english,25,Male,got stuck on the loading screen first time,[],3.392733333333333,596119
+9,sleep,dog,dog,familiar,noun,2004,4632,1500,894,Chrome,Windows,1000,1500,894,1500,288,400,english,25,Male,got stuck on the loading screen first time,[],3.392733333333333,596119
+10,obj6,action7,obj6,novel,noun,2005,5323,1500,894,Chrome,Windows,1000,1500,894,1500,288,400,english,25,Male,got stuck on the loading screen first time,[],3.392733333333333,596119
+11,draw,ball,draw,familiar,verb,2005,5231,1500,894,Chrome,Windows,1000,1500,894,1500,288,400,english,25,Male,got stuck on the loading screen first time,[],3.392733333333333,596119
+12,obj4,action6,obj4,novel,noun,2003,11002,1500,894,Chrome,Windows,1000,1500,894,1500,288,400,english,25,Male,got stuck on the loading screen first time,[],3.392733333333333,596119
+13,wave,horse,horse,familiar,noun,2005,6304,1500,894,Chrome,Windows,1000,1500,894,1500,288,400,english,25,Male,got stuck on the loading screen first time,[],3.392733333333333,596119
+14,box,read,read,familiar,verb,2004,4173,1500,894,Chrome,Windows,1000,1500,894,1500,288,400,english,25,Male,got stuck on the loading screen first time,[],3.392733333333333,596119
+15,action1,obj1,obj1,novel,noun,2005,3063,1500,894,Chrome,Windows,1000,1500,894,1500,288,400,english,25,Male,got stuck on the loading screen first time,[],3.392733333333333,596119
+16,eat,doll,doll,familiar,noun,2005,4914,1500,894,Chrome,Windows,1000,1500,894,1500,288,400,english,25,Male,got stuck on the loading screen first time,[],3.392733333333333,596119

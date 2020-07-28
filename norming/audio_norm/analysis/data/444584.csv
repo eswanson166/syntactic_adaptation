@@ -1,0 +1,12 @@
+trial_num,word,part_speech1,part_speech2,selected_answer,correct_answer,word_type,trial_time,current_windowW,current_windowH,Browser,OS,screenH,screenW,windowH,windowW,language,age,gender,comments,wrong_soundtests,time_in_minutes,participant_id
+1,ball,An action,An object,An object,An object,familiar,12863,1200,661,Chrome,Mac,900,1440,661,1200,English,19,Male,"Very interesting study, deciphering the different language ",[],2.91185,444584
+2,eat,An action,An object,An action,An action,familiar,9979,1200,661,Chrome,Mac,900,1440,661,1200,English,19,Male,"Very interesting study, deciphering the different language ",[],2.91185,444584
+3,sleep,An object,An action,An action,An action,familiar,10006,1200,661,Chrome,Mac,900,1440,661,1200,English,19,Male,"Very interesting study, deciphering the different language ",[],2.91185,444584
+4,shoe,An action,An object,An object,An object,familiar,9866,1200,661,Chrome,Mac,900,1440,661,1200,English,19,Male,"Very interesting study, deciphering the different language ",[],2.91185,444584
+5,smick,An object,An action,An object,none,novel,10395,1200,661,Chrome,Mac,900,1440,661,1200,English,19,Male,"Very interesting study, deciphering the different language ",[],2.91185,444584
+6,nup,An action,An object,An action,none,novel,9768,1200,661,Chrome,Mac,900,1440,661,1200,English,19,Male,"Very interesting study, deciphering the different language ",[],2.91185,444584
+7,vash,An object,An action,An object,none,novel,12132,1200,661,Chrome,Mac,900,1440,661,1200,English,19,Male,"Very interesting study, deciphering the different language ",[],2.91185,444584
+8,heth,An object,An action,An object,none,novel,11001,1200,661,Chrome,Mac,900,1440,661,1200,English,19,Male,"Very interesting study, deciphering the different language ",[],2.91185,444584
+9,dax,An action,An object,An object,none,novel,10043,1200,661,Chrome,Mac,900,1440,661,1200,English,19,Male,"Very interesting study, deciphering the different language ",[],2.91185,444584
+10,fep,An object,An action,An object,none,novel,11190,1200,661,Chrome,Mac,900,1440,661,1200,English,19,Male,"Very interesting study, deciphering the different language ",[],2.91185,444584
+11,moop,An object,An action,An action,none,novel,9947,1200,661,Chrome,Mac,900,1440,661,1200,English,19,Male,"Very interesting study, deciphering the different language ",[],2.91185,444584

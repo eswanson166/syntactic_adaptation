@@ -1,0 +1,17 @@
+trial_num,left_img,right_img,selected_img,img_type,selected_word_type,preview_time,trial_time,current_windowW,current_windowH,Browser,OS,screenH,screenW,windowH,windowW,imageH,imageW,language,age,gender,comments,wrong_img_tests,time_in_minutes,participant_id
+1,cry,ball,ball,familiar,noun,2005,8887,1280,737,Safari,Mac,800,1280,737,1280,288,400,English,29,Female,,[],2.0813166666666665,589573
+2,action3,obj6,obj6,novel,noun,2003,6464,1280,737,Safari,Mac,800,1280,737,1280,288,400,English,29,Female,,[],2.0813166666666665,589573
+3,action2,obj7,obj7,novel,noun,2002,4112,1280,737,Safari,Mac,800,1280,737,1280,288,400,English,29,Female,,[],2.0813166666666665,589573
+4,obj8,action5,obj8,novel,noun,2002,2417,1280,737,Safari,Mac,800,1280,737,1280,288,400,English,29,Female,,[],2.0813166666666665,589573
+5,dog,eat,eat,familiar,verb,2003,3129,1280,737,Safari,Mac,800,1280,737,1280,288,400,English,29,Female,,[],2.0813166666666665,589573
+6,action7,obj4,obj4,novel,noun,2002,3085,1280,737,Safari,Mac,800,1280,737,1280,288,400,English,29,Female,,[],2.0813166666666665,589573
+7,obj2,action8,action8,novel,verb,2003,3913,1280,737,Safari,Mac,800,1280,737,1280,288,400,English,29,Female,,[],2.0813166666666665,589573
+8,book,sleep,book,familiar,noun,2002,3916,1280,737,Safari,Mac,800,1280,737,1280,288,400,English,29,Female,,[],2.0813166666666665,589573
+9,action4,obj5,obj5,novel,noun,2003,2652,1280,737,Safari,Mac,800,1280,737,1280,288,400,English,29,Female,,[],2.0813166666666665,589573
+10,draw,horse,draw,familiar,verb,2003,1707,1280,737,Safari,Mac,800,1280,737,1280,288,400,English,29,Female,,[],2.0813166666666665,589573
+11,action1,obj3,action1,novel,verb,2003,6322,1280,737,Safari,Mac,800,1280,737,1280,288,400,English,29,Female,,[],2.0813166666666665,589573
+12,wave,doll,wave,familiar,verb,2003,2703,1280,737,Safari,Mac,800,1280,737,1280,288,400,English,29,Female,,[],2.0813166666666665,589573
+13,action6,obj1,action6,novel,verb,2003,1533,1280,737,Safari,Mac,800,1280,737,1280,288,400,English,29,Female,,[],2.0813166666666665,589573
+14,shoe,drink,drink,familiar,verb,2003,1303,1280,737,Safari,Mac,800,1280,737,1280,288,400,English,29,Female,,[],2.0813166666666665,589573
+15,box,sit,box,familiar,noun,2002,1237,1280,737,Safari,Mac,800,1280,737,1280,288,400,English,29,Female,,[],2.0813166666666665,589573
+16,read,hat,read,familiar,verb,2003,1314,1280,737,Safari,Mac,800,1280,737,1280,288,400,English,29,Female,,[],2.0813166666666665,589573

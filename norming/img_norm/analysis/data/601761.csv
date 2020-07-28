@@ -1,0 +1,17 @@
+trial_num,left_img,right_img,selected_img,img_type,selected_word_type,trial_time,current_windowW,current_windowH,Browser,OS,screenH,screenW,windowH,windowW,imageH,imageW,language,age,gender,comments,wrong_img_tests,time_in_minutes,participant_id
+1,read,ball,read,familiar,verb,3578,1164,621,Chrome,Mac,800,1280,621,1164,288,400,English,21,Female,Elizabeth - test,[],0.567333333,601761
+2,action5,obj2,obj2,novel,noun,1432,1164,621,Chrome,Mac,800,1280,621,1164,288,400,English,21,Female,Elizabeth - test,[],0.567333333,601761
+3,doll,sit,doll,familiar,noun,1412,1164,621,Chrome,Mac,800,1280,621,1164,288,400,English,21,Female,Elizabeth - test,[],0.567333333,601761
+4,obj1,action3,action3,novel,verb,1544,1164,621,Chrome,Mac,800,1280,621,1164,288,400,English,21,Female,Elizabeth - test,[],0.567333333,601761
+5,action4,obj3,action4,novel,verb,1441,1164,621,Chrome,Mac,800,1280,621,1164,288,400,English,21,Female,Elizabeth - test,[],0.567333333,601761
+6,obj5,action7,action7,novel,verb,1338,1164,621,Chrome,Mac,800,1280,621,1164,288,400,English,21,Female,Elizabeth - test,[],0.567333333,601761
+7,shoe,drink,shoe,familiar,noun,1389,1164,621,Chrome,Mac,800,1280,621,1164,288,400,English,21,Female,Elizabeth - test,[],0.567333333,601761
+8,action2,obj7,obj7,novel,noun,1326,1164,621,Chrome,Mac,800,1280,621,1164,288,400,English,21,Female,Elizabeth - test,[],0.567333333,601761
+9,obj6,action6,obj6,novel,noun,1453,1164,621,Chrome,Mac,800,1280,621,1164,288,400,English,21,Female,Elizabeth - test,[],0.567333333,601761
+10,dog,eat,eat,familiar,verb,1421,1164,621,Chrome,Mac,800,1280,621,1164,288,400,English,21,Female,Elizabeth - test,[],0.567333333,601761
+11,action8,obj8,action8,novel,verb,1400,1164,621,Chrome,Mac,800,1280,621,1164,288,400,English,21,Female,Elizabeth - test,[],0.567333333,601761
+12,obj4,action1,action1,novel,verb,1322,1164,621,Chrome,Mac,800,1280,621,1164,288,400,English,21,Female,Elizabeth - test,[],0.567333333,601761
+13,draw,book,draw,familiar,verb,1404,1164,621,Chrome,Mac,800,1280,621,1164,288,400,English,21,Female,Elizabeth - test,[],0.567333333,601761
+14,sleep,hat,hat,familiar,noun,1466,1164,621,Chrome,Mac,800,1280,621,1164,288,400,English,21,Female,Elizabeth - test,[],0.567333333,601761
+15,box,cry,box,familiar,noun,1388,1164,621,Chrome,Mac,800,1280,621,1164,288,400,English,21,Female,Elizabeth - test,[],0.567333333,601761
+16,horse,wave,wave,familiar,verb,1314,1164,621,Chrome,Mac,800,1280,621,1164,288,400,English,21,Female,Elizabeth - test,[],0.567333333,601761

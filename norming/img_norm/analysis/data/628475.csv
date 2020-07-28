@@ -1,0 +1,17 @@
+trial_num,left_img,right_img,selected_img,img_type,selected_word_type,trial_time,current_windowW,current_windowH,Browser,OS,screenH,screenW,windowH,windowW,imageH,imageW,language,age,gender,comments,wrong_img_tests,time_in_minutes,participant_id
+1,action7,obj5,action7,novel,verb,5749,1366,657,Chrome,Windows,768,1366,657,1366,288,400,English,69,Female,,[],1.4886333333333333,628475
+2,action4,obj2,obj2,novel,noun,3883,1366,657,Chrome,Windows,768,1366,657,1366,288,400,English,69,Female,,[],1.4886333333333333,628475
+3,action8,obj8,obj8,novel,noun,4881,1366,657,Chrome,Windows,768,1366,657,1366,288,400,English,69,Female,,[],1.4886333333333333,628475
+4,action2,obj7,action2,novel,verb,6193,1366,657,Chrome,Windows,768,1366,657,1366,288,400,English,69,Female,,[],1.4886333333333333,628475
+5,eat,doll,eat,familiar,verb,4478,1366,657,Chrome,Windows,768,1366,657,1366,288,400,English,69,Female,,[],1.4886333333333333,628475
+6,draw,horse,draw,familiar,verb,4165,1366,657,Chrome,Windows,768,1366,657,1366,288,400,English,69,Female,,[],1.4886333333333333,628475
+7,obj6,action1,obj6,novel,noun,3873,1366,657,Chrome,Windows,768,1366,657,1366,288,400,English,69,Female,,[],1.4886333333333333,628475
+8,sit,dog,dog,familiar,noun,3751,1366,657,Chrome,Windows,768,1366,657,1366,288,400,English,69,Female,,[],1.4886333333333333,628475
+9,book,cry,cry,familiar,verb,3327,1366,657,Chrome,Windows,768,1366,657,1366,288,400,English,69,Female,,[],1.4886333333333333,628475
+10,action6,obj3,obj3,novel,noun,3019,1366,657,Chrome,Windows,768,1366,657,1366,288,400,English,69,Female,,[],1.4886333333333333,628475
+11,action3,obj1,action3,novel,verb,3216,1366,657,Chrome,Windows,768,1366,657,1366,288,400,English,69,Female,,[],1.4886333333333333,628475
+12,action5,obj4,obj4,novel,noun,2703,1366,657,Chrome,Windows,768,1366,657,1366,288,400,English,69,Female,,[],1.4886333333333333,628475
+13,drink,ball,drink,familiar,verb,3418,1366,657,Chrome,Windows,768,1366,657,1366,288,400,English,69,Female,,[],1.4886333333333333,628475
+14,shoe,read,shoe,familiar,noun,4124,1366,657,Chrome,Windows,768,1366,657,1366,288,400,English,69,Female,,[],1.4886333333333333,628475
+15,wave,hat,wave,familiar,verb,3408,1366,657,Chrome,Windows,768,1366,657,1366,288,400,English,69,Female,,[],1.4886333333333333,628475
+16,box,sleep,box,familiar,noun,3872,1366,657,Chrome,Windows,768,1366,657,1366,288,400,English,69,Female,,[],1.4886333333333333,628475

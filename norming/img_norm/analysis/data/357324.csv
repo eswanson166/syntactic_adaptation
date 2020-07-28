@@ -1,0 +1,17 @@
+trial_num,left_img,right_img,selected_img,img_type,selected_word_type,preview_time,trial_time,current_windowW,current_windowH,Browser,OS,screenH,screenW,windowH,windowW,imageH,imageW,language,age,gender,comments,wrong_img_tests,time_in_minutes,participant_id
+1,drink,box,drink,familiar,verb,2020,11180,1035,1759,Chrome,Linux,740,360,612,360,288,400,English ,22,Female,,[],2.2619666666666665,357324
+2,action4,obj3,action4,novel,verb,2010,10831,1035,1759,Chrome,Linux,740,360,612,360,288,400,English ,22,Female,,[],2.2619666666666665,357324
+3,read,dog,dog,familiar,noun,2009,6125,1035,1759,Chrome,Linux,740,360,612,360,288,400,English ,22,Female,,[],2.2619666666666665,357324
+4,obj1,action7,action7,novel,verb,2008,8176,1035,1759,Chrome,Linux,740,360,612,360,288,400,English ,22,Female,,[],2.2619666666666665,357324
+5,action3,obj6,action3,novel,verb,2007,3113,1035,1759,Chrome,Linux,740,360,612,360,288,400,English ,22,Female,,[],2.2619666666666665,357324
+6,wave,book,wave,familiar,verb,2006,2751,1035,1759,Chrome,Linux,740,360,612,360,288,400,English ,22,Female,,[],2.2619666666666665,357324
+7,draw,doll,doll,familiar,noun,2005,6680,1035,1759,Chrome,Linux,740,360,612,360,288,400,English ,22,Female,,[],2.2619666666666665,357324
+8,sleep,horse,sleep,familiar,verb,2006,2960,1035,1759,Chrome,Linux,740,360,612,360,288,400,English ,22,Female,,[],2.2619666666666665,357324
+9,cry,ball,cry,familiar,verb,2007,3287,1035,1759,Chrome,Linux,740,360,612,360,288,400,English ,22,Female,,[],2.2619666666666665,357324
+10,eat,shoe,eat,familiar,verb,2007,4382,1035,1759,Chrome,Linux,740,360,612,360,288,400,English ,22,Female,,[],2.2619666666666665,357324
+11,action1,obj2,action1,novel,verb,2008,1740,1035,1759,Chrome,Linux,740,360,612,360,288,400,English ,22,Female,,[],2.2619666666666665,357324
+12,obj5,action8,action8,novel,verb,2006,3079,1035,1759,Chrome,Linux,740,360,612,360,288,400,English ,22,Female,,[],2.2619666666666665,357324
+13,action6,obj4,obj4,novel,noun,2006,3607,1035,1759,Chrome,Linux,740,360,612,360,288,400,English ,22,Female,,[],2.2619666666666665,357324
+14,obj7,action5,obj7,novel,noun,2004,1285,1035,1759,Chrome,Linux,740,360,612,360,288,400,English ,22,Female,,[],2.2619666666666665,357324
+15,hat,sit,sit,familiar,verb,2006,2899,1035,1759,Chrome,Linux,740,360,612,360,288,400,English ,22,Female,,[],2.2619666666666665,357324
+16,action2,obj8,action2,novel,verb,2006,3204,1035,1759,Chrome,Linux,740,360,612,360,288,400,English ,22,Female,,[],2.2619666666666665,357324

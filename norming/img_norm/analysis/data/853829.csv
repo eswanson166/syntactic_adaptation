@@ -1,0 +1,17 @@
+trial_num,left_img,right_img,selected_img,img_type,selected_word_type,preview_time,trial_time,current_windowW,current_windowH,Browser,OS,screenH,screenW,windowH,windowW,imageH,imageW,language,age,gender,comments,wrong_img_tests,time_in_minutes,participant_id
+1,obj5,action8,obj5,novel,noun,2009,6679,1920,937,Chrome,Windows,1080,1920,937,1920,288,400,English,50,Male,,[],2.5913166666666667,853829
+2,obj3,action2,obj3,novel,noun,2004,9563,1920,937,Chrome,Windows,1080,1920,937,1920,288,400,English,50,Male,,[],2.5913166666666667,853829
+3,draw,book,draw,familiar,verb,2002,2901,1920,937,Chrome,Windows,1080,1920,937,1920,288,400,English,50,Male,,[],2.5913166666666667,853829
+4,ball,wave,ball,familiar,noun,2002,4174,1920,937,Chrome,Windows,1080,1920,937,1920,288,400,English,50,Male,,[],2.5913166666666667,853829
+5,action6,obj1,obj1,novel,noun,2003,4445,1920,937,Chrome,Windows,1080,1920,937,1920,288,400,English,50,Male,,[],2.5913166666666667,853829
+6,hat,sit,hat,familiar,noun,2004,3324,1920,937,Chrome,Windows,1080,1920,937,1920,288,400,English,50,Male,,[],2.5913166666666667,853829
+7,action1,obj2,action1,novel,verb,2002,5950,1920,937,Chrome,Windows,1080,1920,937,1920,288,400,English,50,Male,,[],2.5913166666666667,853829
+8,drink,dog,dog,familiar,noun,2003,5925,1920,937,Chrome,Windows,1080,1920,937,1920,288,400,English,50,Male,,[],2.5913166666666667,853829
+9,horse,cry,cry,familiar,verb,2003,3549,1920,937,Chrome,Windows,1080,1920,937,1920,288,400,English,50,Male,,[],2.5913166666666667,853829
+10,action5,obj8,obj8,novel,noun,2003,4429,1920,937,Chrome,Windows,1080,1920,937,1920,288,400,English,50,Male,,[],2.5913166666666667,853829
+11,sleep,shoe,shoe,familiar,noun,2002,2086,1920,937,Chrome,Windows,1080,1920,937,1920,288,400,English,50,Male,,[],2.5913166666666667,853829
+12,obj6,action3,obj6,novel,noun,2003,2973,1920,937,Chrome,Windows,1080,1920,937,1920,288,400,English,50,Male,,[],2.5913166666666667,853829
+13,doll,eat,eat,familiar,verb,2004,2205,1920,937,Chrome,Windows,1080,1920,937,1920,288,400,English,50,Male,,[],2.5913166666666667,853829
+14,obj4,action4,obj4,novel,noun,2002,3254,1920,937,Chrome,Windows,1080,1920,937,1920,288,400,English,50,Male,,[],2.5913166666666667,853829
+15,read,box,read,familiar,verb,2002,4846,1920,937,Chrome,Windows,1080,1920,937,1920,288,400,English,50,Male,,[],2.5913166666666667,853829
+16,action7,obj7,obj7,novel,noun,2002,4438,1920,937,Chrome,Windows,1080,1920,937,1920,288,400,English,50,Male,,[],2.5913166666666667,853829

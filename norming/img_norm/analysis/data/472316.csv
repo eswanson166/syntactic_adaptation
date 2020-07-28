@@ -1,0 +1,17 @@
+trial_num,left_img,right_img,selected_img,img_type,selected_word_type,preview_time,trial_time,current_windowW,current_windowH,Browser,OS,screenH,screenW,windowH,windowW,imageH,imageW,language,age,gender,comments,wrong_img_tests,time_in_minutes,participant_id
+1,action8,obj4,obj4,novel,noun,2011,4177,1440,717,Chrome,Mac,900,1440,717,1440,288,400,English,26,Female,,[],2.08985,472316
+2,wave,ball,wave,familiar,verb,2010,2103,1440,717,Chrome,Mac,900,1440,717,1440,288,400,English,26,Female,,[],2.08985,472316
+3,shoe,draw,shoe,familiar,noun,2008,3185,1440,717,Chrome,Mac,900,1440,717,1440,288,400,English,26,Female,,[],2.08985,472316
+4,sleep,hat,sleep,familiar,verb,2005,3058,1440,717,Chrome,Mac,900,1440,717,1440,288,400,English,26,Female,,[],2.08985,472316
+5,read,horse,horse,familiar,noun,2007,2896,1440,717,Chrome,Mac,900,1440,717,1440,288,400,English,26,Female,,[],2.08985,472316
+6,obj2,action4,action4,novel,verb,2002,4986,1440,717,Chrome,Mac,900,1440,717,1440,288,400,English,26,Female,,[],2.08985,472316
+7,obj5,action3,action3,novel,verb,2002,4084,1440,717,Chrome,Mac,900,1440,717,1440,288,400,English,26,Female,,[],2.08985,472316
+8,action6,obj8,action6,novel,verb,2003,2570,1440,717,Chrome,Mac,900,1440,717,1440,288,400,English,26,Female,,[],2.08985,472316
+9,cry,box,cry,familiar,verb,2007,3346,1440,717,Chrome,Mac,900,1440,717,1440,288,400,English,26,Female,,[],2.08985,472316
+10,obj1,action2,action2,novel,verb,2005,3704,1440,717,Chrome,Mac,900,1440,717,1440,288,400,English,26,Female,,[],2.08985,472316
+11,dog,drink,drink,familiar,verb,2003,3085,1440,717,Chrome,Mac,900,1440,717,1440,288,400,English,26,Female,,[],2.08985,472316
+12,obj3,action5,action5,novel,verb,2003,1330,1440,717,Chrome,Mac,900,1440,717,1440,288,400,English,26,Female,,[],2.08985,472316
+13,book,eat,eat,familiar,verb,2003,2473,1440,717,Chrome,Mac,900,1440,717,1440,288,400,English,26,Female,,[],2.08985,472316
+14,doll,sit,sit,familiar,verb,2004,3655,1440,717,Chrome,Mac,900,1440,717,1440,288,400,English,26,Female,,[],2.08985,472316
+15,action1,obj7,action1,novel,verb,2004,2255,1440,717,Chrome,Mac,900,1440,717,1440,288,400,English,26,Female,,[],2.08985,472316
+16,obj6,action7,action7,novel,verb,2003,2215,1440,717,Chrome,Mac,900,1440,717,1440,288,400,English,26,Female,,[],2.08985,472316

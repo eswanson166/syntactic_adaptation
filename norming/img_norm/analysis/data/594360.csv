@@ -1,0 +1,17 @@
+trial_num,left_img,right_img,selected_img,img_type,selected_word_type,preview_time,trial_time,current_windowW,current_windowH,Browser,OS,screenH,screenW,windowH,windowW,imageH,imageW,language,age,gender,comments,wrong_img_tests,time_in_minutes,participant_id
+1,obj4,action8,action8,novel,verb,2004,2164,1208,621,Chrome,Mac,800,1280,621,1208,288,400,English,21,Female,Elizabeth - test,[],1.1627833333333333,594360
+2,action5,obj6,action5,novel,verb,2006,2625,1208,621,Chrome,Mac,800,1280,621,1208,288,400,English,21,Female,Elizabeth - test,[],1.1627833333333333,594360
+3,action7,obj3,obj3,novel,noun,2007,1514,1208,621,Chrome,Mac,800,1280,621,1208,288,400,English,21,Female,Elizabeth - test,[],1.1627833333333333,594360
+4,hat,cry,hat,familiar,noun,2001,1440,1208,621,Chrome,Mac,800,1280,621,1208,288,400,English,21,Female,Elizabeth - test,[],1.1627833333333333,594360
+5,sleep,shoe,shoe,familiar,noun,2005,1290,1208,621,Chrome,Mac,800,1280,621,1208,288,400,English,21,Female,Elizabeth - test,[],1.1627833333333333,594360
+6,obj8,action3,action3,novel,verb,2004,1172,1208,621,Chrome,Mac,800,1280,621,1208,288,400,English,21,Female,Elizabeth - test,[],1.1627833333333333,594360
+7,obj2,action6,obj2,novel,noun,2004,1590,1208,621,Chrome,Mac,800,1280,621,1208,288,400,English,21,Female,Elizabeth - test,[],1.1627833333333333,594360
+8,book,drink,drink,familiar,verb,2003,1202,1208,621,Chrome,Mac,800,1280,621,1208,288,400,English,21,Female,Elizabeth - test,[],1.1627833333333333,594360
+9,sit,box,sit,familiar,verb,2003,2219,1208,621,Chrome,Mac,800,1280,621,1208,288,400,English,21,Female,Elizabeth - test,[],1.1627833333333333,594360
+10,action2,obj5,obj5,novel,noun,2002,1400,1208,621,Chrome,Mac,800,1280,621,1208,288,400,English,21,Female,Elizabeth - test,[],1.1627833333333333,594360
+11,eat,doll,doll,familiar,noun,2007,1661,1208,621,Chrome,Mac,800,1280,621,1208,288,400,English,21,Female,Elizabeth - test,[],1.1627833333333333,594360
+12,obj7,action4,action4,novel,verb,2007,1578,1208,621,Chrome,Mac,800,1280,621,1208,288,400,English,21,Female,Elizabeth - test,[],1.1627833333333333,594360
+13,dog,draw,dog,familiar,noun,2007,1624,1208,621,Chrome,Mac,800,1280,621,1208,288,400,English,21,Female,Elizabeth - test,[],1.1627833333333333,594360
+14,action1,obj1,obj1,novel,noun,2006,1334,1208,621,Chrome,Mac,800,1280,621,1208,288,400,English,21,Female,Elizabeth - test,[],1.1627833333333333,594360
+15,wave,ball,wave,familiar,verb,2002,1244,1208,621,Chrome,Mac,800,1280,621,1208,288,400,English,21,Female,Elizabeth - test,[],1.1627833333333333,594360
+16,read,horse,horse,familiar,noun,2006,1302,1208,621,Chrome,Mac,800,1280,621,1208,288,400,English,21,Female,Elizabeth - test,[],1.1627833333333333,594360

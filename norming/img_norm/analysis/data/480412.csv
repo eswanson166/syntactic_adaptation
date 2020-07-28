@@ -1,0 +1,17 @@
+trial_num,left_img,right_img,selected_img,img_type,selected_word_type,preview_time,trial_time,current_windowW,current_windowH,Browser,OS,screenH,screenW,windowH,windowW,imageH,imageW,language,age,gender,comments,wrong_img_tests,time_in_minutes,participant_id
+1,box,wave,box,familiar,noun,2004,4014,1278,1297,Firefox,Windows,1440,2560,1297,1278,288,400,English,26,Male,,[],3.3024833333333334,480412
+2,drink,doll,doll,familiar,noun,2002,7115,1278,1297,Firefox,Windows,1440,2560,1297,1278,288,400,English,26,Male,,[],3.3024833333333334,480412
+3,obj4,action5,obj4,novel,noun,2003,3925,1278,1297,Firefox,Windows,1440,2560,1297,1278,288,400,English,26,Male,,[],3.3024833333333334,480412
+4,obj8,action6,obj8,novel,noun,2001,926,1278,1297,Firefox,Windows,1440,2560,1297,1278,288,400,English,26,Male,,[],3.3024833333333334,480412
+5,horse,read,horse,familiar,noun,2002,5173,1278,1297,Firefox,Windows,1440,2560,1297,1278,288,400,English,26,Male,,[],3.3024833333333334,480412
+6,shoe,cry,cry,familiar,verb,2001,2816,1278,1297,Firefox,Windows,1440,2560,1297,1278,288,400,English,26,Male,,[],3.3024833333333334,480412
+7,action7,obj3,action7,novel,verb,2001,5410,1278,1297,Firefox,Windows,1440,2560,1297,1278,288,400,English,26,Male,,[],3.3024833333333334,480412
+8,dog,sleep,dog,familiar,noun,2003,2827,1278,1297,Firefox,Windows,1440,2560,1297,1278,288,400,English,26,Male,,[],3.3024833333333334,480412
+9,book,eat,book,familiar,noun,2003,3149,1278,1297,Firefox,Windows,1440,2560,1297,1278,288,400,English,26,Male,,[],3.3024833333333334,480412
+10,action4,obj2,obj2,novel,noun,2001,1590,1278,1297,Firefox,Windows,1440,2560,1297,1278,288,400,English,26,Male,,[],3.3024833333333334,480412
+11,obj7,action3,obj7,novel,noun,2001,3767,1278,1297,Firefox,Windows,1440,2560,1297,1278,288,400,English,26,Male,,[],3.3024833333333334,480412
+12,action1,obj5,action1,novel,verb,2001,1528,1278,1297,Firefox,Windows,1440,2560,1297,1278,288,400,English,26,Male,,[],3.3024833333333334,480412
+13,ball,draw,ball,familiar,noun,2002,6168,1278,1297,Firefox,Windows,1440,2560,1297,1278,288,400,English,26,Male,,[],3.3024833333333334,480412
+14,obj6,action2,action2,novel,verb,2002,1161,1278,1297,Firefox,Windows,1440,2560,1297,1278,288,400,English,26,Male,,[],3.3024833333333334,480412
+15,action8,obj1,obj1,novel,noun,2002,1090,1278,1297,Firefox,Windows,1440,2560,1297,1278,288,400,English,26,Male,,[],3.3024833333333334,480412
+16,hat,sit,hat,familiar,noun,2001,4535,1278,1297,Firefox,Windows,1440,2560,1297,1278,288,400,English,26,Male,,[],3.3024833333333334,480412

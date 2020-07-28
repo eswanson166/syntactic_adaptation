@@ -1,0 +1,17 @@
+trial_num,left_img,right_img,selected_img,img_type,selected_word_type,preview_time,trial_time,current_windowW,current_windowH,Browser,OS,screenH,screenW,windowH,windowW,imageH,imageW,language,age,gender,comments,wrong_img_tests,time_in_minutes,participant_id
+1,action3,obj4,obj4,novel,noun,2007,4485,1920,937,Chrome,Windows,1080,1920,937,1920,288,400,english,33,Female,,[],2.15235,435851
+2,cry,doll,cry,familiar,verb,2005,6593,1920,937,Chrome,Windows,1080,1920,937,1920,288,400,english,33,Female,,[],2.15235,435851
+3,sit,dog,sit,familiar,verb,2001,3894,1920,937,Chrome,Windows,1080,1920,937,1920,288,400,english,33,Female,,[],2.15235,435851
+4,obj5,action6,action6,novel,verb,2002,3625,1920,937,Chrome,Windows,1080,1920,937,1920,288,400,english,33,Female,,[],2.15235,435851
+5,obj8,action2,obj8,novel,noun,2001,1694,1920,937,Chrome,Windows,1080,1920,937,1920,288,400,english,33,Female,,[],2.15235,435851
+6,obj6,action7,obj6,novel,noun,2003,2955,1920,937,Chrome,Windows,1080,1920,937,1920,288,400,english,33,Female,,[],2.15235,435851
+7,obj3,action5,obj3,novel,noun,2002,3178,1920,937,Chrome,Windows,1080,1920,937,1920,288,400,english,33,Female,,[],2.15235,435851
+8,eat,book,eat,familiar,verb,2003,6635,1920,937,Chrome,Windows,1080,1920,937,1920,288,400,english,33,Female,,[],2.15235,435851
+9,draw,hat,draw,familiar,verb,2003,2101,1920,937,Chrome,Windows,1080,1920,937,1920,288,400,english,33,Female,,[],2.15235,435851
+10,wave,ball,ball,familiar,noun,2002,2674,1920,937,Chrome,Windows,1080,1920,937,1920,288,400,english,33,Female,,[],2.15235,435851
+11,shoe,drink,drink,familiar,verb,2003,3601,1920,937,Chrome,Windows,1080,1920,937,1920,288,400,english,33,Female,,[],2.15235,435851
+12,horse,read,read,familiar,verb,2003,2697,1920,937,Chrome,Windows,1080,1920,937,1920,288,400,english,33,Female,,[],2.15235,435851
+13,box,sleep,box,familiar,noun,2001,2846,1920,937,Chrome,Windows,1080,1920,937,1920,288,400,english,33,Female,,[],2.15235,435851
+14,obj2,action4,obj2,novel,noun,2003,1496,1920,937,Chrome,Windows,1080,1920,937,1920,288,400,english,33,Female,,[],2.15235,435851
+15,obj1,action1,action1,novel,verb,2002,2492,1920,937,Chrome,Windows,1080,1920,937,1920,288,400,english,33,Female,,[],2.15235,435851
+16,obj7,action8,obj7,novel,noun,2003,2351,1920,937,Chrome,Windows,1080,1920,937,1920,288,400,english,33,Female,,[],2.15235,435851

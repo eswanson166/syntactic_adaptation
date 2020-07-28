@@ -1,0 +1,17 @@
+trial_num,left_img,right_img,selected_img,img_type,selected_word_type,trial_time,current_windowW,current_windowH,Browser,OS,screenH,screenW,windowH,windowW,imageH,imageW,language,age,gender,comments,wrong_img_tests,time_in_minutes,participant_id
+1,ball,draw,draw,familiar,verb,10954,1920,969,Chrome,Windows,1080,1920,969,1920,288,400,English,21,Male,,[],1.14285,488548
+2,action8,obj8,action8,novel,verb,5472,1920,969,Chrome,Windows,1080,1920,969,1920,288,400,English,21,Male,,[],1.14285,488548
+3,action6,obj4,obj4,novel,noun,3535,1920,969,Chrome,Windows,1080,1920,969,1920,288,400,English,21,Male,,[],1.14285,488548
+4,read,hat,read,familiar,verb,2949,1920,969,Chrome,Windows,1080,1920,969,1920,288,400,English,21,Male,,[],1.14285,488548
+5,action3,obj1,obj1,novel,noun,3096,1920,969,Chrome,Windows,1080,1920,969,1920,288,400,English,21,Male,,[],1.14285,488548
+6,action4,obj2,action4,novel,verb,3268,1920,969,Chrome,Windows,1080,1920,969,1920,288,400,English,21,Male,,[],1.14285,488548
+7,doll,sit,doll,familiar,noun,2555,1920,969,Chrome,Windows,1080,1920,969,1920,288,400,English,21,Male,,[],1.14285,488548
+8,obj5,action2,action2,novel,verb,2389,1920,969,Chrome,Windows,1080,1920,969,1920,288,400,English,21,Male,,[],1.14285,488548
+9,box,drink,box,familiar,noun,2682,1920,969,Chrome,Windows,1080,1920,969,1920,288,400,English,21,Male,,[],1.14285,488548
+10,cry,shoe,cry,familiar,verb,2470,1920,969,Chrome,Windows,1080,1920,969,1920,288,400,English,21,Male,,[],1.14285,488548
+11,obj7,action7,action7,novel,verb,3138,1920,969,Chrome,Windows,1080,1920,969,1920,288,400,English,21,Male,,[],1.14285,488548
+12,action1,obj6,action1,novel,verb,2655,1920,969,Chrome,Windows,1080,1920,969,1920,288,400,English,21,Male,,[],1.14285,488548
+13,horse,wave,horse,familiar,noun,3533,1920,969,Chrome,Windows,1080,1920,969,1920,288,400,English,21,Male,,[],1.14285,488548
+14,eat,dog,dog,familiar,noun,2450,1920,969,Chrome,Windows,1080,1920,969,1920,288,400,English,21,Male,,[],1.14285,488548
+15,sleep,book,book,familiar,noun,2311,1920,969,Chrome,Windows,1080,1920,969,1920,288,400,English,21,Male,,[],1.14285,488548
+16,action5,obj3,action5,novel,verb,2440,1920,969,Chrome,Windows,1080,1920,969,1920,288,400,English,21,Male,,[],1.14285,488548
