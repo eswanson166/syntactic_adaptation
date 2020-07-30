@@ -1,0 +1,116 @@
+---
+title: "Analysis of audio norming"
+output: html_document
+---
+
+# Set-up
+
+Load packages.
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+source("helpers.R")
+
+theme_set(theme_bw())
+```
+
+Read in the data.
+```{r}
+dir <- "../data"
+participant_files <- list.files(path = dir, full.names = TRUE)
+audio_df <- plyr::ldply(participant_files, function(x) {
+  read_csv(x)
+})
+audio_df <- audio_df %>% mutate_if(is.character, factor)
+```
+
+# Exclusions
+
+Exclude test runs by the experimenter.
+```{r}
+audio_df <- audio_df %>% filter(!grepl("Elizabeth",comments))
+```
+
+Check the first languages of participants and exclude any non-English speakers.
+```{r}
+unique(audio_df$language)
+audio_df <- audio_df %>% filter(grepl("english",language, 
+                                      ignore.case = TRUE))
+```
+
+Examine the comments to see if anyone had difficulty with the task.
+```{r}
+unique(audio_df$comments)
+```
+
+# Demographics
+
+Check the number of participants.
+```{r}
+length(unique(audio_df$participant_id))
+```
+
+Check the gender distribution.
+```{r}
+audio_df %>% group_by(gender) %>% 
+  summarise(n = length(unique(participant_id)))
+```
+
+# Analysis
+
+Create a column that says whether the participant selected action or object.
+```{r}
+audio_df <- audio_df %>% mutate(action_selected = case_when(
+  selected_answer == "An action" ~ 1,
+  selected_answer == "An object" ~ 0
+))
+```
+
+Filter out the familiar words that we used at the beginning of the task.
+```{r}
+audio_fam <- audio_df %>% filter(word_type == "familiar")
+```
+
+Filter out the novel words that we are primarily interested in.
+```{r}
+audio_nov <- audio_df %>% filter(word_type == "novel")
+```
+
+## Familiar words
+
+Find the proportion of people who said each word was an action.
+```{r}
+fam_sum <- audio_fam %>% group_by(word) %>% 
+  summarise(action_prop = mean(action_selected))
+```
+
+In general, participants correctly identified whether the familiar words were an action or an objet.
+
+## Novel words
+
+Find the proportion of people who said each word was an action and construct confidence intervals.
+```{r}
+nov_sum <- audio_nov %>% group_by(word) %>% 
+  summarise(action_prop = mean(action_selected),
+            CI.low = ci.low(action_selected),
+            CI.high = ci.high(action_selected)) %>%
+  mutate(YMin = action_prop - CI.low, 
+         YMax = action_prop + CI.high)
+```
+
+Graph these confidence intervals.
+```{r}
+ggplot(nov_sum, aes(x = word, y = action_prop, fill = word)) +
+  geom_bar(stat = "identity") +
+  ylab("proportion who selected word as action") +
+  geom_errorbar(aes(ymin = action_prop-CI.low, 
+                    ymax = action_prop+CI.high), width = .2) +
+  ggtitle("Proportion of participants who judged word as action")
+ggsave("../graphs/novel_word_judgments.pdf", width = 7, height = 5)
+```
+
+Examine the distance of the proportions from .5.
+```{r}
+nov_sum <- nov_sum %>% mutate(prop_dist = action_prop - .5)
+```
+
