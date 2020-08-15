@@ -1,0 +1,13 @@
+trial_num,left_img,right_img,selected_img,img_type,selected_word_type,preview_time,trial_time,current_windowW,current_windowH,Browser,OS,screenH,screenW,windowH,windowW,imageH,imageW,language,age,gender,comments,wrong_img_tests,time_in_minutes,participant_id
+1,horse,wave,horse,familiar,noun,2010,9137,1280,607,Firefox,Windows,720,1280,607,1280,288,400,english,31,Male,None,[],2.53745,819232
+2,action2,obj1,action2,novel,verb,2008,9477,1280,607,Firefox,Windows,720,1280,607,1280,288,400,english,31,Male,None,[],2.53745,819232
+3,cry,dog,dog,familiar,noun,2096,8775,1280,607,Firefox,Windows,720,1280,607,1280,288,400,english,31,Male,None,[],2.53745,819232
+4,draw,shoe,draw,familiar,verb,2007,5158,1280,607,Firefox,Windows,720,1280,607,1280,288,400,english,31,Male,None,[],2.53745,819232
+5,book,drink,drink,familiar,verb,2028,5712,1280,607,Firefox,Windows,720,1280,607,1280,288,400,english,31,Male,None,[],2.53745,819232
+6,ball,sleep,ball,familiar,noun,2006,6804,1280,607,Firefox,Windows,720,1280,607,1280,288,400,english,31,Male,None,[],2.53745,819232
+7,sit,hat,hat,familiar,noun,2006,5463,1280,607,Firefox,Windows,720,1280,607,1280,288,400,english,31,Male,None,[],2.53745,819232
+8,box,read,read,familiar,verb,2007,7346,1280,607,Firefox,Windows,720,1280,607,1280,288,400,english,31,Male,None,[],2.53745,819232
+9,obj5,action6,action6,novel,verb,2004,4959,1280,607,Firefox,Windows,720,1280,607,1280,288,400,english,31,Male,None,[],2.53745,819232
+10,action5,obj2,action5,novel,verb,2006,7864,1280,607,Firefox,Windows,720,1280,607,1280,288,400,english,31,Male,None,[],2.53745,819232
+11,obj6,action1,action1,novel,verb,2002,4699,1280,607,Firefox,Windows,720,1280,607,1280,288,400,english,31,Male,None,[],2.53745,819232
+12,eat,doll,eat,familiar,verb,2006,5729,1280,607,Firefox,Windows,720,1280,607,1280,288,400,english,31,Male,None,[],2.53745,819232

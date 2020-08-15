@@ -1,0 +1,13 @@
+trial_num,left_img,right_img,selected_img,img_type,selected_word_type,preview_time,trial_time,current_windowW,current_windowH,Browser,OS,screenH,screenW,windowH,windowW,imageH,imageW,language,age,gender,comments,wrong_img_tests,time_in_minutes,participant_id
+1,action2,obj1,action2,novel,verb,2005,6918,1920,969,Chrome,Windows,1080,1920,969,1920,288,400,English,25,Male,,[],1.78665,406448
+2,sleep,ball,sleep,familiar,verb,2003,9374,1920,969,Chrome,Windows,1080,1920,969,1920,288,400,English,25,Male,,[],1.78665,406448
+3,action6,obj5,obj5,novel,noun,2002,4641,1920,969,Chrome,Windows,1080,1920,969,1920,288,400,English,25,Male,,[],1.78665,406448
+4,wave,horse,wave,familiar,verb,2002,4847,1920,969,Chrome,Windows,1080,1920,969,1920,288,400,English,25,Male,,[],1.78665,406448
+5,book,drink,book,familiar,noun,2001,2474,1920,969,Chrome,Windows,1080,1920,969,1920,288,400,English,25,Male,,[],1.78665,406448
+6,action5,obj2,obj2,novel,noun,2002,2073,1920,969,Chrome,Windows,1080,1920,969,1920,288,400,English,25,Male,,[],1.78665,406448
+7,action1,obj6,obj6,novel,noun,2002,1340,1920,969,Chrome,Windows,1080,1920,969,1920,288,400,English,25,Male,,[],1.78665,406448
+8,hat,sit,sit,familiar,verb,2002,8634,1920,969,Chrome,Windows,1080,1920,969,1920,288,400,English,25,Male,,[],1.78665,406448
+9,read,box,read,familiar,verb,2001,4369,1920,969,Chrome,Windows,1080,1920,969,1920,288,400,English,25,Male,,[],1.78665,406448
+10,doll,eat,eat,familiar,verb,2001,1393,1920,969,Chrome,Windows,1080,1920,969,1920,288,400,English,25,Male,,[],1.78665,406448
+11,shoe,draw,draw,familiar,verb,2001,2079,1920,969,Chrome,Windows,1080,1920,969,1920,288,400,English,25,Male,,[],1.78665,406448
+12,dog,cry,cry,familiar,verb,2002,1918,1920,969,Chrome,Windows,1080,1920,969,1920,288,400,English,25,Male,,[],1.78665,406448

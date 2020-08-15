@@ -1,0 +1,159 @@
+<!doctype html>
+
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Language study</title>
+  <meta name="viewport" content="initial-scale=1.0">
+</head> 
+<body onload="init_explogic();">
+
+  <div class="progress">
+	<span>Progress:</span>
+	<div class="bar-wrapper">
+	  <div class="bar" width="0%">
+	  </div>
+	</div>
+  </div>
+
+
+  <div class="slide" id="consent">
+  <br>
+    <img src="stanford.png" alt="Stanford University">
+    <br>
+    <br>
+    <p id='logo-text'>Stanford Language and Cognition Lab</p>
+    <p class="block-text">In this experiment, you will answer a few
+      questions about some images. The whole
+    experiment should take about 5 minutes in total.</p>
+    <!--button type="button" onClick="this.blur(); exp.go()">Start
+    </button-->
+    <button id="start_button" type="button" >Start</button>
+    <!--p class="block-text">(Note: you won't be able to preview this HIT before
+    accepting it because it's so short.)</p-->
+    <p class="block-text" id="mustaccept"> You must accept the task in order to
+    continue.</p>
+    <p class="block-text" id="legal">By answering the following questions, you 
+    are participating in a study being conducted by the 
+    Stanford Department of Linguistics. If you have questions about this research, 
+    please contact <b>Elizabeth Swanson</b> at 
+    <a href="mailto:elizswan@stanford.edu">elizswan@stanford.edu</a>. You must be at least 18 years old 
+    to participate. Your participation in this research is voluntary. You may 
+    decline to answer any or all of the following questions. You may decline
+    further participation, at any time, without adverse consequences. Your 
+    anonymity is assured; the researchers who have requested your
+    participation will not receive any personal information about you.</p>
+  </div>
+
+  <div class="slide" id="img_check">
+    <br>
+    <h2>Image check</h2>
+    <p class="block-text" id="img_check_text">What animal is shown in the photo below?
+      <br>
+      <br>
+    <img id="cat_photo" src='cat.jpg' width='300' height='200'>
+    <br>
+    <br>
+    <input class="answertext" type="text" id="compResponse"></input> </p>
+    <br>
+    <button id="compButton" class="button" onclick="_s.checkAnswer()">Continue</button>
+    <p id="compBlankError" style="color:red" hidden>Please answer the question.</p>
+    <p id="compWrongError" style="color:red" hidden>Please try again.</p>
+  </div>
+
+  <div class="slide" id="instructions">
+    <br>
+    <h2>Instructions</h2>
+    <p class="block-text" id="instructions_text">You will see two images. After a few seconds of preview, you will select the one you think someone would be more likely to talk about. Some of the images will show familiar things, and others will be unfamiliar.
+    <br>
+    <br>
+    There are no right or wrong answers, so please make your best guess.</p>
+    <button id="continue_button" class="button" onclick="_s.start_task()">Continue</button>
+    </div>
+
+    <div class="slide" id="single_trial">
+      <center>
+    <h2>Language study</h2>
+    <p id='previewText'>First, look at the images.</p>
+    <p id='trialQ' style="color:red" hidden>Click on the image someone would be more likely to talk about.</p>
+    <div class ="imgwrapper" id="imgwrapper"></div>
+    <button id="trial_continue_button" class="button" onclick="_s.next_trial()">Continue</button>
+  </center>
+    </div>
+
+    <div class="slide"  id="subj_info" align="left">
+        <br>
+        <h2>Please answer the brief questions below.</h2>
+        <br>
+        <div class="subj_info_body" align="left">
+        <p><b>First Language(s)</b> (the language(s) you spoke at home as a child): <input type="text" id="language"/> </p>
+
+        <p><b>Gender:</b>
+          <select id="gender">
+          <label><option value=""/></label>
+          <label><option value="Male"/>Male</label>
+          <label><option value="Female"/>Female</label>
+          <label><option value="Other"/>Other</label>
+          </select>
+          </p>
+
+        <p><b>Age: </b><input type="text" id="participantage"/></p>
+
+        <p><b>Prolific ID: </b><input type="text" id="prolificID"/></p>
+        <br>
+
+        <p><b>(Optional)</b> Do you have any comments about the task (any problems, etc.) ? </p>
+        <textarea id="comments" rows="3" cols="50"></textarea>
+      </div>
+        <br/>
+        <p id="subjInfoBlank" hidden><font color="red">Please complete all non-optional questions! </font></p>
+        <button onclick="_s.submit()"> Finish </button>
+      </div>
+    </div>
+
+    <div id="thanks" class="slide js" >
+      <h2>Thanks for your time!</h2>
+    </div>
+
+  <!-- Scripts -->
+   <!--  general js utilities -->
+    <script src="js/general_utils/jquery-1.11.1.min.js "></script>
+    <script src="js/general_utils/jquery-ui.min.js"></script>
+    <script src="js/general_utils/underscore-min.js"></script>
+    <script src="js/general_utils/sweetalert.min.js"></script>
+    <script src="js/general_utils/bootstrap.min.js"></script>
+
+    <!-- experiment logic, and experiment utilities -->
+    <script src="js/exp_run/exp-V2.js"></script>
+    <script src="js/exp_run/stream-V2.js"></script>
+    <script src="js/exp_run/mmturkey.js"></script>
+    <script src="js/exp_run/browserCheck.js"></script>
+    <script src="js/exp_run/utils.js"></script>
+    <script src="js/exp_run/preload.js"></script>
+    <script src="js/exp_run/uniqueturker.js"></script>
+
+    <!-- main experiment logic: -->
+    <script src="js/exp_run/image_norm.js"></script>
+
+    <!--CSS-->
+    <!--link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css"/-->
+    <link href="css/style.css" rel="stylesheet" type="text/css"/>
+    <!--link rel="stylesheet" href="css/bootstrap.min.css"-->
+
+    <!-- experiment files for stimuli-->
+    <script src="js/exp_files/img_info.js"></script> <!-- list of image pairs, each constitutes an individual trial -->
+    <script src="js/exp_files/img_pairs.js"></script><!-- tells whether each image is an action or object -->
+
+    <!-- INSERT UNIQUE TURKER ID HERE -->
+    <script type="text/JavaScript">
+    $(document).ready(function(){
+      var ut_id = "[INSERT YOUR UNIQUE TURKER ID HERE]"
+      if (UTWorkerLimitReached(ut_id)) {
+        $(".slide").hide();
+        $("body").html("You have already completed the maximum number of HITs allowed by this requester. Please click 'Return HIT' to avoid any impact on your approval rating.");
+      }});
+    </script>
+
+  
+</body>
+</html>

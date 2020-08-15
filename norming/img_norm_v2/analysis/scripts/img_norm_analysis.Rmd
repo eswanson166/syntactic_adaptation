@@ -1,0 +1,200 @@
+---
+title: "Image norming analysis"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Set-up
+
+Load packages.
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+source("helpers.R")
+
+theme_set(theme_bw())
+```
+
+Read in the data.
+```{r}
+dir <- "../data"
+participant_files <- list.files(path = dir, full.names = TRUE)
+img_df <- plyr::ldply(participant_files, function(x) {
+  read_csv(x)
+})
+img_df <- img_df %>% mutate_if(is.character, factor)
+```
+
+# Exclusions
+
+Exclude test runs by the experimenter.
+```{r}
+img_df <- img_df %>% filter(!grepl("Elizabeth",comments))
+```
+
+Check the first languages of participants and exclude any non-English speakers.
+```{r}
+unique(img_df$language)
+img_df <- img_df %>% filter(grepl("english",language, 
+                                      ignore.case = TRUE))
+```
+
+Examine the comments to see if anyone had difficulty with the task.
+```{r}
+unique(img_df$comments)
+```
+
+# Demographics
+
+Check the number of participants.
+```{r}
+length(unique(img_df$participant_id))
+```
+
+Check the gender distribution.
+```{r}
+img_df %>% group_by(gender) %>% 
+  summarise(n = length(unique(participant_id)))
+```
+
+# Analysis
+
+Create a new dataframe that says for each image whether it was selected on a given trial.
+```{r}
+img_left <- img_df
+img_right <- img_df
+
+img_left <- img_left %>% 
+  mutate(image = left_img, other_image = right_img)
+img_right <- img_right %>% 
+  mutate(image = right_img, other_image = left_img)
+
+img_total <- rbind(img_left, img_right)
+img_total <- img_total %>% 
+  mutate(img_selected_true = ifelse(selected_img == image, 
+                                    TRUE, FALSE))
+```
+
+Find the proportion of people who selected each image and construct confidence intervals.
+```{r}
+img_sum <- img_total %>% group_by(image, img_type) %>% 
+  summarise(prop_selected = mean(img_selected_true), 
+            CI.low = ci.low(img_selected_true),
+            CI.high = ci.high(img_selected_true), n = n()) %>%
+  mutate(YMin = prop_selected - CI.low, 
+         YMax = prop_selected + CI.high)
+```
+
+## Novel images
+
+Pull out novel actions and objects.
+```{r}
+img_sum_nov <- img_sum %>% filter(img_type == "novel")
+img_sum_nov <- img_sum_nov %>% 
+  mutate(img_kind = ifelse(grepl("action",image), "action", "object"))
+```
+
+Graph these confidence intervals for novel images.
+```{r}
+ggplot(img_sum_nov, aes(x = image, y = prop_selected, 
+                        fill = img_kind)) +
+  geom_bar(stat = "identity") +
+  ylab("proportion who selected image") +
+  geom_errorbar(aes(ymin = prop_selected-CI.low, 
+                    ymax = prop_selected+CI.high), width = .2) +
+  theme(axis.text.x = element_text(angle = 60, hjust = 1)) +
+  scale_fill_manual(name = "image type", values = c("#eb4731", "#4e8df2")) +
+  ggtitle("Proportion of participants who selected novel image: Version 2")
+ggsave("../graphs/novel_imgs_v2.pdf", width = 8, height = 5)
+```
+
+## Familiar images
+
+Pull out familiar actions and objects.
+```{r}
+img_sum_fam <- img_sum %>% filter(img_type == "familiar")
+img_sum_fam <- img_sum_fam %>% 
+  mutate(img_kind = ifelse(
+    image == "ball" | image == "book" | image == "box" | 
+      image == "dog" | image == "doll" | image == "hat" | 
+      image == "horse" | image == "shoe",
+    "object",
+    "action"))
+img_sum_fam$image <- factor(img_sum_fam$image, levels = c("cry", "draw", "drink", "eat", "read", "sit", "sleep", "wave", "ball", "book", "box", "dog", "doll", "hat", "horse", "shoe"))
+```
+
+Graph these confidence intervals for familiar images.
+```{r}
+ggplot(img_sum_fam, aes(x = image, y = prop_selected, 
+                        fill = img_kind)) +
+  geom_bar(stat = "identity") +
+  ylab("proportion who selected image") +
+  geom_errorbar(aes(ymin = prop_selected-CI.low, 
+                    ymax = prop_selected+CI.high), width = .2) +
+  theme(axis.text.x = element_text(angle = 60, hjust = 1)) +
+  scale_fill_manual(name = "image type", values = c("#eb4731", "#4e8df2")) +
+  ggtitle("Proportion of participants who selected familiar image: Version 2")
+ggsave("../graphs/fam_imgs_v2.pdf", width = 8, height = 5)
+```
+
+## Individual participants
+
+Add a column indicating whether participants selected the action as more interesting.
+```{r}
+img_df <- img_df %>% mutate(action_selected = 
+                              ifelse(selected_word_type == "verb", 1, 0))
+```
+
+Calculate each participant's proportion of trials on which they selected the action.
+```{r}
+img_sum_partic <- img_df %>% group_by(participant_id, img_type) %>%
+  summarise(action_prop = mean(action_selected),
+            CI.low = ci.low(action_selected),
+            CI.high = ci.high(action_selected)) %>%
+  mutate(YMin = action_prop - CI.low, 
+         YMax = action_prop + CI.high)
+```
+
+Plot participants' proportion of trials on which they selected the action as more interesting.
+```{r}
+ggplot(img_sum_partic, aes(x = as.factor(participant_id), y = action_prop,
+                           fill = img_type)) +
+  geom_bar(stat = "identity") +
+  xlab("participant") +
+  ylab("proportion of trials participant selected action") +
+  scale_fill_manual(name = "image type", values = c("#eb4731", "#4e8df2")) +
+  facet_wrap(. ~ img_type) +
+  theme(axis.text.x = element_text(angle = 60, hjust = 1)) +
+  ggtitle("Participants' proportion of words judged as actions: Version 2")
+ggsave("../graphs/participant_prop_action_v2.pdf", width = 10, height = 5)
+```
+
+## Overall proportion of selecting action image
+
+Calculate the overall proportion of trials on which the action was selected, for familiar and novel words.
+```{r}
+img_avg <- img_df %>% group_by(img_type) %>% 
+  summarise(m = mean(action_selected),
+            CI.low = ci.low(action_selected),
+            CI.high = ci.high(action_selected)) %>%
+  mutate(YMin = m - CI.low, 
+         YMax = m + CI.high)
+```
+
+Graph the overall proportions.
+```{r}
+ggplot(img_avg, aes(x = img_type, y = m, 
+                        fill = img_type)) +
+  geom_bar(stat = "identity") +
+  xlab("trial type") +
+  ylab("proportion who selected action image") +
+  geom_errorbar(aes(ymin = m-CI.low, 
+                    ymax = m+CI.high), width = .2) +
+  scale_fill_manual(name = "trial type", values = c("#eb4731", "#4e8df2")) +
+  ggtitle("Proportion of trials with action image selected: Version 2")
+ggsave("../graphs/overall_prop_action_v2.pdf", width = 5, height = 5)
+```
+

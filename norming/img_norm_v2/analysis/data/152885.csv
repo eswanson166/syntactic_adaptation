@@ -1,0 +1,13 @@
+trial_num,left_img,right_img,selected_img,img_type,selected_word_type,preview_time,trial_time,current_windowW,current_windowH,Browser,OS,screenH,screenW,windowH,windowW,imageH,imageW,language,age,gender,comments,wrong_img_tests,time_in_minutes,participant_id
+1,hat,sit,hat,familiar,noun,2009,5604,1280,899,Firefox,Linux,1024,1280,899,1280,288,400,English,44,Male,,[],2.42035,152885
+2,obj1,action2,action2,novel,verb,2006,5205,1280,899,Firefox,Linux,1024,1280,899,1280,288,400,English,44,Male,,[],2.42035,152885
+3,sleep,ball,sleep,familiar,verb,2008,5884,1280,899,Firefox,Linux,1024,1280,899,1280,288,400,English,44,Male,,[],2.42035,152885
+4,draw,shoe,draw,familiar,verb,2008,8012,1280,899,Firefox,Linux,1024,1280,899,1280,288,400,English,44,Male,,[],2.42035,152885
+5,action6,obj5,action6,novel,verb,2008,11312,1280,899,Firefox,Linux,1024,1280,899,1280,288,400,English,44,Male,,[],2.42035,152885
+6,dog,cry,dog,familiar,noun,2005,16939,1280,899,Firefox,Linux,1024,1280,899,1280,288,400,English,44,Male,,[],2.42035,152885
+7,read,box,box,familiar,noun,2004,2680,1280,899,Firefox,Linux,1024,1280,899,1280,288,400,English,44,Male,,[],2.42035,152885
+8,doll,eat,doll,familiar,noun,2007,3849,1280,899,Firefox,Linux,1024,1280,899,1280,288,400,English,44,Male,,[],2.42035,152885
+9,wave,horse,horse,familiar,noun,2004,11462,1280,899,Firefox,Linux,1024,1280,899,1280,288,400,English,44,Male,,[],2.42035,152885
+10,obj6,action1,action1,novel,verb,2003,3450,1280,899,Firefox,Linux,1024,1280,899,1280,288,400,English,44,Male,,[],2.42035,152885
+11,drink,book,drink,familiar,verb,2007,12098,1280,899,Firefox,Linux,1024,1280,899,1280,288,400,English,44,Male,,[],2.42035,152885
+12,action5,obj2,action5,novel,verb,2005,6172,1280,899,Firefox,Linux,1024,1280,899,1280,288,400,English,44,Male,,[],2.42035,152885

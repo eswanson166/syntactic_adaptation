@@ -1,0 +1,13 @@
+trial_num,left_img,right_img,selected_img,img_type,selected_word_type,preview_time,trial_time,current_windowW,current_windowH,Browser,OS,screenH,screenW,windowH,windowW,imageH,imageW,language,age,gender,comments,wrong_img_tests,time_in_minutes,participant_id
+1,cry,dog,cry,familiar,verb,2018,5610,1224,528,Chrome,Windows,553,979,528,1224,288,400,english,56,Female,,[],1.7277666666666667,301288
+2,obj6,action1,action1,novel,verb,2017,5167,1224,528,Chrome,Windows,553,979,528,1224,288,400,english,56,Female,,[],1.7277666666666667,301288
+3,hat,sit,hat,familiar,noun,2012,2201,1224,528,Chrome,Windows,553,979,528,1224,288,400,english,56,Female,,[],1.7277666666666667,301288
+4,book,drink,drink,familiar,verb,2001,3498,1224,528,Chrome,Windows,553,979,528,1224,288,400,english,56,Female,,[],1.7277666666666667,301288
+5,obj5,action6,action6,novel,verb,2018,5323,1224,528,Chrome,Windows,553,979,528,1224,288,400,english,56,Female,,[],1.7277666666666667,301288
+6,doll,eat,doll,familiar,noun,2017,2530,1224,528,Chrome,Windows,553,979,528,1224,288,400,english,56,Female,,[],1.7277666666666667,301288
+7,wave,horse,wave,familiar,verb,2017,2331,1224,528,Chrome,Windows,553,979,528,1224,288,400,english,56,Female,,[],1.7277666666666667,301288
+8,action5,obj2,obj2,novel,noun,2016,3810,1224,528,Chrome,Windows,553,979,528,1224,288,400,english,56,Female,,[],1.7277666666666667,301288
+9,read,box,box,familiar,noun,2002,1851,1224,528,Chrome,Windows,553,979,528,1224,288,400,english,56,Female,,[],1.7277666666666667,301288
+10,ball,sleep,ball,familiar,noun,2010,3283,1224,528,Chrome,Windows,553,979,528,1224,288,400,english,56,Female,,[],1.7277666666666667,301288
+11,obj1,action2,action2,novel,verb,2012,3200,1224,528,Chrome,Windows,553,979,528,1224,288,400,english,56,Female,,[],1.7277666666666667,301288
+12,shoe,draw,shoe,familiar,noun,2012,5024,1224,528,Chrome,Windows,553,979,528,1224,288,400,english,56,Female,,[],1.7277666666666667,301288

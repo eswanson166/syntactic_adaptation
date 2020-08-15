@@ -1,0 +1,13 @@
+trial_num,left_img,right_img,selected_img,img_type,selected_word_type,preview_time,trial_time,current_windowW,current_windowH,Browser,OS,screenH,screenW,windowH,windowW,imageH,imageW,language,age,gender,comments,wrong_img_tests,time_in_minutes,participant_id
+1,dog,cry,cry,familiar,verb,2006,16299,1440,837,Safari,Mac,900,1440,837,1440,288,400,English,19,Female,,[],2.7100333333333335,427226
+2,hat,sit,hat,familiar,noun,2002,6476,1440,837,Safari,Mac,900,1440,837,1440,288,400,English,19,Female,,[],2.7100333333333335,427226
+3,obj2,action5,obj2,novel,noun,2003,7787,1440,837,Safari,Mac,900,1440,837,1440,288,400,English,19,Female,,[],2.7100333333333335,427226
+4,sleep,ball,sleep,familiar,verb,2003,5866,1440,837,Safari,Mac,900,1440,837,1440,288,400,English,19,Female,,[],2.7100333333333335,427226
+5,obj6,action1,action1,novel,verb,2001,13205,1440,837,Safari,Mac,900,1440,837,1440,288,400,English,19,Female,,[],2.7100333333333335,427226
+6,doll,eat,doll,familiar,noun,2001,5630,1440,837,Safari,Mac,900,1440,837,1440,288,400,English,19,Female,,[],2.7100333333333335,427226
+7,read,box,box,familiar,noun,2002,3890,1440,837,Safari,Mac,900,1440,837,1440,288,400,English,19,Female,,[],2.7100333333333335,427226
+8,draw,shoe,shoe,familiar,noun,2002,8409,1440,837,Safari,Mac,900,1440,837,1440,288,400,English,19,Female,,[],2.7100333333333335,427226
+9,book,drink,drink,familiar,verb,2003,5016,1440,837,Safari,Mac,900,1440,837,1440,288,400,English,19,Female,,[],2.7100333333333335,427226
+10,wave,horse,horse,familiar,noun,2003,3049,1440,837,Safari,Mac,900,1440,837,1440,288,400,English,19,Female,,[],2.7100333333333335,427226
+11,action6,obj5,obj5,novel,noun,2002,3569,1440,837,Safari,Mac,900,1440,837,1440,288,400,English,19,Female,,[],2.7100333333333335,427226
+12,obj1,action2,obj1,novel,noun,2002,3571,1440,837,Safari,Mac,900,1440,837,1440,288,400,English,19,Female,,[],2.7100333333333335,427226

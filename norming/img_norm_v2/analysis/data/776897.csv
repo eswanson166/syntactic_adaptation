@@ -1,0 +1,13 @@
+trial_num,left_img,right_img,selected_img,img_type,selected_word_type,preview_time,trial_time,current_windowW,current_windowH,Browser,OS,screenH,screenW,windowH,windowW,imageH,imageW,language,age,gender,comments,wrong_img_tests,time_in_minutes,participant_id
+1,book,drink,drink,familiar,verb,2016,17062,915,375,Safari,iPhone/iPod,896,414,719,414,288,400,English,22,Female,,[],2.3482,776897
+2,wave,horse,horse,familiar,noun,2008,7044,808,331,Safari,iPhone/iPod,896,414,719,414,288,400,English,22,Female,,[],2.3482,776897
+3,action6,obj5,action6,novel,verb,2006,4722,808,331,Safari,iPhone/iPod,896,414,719,414,288,400,English,22,Female,,[],2.3482,776897
+4,action5,obj2,action5,novel,verb,2008,5561,808,331,Safari,iPhone/iPod,896,414,719,414,288,400,English,22,Female,,[],2.3482,776897
+5,sleep,ball,sleep,familiar,verb,2006,4051,808,331,Safari,iPhone/iPod,896,414,719,414,288,400,English,22,Female,,[],2.3482,776897
+6,action1,obj6,action1,novel,verb,2006,3526,808,331,Safari,iPhone/iPod,896,414,719,414,288,400,English,22,Female,,[],2.3482,776897
+7,shoe,draw,shoe,familiar,noun,2007,5693,808,331,Safari,iPhone/iPod,896,414,719,414,288,400,English,22,Female,,[],2.3482,776897
+8,sit,hat,hat,familiar,noun,2007,3493,808,331,Safari,iPhone/iPod,896,414,719,414,288,400,English,22,Female,,[],2.3482,776897
+9,dog,cry,cry,familiar,verb,2007,3201,808,331,Safari,iPhone/iPod,896,414,719,414,288,400,English,22,Female,,[],2.3482,776897
+10,eat,doll,doll,familiar,noun,2006,3794,808,414,Safari,iPhone/iPod,896,414,719,414,288,400,English,22,Female,,[],2.3482,776897
+11,box,read,box,familiar,noun,2006,7699,808,414,Safari,iPhone/iPod,896,414,719,414,288,400,English,22,Female,,[],2.3482,776897
+12,action2,obj1,action2,novel,verb,2007,7368,808,331,Safari,iPhone/iPod,896,414,719,414,288,400,English,22,Female,,[],2.3482,776897

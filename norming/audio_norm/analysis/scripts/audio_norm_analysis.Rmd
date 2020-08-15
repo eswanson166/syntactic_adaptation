@@ -43,6 +43,12 @@ Examine the comments to see if anyone had difficulty with the task.
 unique(audio_df$comments)
 ```
 
+Remove a participant who we know judged all the words as actions.
+```{r}
+audio_df <- audio_df %>% filter(participant_id != 253485)
+```
+
+
 # Demographics
 
 Check the number of participants.
@@ -103,8 +109,8 @@ Graph these confidence intervals.
 ggplot(nov_sum, aes(x = word, y = action_prop, fill = word)) +
   geom_bar(stat = "identity") +
   ylab("proportion who selected word as action") +
-  geom_errorbar(aes(ymin = action_prop-CI.low, 
-                    ymax = action_prop+CI.high), width = .2) +
+  geom_errorbar(aes(ymin = YMin, 
+                    ymax = YMax), width = .2) +
   ggtitle("Proportion of participants who judged word as action")
 ggsave("../graphs/novel_word_judgments.pdf", width = 7, height = 5)
 ```
@@ -112,5 +118,29 @@ ggsave("../graphs/novel_word_judgments.pdf", width = 7, height = 5)
 Examine the distance of the proportions from .5.
 ```{r}
 nov_sum <- nov_sum %>% mutate(prop_dist = action_prop - .5)
+```
+
+### Individual participants
+
+Find each participant's proportion of identifying words as actions.
+```{r}
+nov_partic <- audio_nov %>% group_by(participant_id) %>%
+  summarise(action_prop = mean(action_selected),
+            CI.low = ci.low(action_selected),
+            CI.high = ci.high(action_selected)) %>%
+  mutate(YMin = action_prop - CI.low, 
+         YMax = action_prop + CI.high)
+```
+
+Graph these proportions.
+```{r}
+ggplot(nov_partic, aes(x = as.factor(participant_id), y = action_prop)) +
+  geom_bar(stat = "identity", fill = "#4e8df2") +
+  xlab("participant") +
+  ylab("proportion of words judged as action") +
+  theme(axis.text.x = element_text(angle = 60, hjust = 1)) +
+  ggtitle("Participants' proportion of words judged as actions")
+ggsave("../graphs/participant_prop_action.pdf", width = 8, height = 5)
+ggsave("../graphs/participant_prop_action.jpg", width = 8, height = 5)
 ```
 

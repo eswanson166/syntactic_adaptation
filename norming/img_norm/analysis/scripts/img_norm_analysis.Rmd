@@ -64,11 +64,6 @@ img_df %>% group_by(gender) %>%
 
 Create a new dataframe that says for each image whether it was selected on a given trial.
 ```{r}
-img_left <-img_df %>% select(left_img, selected_img, img_type) %>% 
-  mutate(selected = ifelse(left_img == selected_img, TRUE, FALSE))
-img_right <-img_df %>% select(right_img, selected_img, img_type) %>% 
-  mutate(selected = ifelse(right_img == selected_img, TRUE, FALSE))
-
 img_left <- img_df
 img_right <- img_df
 
@@ -111,7 +106,7 @@ ggplot(img_sum_nov, aes(x = image, y = prop_selected,
   geom_errorbar(aes(ymin = prop_selected-CI.low, 
                     ymax = prop_selected+CI.high), width = .2) +
   theme(axis.text.x = element_text(angle = 60, hjust = 1)) +
-  scale_fill_manual(name = "image type", values = c("cadetblue3", "plum3")) +
+  scale_fill_manual(name = "image type", values = c("#eb4731", "#4e8df2")) +
   ggtitle("Proportion of participants who selected novel image")
 ggsave("../graphs/novel_imgs.pdf", width = 8, height = 5)
 ```
@@ -140,7 +135,66 @@ ggplot(img_sum_fam, aes(x = image, y = prop_selected,
   geom_errorbar(aes(ymin = prop_selected-CI.low, 
                     ymax = prop_selected+CI.high), width = .2) +
   theme(axis.text.x = element_text(angle = 60, hjust = 1)) +
-  scale_fill_manual(name = "image type", values = c("cadetblue3", "plum3")) +
+  scale_fill_manual(name = "image type", values = c("#eb4731", "#4e8df2")) +
   ggtitle("Proportion of participants who selected familiar image")
 ggsave("../graphs/fam_imgs.pdf", width = 8, height = 5)
 ```
+
+## Individual participants
+
+Add a column indicating whether participants selected the action as more interesting.
+```{r}
+img_df <- img_df %>% mutate(action_selected = 
+                              ifelse(selected_word_type == "verb", 1, 0))
+```
+
+Calculate each participant's proportion of trials on which they selected the action.
+```{r}
+img_sum_partic <- img_df %>% group_by(participant_id, img_type) %>%
+  summarise(action_prop = mean(action_selected),
+            CI.low = ci.low(action_selected),
+            CI.high = ci.high(action_selected)) %>%
+  mutate(YMin = action_prop - CI.low, 
+         YMax = action_prop + CI.high)
+```
+
+Plot participants' proportion of trials on which they selected the action as more interesting.
+```{r}
+ggplot(img_sum_partic, aes(x = as.factor(participant_id), y = action_prop,
+                           fill = img_type)) +
+  geom_bar(stat = "identity") +
+  xlab("participant") +
+  ylab("proportion of trials participant selected action") +
+  scale_fill_manual(name = "image type", values = c("#eb4731", "#4e8df2")) +
+  facet_wrap(. ~ img_type) +
+  theme(axis.text.x = element_text(angle = 60, hjust = 1)) +
+  ggtitle("Participants' proportion of words judged as actions")
+ggsave("../graphs/participant_prop_action.pdf", width = 10, height = 5)
+```
+
+## Overall proportion of selecting action image
+
+Calculate the overall proportion of trials on which the action was selected, for familiar and novel words.
+```{r}
+img_avg <- img_df %>% group_by(img_type) %>% 
+  summarise(m = mean(action_selected),
+            CI.low = ci.low(action_selected),
+            CI.high = ci.high(action_selected)) %>%
+  mutate(YMin = m - CI.low, 
+         YMax = m + CI.high)
+```
+
+Graph the overall proportions.
+```{r}
+ggplot(img_avg, aes(x = img_type, y = m, 
+                        fill = img_type)) +
+  geom_bar(stat = "identity") +
+  xlab("trial type") +
+  ylab("proportion who selected action image") +
+  geom_errorbar(aes(ymin = m-CI.low, 
+                    ymax = m+CI.high), width = .2) +
+  scale_fill_manual(name = "trial type", values = c("#eb4731", "#4e8df2")) +
+  ggtitle("Proportion of trials with action image selected")
+ggsave("../graphs/overall_prop_action.pdf", width = 5, height = 5)
+```
+

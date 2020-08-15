@@ -1,0 +1,13 @@
+trial_num,left_img,right_img,selected_img,img_type,selected_word_type,preview_time,trial_time,current_windowW,current_windowH,Browser,OS,screenH,screenW,windowH,windowW,imageH,imageW,language,age,gender,comments,wrong_img_tests,time_in_minutes,participant_id
+1,shoe,draw,draw,familiar,verb,2024,22112,375,553,Safari,iPhone/iPod,667,375,553,375,288,400,English ,25,Male,No,[],2.8059166666666666,624079
+2,sit,hat,sit,familiar,verb,2010,15465,375,553,Safari,iPhone/iPod,667,375,553,375,288,400,English ,25,Male,No,[],2.8059166666666666,624079
+3,dog,cry,cry,familiar,verb,2007,6661,375,553,Safari,iPhone/iPod,667,375,553,375,288,400,English ,25,Male,No,[],2.8059166666666666,624079
+4,obj1,action2,action2,novel,verb,2009,8725,375,553,Safari,iPhone/iPod,667,375,553,375,288,400,English ,25,Male,No,[],2.8059166666666666,624079
+5,action5,obj2,action5,novel,verb,2008,1308,375,553,Safari,iPhone/iPod,667,375,553,375,288,400,English ,25,Male,No,[],2.8059166666666666,624079
+6,eat,doll,eat,familiar,verb,2008,4228,375,553,Safari,iPhone/iPod,667,375,553,375,288,400,English ,25,Male,No,[],2.8059166666666666,624079
+7,wave,horse,wave,familiar,verb,2005,3410,375,553,Safari,iPhone/iPod,667,375,553,375,288,400,English ,25,Male,No,[],2.8059166666666666,624079
+8,action1,obj6,action1,novel,verb,2008,1890,375,553,Safari,iPhone/iPod,667,375,553,375,288,400,English ,25,Male,No,[],2.8059166666666666,624079
+9,drink,book,drink,familiar,verb,2009,2026,375,553,Safari,iPhone/iPod,667,375,553,375,288,400,English ,25,Male,No,[],2.8059166666666666,624079
+10,ball,sleep,sleep,familiar,verb,2007,4876,375,553,Safari,iPhone/iPod,667,375,553,375,288,400,English ,25,Male,No,[],2.8059166666666666,624079
+11,obj5,action6,action6,novel,verb,2008,3389,375,553,Safari,iPhone/iPod,667,375,553,375,288,400,English ,25,Male,No,[],2.8059166666666666,624079
+12,box,read,read,familiar,verb,2010,2839,375,553,Safari,iPhone/iPod,667,375,553,375,288,400,English ,25,Male,No,[],2.8059166666666666,624079

@@ -1,0 +1,13 @@
+trial_num,left_img,right_img,selected_img,img_type,selected_word_type,preview_time,trial_time,current_windowW,current_windowH,Browser,OS,screenH,screenW,windowH,windowW,imageH,imageW,language,age,gender,comments,wrong_img_tests,time_in_minutes,participant_id
+1,doll,eat,doll,familiar,noun,2003,8226,2160,1077,Chrome,Mac,1440,2560,1077,2160,288,400,chinese,53,Female,,['cst'],2.613766666666667,451267
+2,dog,cry,cry,familiar,verb,2003,7537,2160,1077,Chrome,Mac,1440,2560,1077,2160,288,400,chinese,53,Female,,['cst'],2.613766666666667,451267
+3,shoe,draw,shoe,familiar,noun,2004,12755,2160,1077,Chrome,Mac,1440,2560,1077,2160,288,400,chinese,53,Female,,['cst'],2.613766666666667,451267
+4,sleep,ball,sleep,familiar,verb,2004,4548,2160,1077,Chrome,Mac,1440,2560,1077,2160,288,400,chinese,53,Female,,['cst'],2.613766666666667,451267
+5,obj6,action1,action1,novel,verb,2005,6554,2160,1077,Chrome,Mac,1440,2560,1077,2160,288,400,chinese,53,Female,,['cst'],2.613766666666667,451267
+6,action2,obj1,action2,novel,verb,2005,9477,2160,1077,Chrome,Mac,1440,2560,1077,2160,288,400,chinese,53,Female,,['cst'],2.613766666666667,451267
+7,book,drink,drink,familiar,verb,2002,11983,2160,1077,Chrome,Mac,1440,2560,1077,2160,288,400,chinese,53,Female,,['cst'],2.613766666666667,451267
+8,action5,obj2,obj2,novel,noun,2004,9087,2160,1077,Chrome,Mac,1440,2560,1077,2160,288,400,chinese,53,Female,,['cst'],2.613766666666667,451267
+9,wave,horse,wave,familiar,verb,2002,5670,2160,1077,Chrome,Mac,1440,2560,1077,2160,288,400,chinese,53,Female,,['cst'],2.613766666666667,451267
+10,box,read,box,familiar,noun,2003,2349,2160,1077,Chrome,Mac,1440,2560,1077,2160,288,400,chinese,53,Female,,['cst'],2.613766666666667,451267
+11,obj5,action6,action6,novel,verb,2006,11232,2160,1077,Chrome,Mac,1440,2560,1077,2160,288,400,chinese,53,Female,,['cst'],2.613766666666667,451267
+12,hat,sit,hat,familiar,noun,2003,4614,2160,1077,Chrome,Mac,1440,2560,1077,2160,288,400,chinese,53,Female,,['cst'],2.613766666666667,451267
