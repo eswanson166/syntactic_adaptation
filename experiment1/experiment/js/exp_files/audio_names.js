@@ -1,14 +1,14 @@
-var audio_names = [
-{"item": "pair1", "noun": "dog", "verb": "cry", "filler": "dog_filler"},
-{"item": "pair2", "noun": "doll", "verb": "eat", "filler": "eat_filler"},
-{"item": "pair3", "noun": "horse", "verb": "wave", "filler": "horse_filler"},
-{"item": "pair4", "noun": "shoe", "verb": "draw", "filler": "draw_filler"},
-{"item": "pair5", "noun": "ball", "verb": "sleep", "filler": "sleep_filler"},
-{"item": "pair6", "noun": "box", "verb": "read", "filler": "box_filler"},
-{"item": "pair7", "noun": "book", "verb": "drink", "filler": "drink_filler"},
-{"item": "pair8", "noun": "hat", "verb": "sit", "filler": "hat_filler"},
-{"item": "pair9", "noun": "fep", "verb": "fep", "filler": "fep"},
-{"item": "pair10", "noun": "nup", "verb": "nup", "filler": "nup"},
-{"item": "pair11", "noun": "smick", "verb": "smick", "filler": "smick"},
-{"item": "pair12", "noun": "vash", "verb": "vash", "filler": "vash"}
-]
+var audio_names = {
+"pair1": {"noun": "dog", "verb": "cry", "noun_filler": "dog_filler", "verb_filler": "cry_filler"},
+"pair2": {"noun": "doll", "verb": "eat", "noun_filler": "doll_filler", "verb_filler": "eat_filler"},
+"pair3": {"noun": "horse", "verb": "wave", "noun_filler": "horse_filler", "verb_filler": "wave_filler"},
+"pair4": {"noun": "shoe", "verb": "draw", "noun_filler": "shoe_filler", "verb_filler": "draw_filler"},
+"pair5": {"noun": "ball", "verb": "sleep", "noun_filler": "ball_filler", "verb_filler": "sleep_filler"},
+"pair6": {"noun": "box", "verb": "read", "noun_filler": "box_filler", "verb_filler": "read_filler"},
+"pair7": {"noun": "book", "verb": "drink", "noun_filler": "book_filler", "verb_filler": "drink_filler"},
+"pair8": {"noun": "hat", "verb": "sit", "noun_filler": "hat_filler", "verb_filler": "sit_filler"},
+"pair9": {"novel": "fep"},
+"pair10": {"novel": "nup"},
+"pair11": {"novel": "smick"},
+"pair12": {"novel": "vash"}
+}

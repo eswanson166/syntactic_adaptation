@@ -44,6 +44,7 @@ ul {
 	margin-right: 100px;
 }
 
+
 /* Video Feed Styling */
 #overlay {
 	z-index: 1;
@@ -235,17 +236,17 @@ p.descriptor {
 
 
 /* prog bar */
-.progress{
+.progress_bar_class{
     float:right;
     height: 25px;
     background-color: #FFFFFF;
 }
 
-.progress span{
+.progress_text span{
     position:relative;
-    top: 4px;
-    left: -1px;
-    height: 25px;
+    top: 10px;
+    left: -10px;
+    height: 20px;
     font-size: 15px;
 }
 
@@ -260,5 +261,5 @@ p.descriptor {
     position:relative;
     height:100%;
     width:0px;
-    background-color:#000000
+    background-color:#FFFFFF;
 }

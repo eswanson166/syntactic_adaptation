@@ -84,8 +84,10 @@ function make_slides(f) {
     present_handle: function(img_pair) {
       this.trial_start = Date.now();
       exp.trial_no += 1;
+      exp.trial_type = exp.order[exp.trial_no - 1];
       $("#aud").hide();
       img_pair_name = img_pair.item;
+
       if (exp.order == "order1") {
         left_img_type = img_side_order1[(exp.trial_no - 1)];
         right_img_type = img_side_order2[(exp.trial_no - 1)];
@@ -94,10 +96,10 @@ function make_slides(f) {
         left_img_type = img_side_order2[(exp.trial_no - 1)];
         right_img_type = img_side_order1[(exp.trial_no - 1)];
       }
-      img1_name = exp.img_pairs[exp.trial_no][left_img_type];
-      img2_name = exp.img_pairs[exp.trial_no][right_img_type];
+      img1_name = img_pair[left_img_type];
+      img2_name = img_pair[right_img_type];
 
-      exp.display_imgs(); // show images
+      exp.run_trial(); // show images
 
       // get data from webgazer
       //webgazer.resume();
@@ -122,6 +124,7 @@ function make_slides(f) {
     next_trial : function(e){
         exp.keep_going = false;
         this.log_responses();
+        console.log(exp.data_trials);
         _stream.apply(this);
         exp.tlist = [];
         exp.xlist = [];
@@ -131,30 +134,22 @@ function make_slides(f) {
     log_responses : function (){
       exp.data_trials.push({
         "condition": exp.condition,
-        "order": exp.order,
         "trial_no" : exp.trial_no,
-        "descriptor" : descriptor_name,
-        "descriptor_condition": descriptor_condition,
-        'left_video' : vid1_fname,
-        'right_video' : vid2_fname,
+        "img_pair_name" : img_pair_name,
+        'trial_type': exp.trial_type,
+        'target_audio_type': exp.order[exp.trial_no - 1],
+        'target_audio' : audio_event_name,
+        'left_img' : img1_name,
+        'right_img' : img2_name,
         "start_time" : _s.trial_start,
         "current_windowW" : window.innerWidth,
         "current_windowH" : window.innerHeight,
-        "end_pre1_time" : exp.end_pre1_time,
-        "pre1_duration" : exp.end_pre1_time - _s.trial_start,
-        "pre1_time_from_start" : exp.end_pre1_time - _s.trial_start,
-        "end_pre2_time" : exp.end_pre2_time,
-        "pre2_duration" : exp.end_pre2_time - exp.end_pre1_time,
-        "pre2_time_from_start": exp.end_pre2_time - _s.trial_start,
-        "end_contrast_time" : exp.end_contrast_time,
-        "contrast_duration" : exp.end_contrast_time - exp.end_pre2_time,
-        "contrast_time_from_start": exp.end_contrast_time - _s.trial_start,
-        "end_audio_time" : exp.end_audio_time,
-        "audio_duration" : exp.end_audio_time - exp.end_contrast_time,
-        "audio_time_from_start": exp.end_audio_time - _s.trial_start,
-        "end_event_time" : exp.end_event_time,
-        "event_duration": exp.end_event_time - exp.end_contrast_time,
-        "event_time_from_start": exp.end_event_time -_s.trial_start,
+        "end_pre1_time" : end_pre1_time,
+        "end_pre2_time" : end_pre2_time,
+        'end_img_reset_time': end_img_reset_time,
+        "end_contrast_time" : end_contrast_time,
+        'end_event_img_reset_time': end_event_img_reset_time,
+        "end_event_time" : end_event_time,
         'time' : exp.tlist,
         'x' : exp.xlist,
         'y': exp.ylist
@@ -239,26 +234,72 @@ function init_explogic() {
   exp.fam_img_pairs = _.shuffle(fam_img_pairs);
   exp.nov_img_pairs = _.shuffle(nov_img_pairs);
   exp.img_pairs = exp.fam_img_pairs.concat(exp.nov_img_pairs);
-  console.log(exp.img_pairs);
 
+  var arraysMatch = function (arr1, arr2) {
 
-  // Define the orders
-  img_side_order1 = ["noun", "verb", "noun", "verb", "noun", "verb", "noun", "verb", "noun", "verb"];
-  img_side_order2 = ["verb", "noun", "verb", "noun", "verb", "noun", "verb", "noun", "verb", "noun"];
+  // Check if the arrays are the same length
+  if (arr1.length !== arr2.length) return false;
 
-  // ADD LATER!!
-  if (exp.condition == "noun" | exp.condition == "verb") {
-    order1 = [exp.condition, "filler", exp.condition, "filler", "filler", exp.condition, "filler", exp.condition];
-    order2 = ["filler", exp.condition, "filler", exp.condition, exp.condition, "filler", exp.condition, "filler"];
-    exp.order = _.sample(["order1", "order2"]);
-  }
-  else {
-    exp.order = ["filler", "filler", "filler", "filler", "filler", "filler", "filler", "filler"];
+  // Check if all items exist and are in the same order
+  for (var i = 0; i < arr1.length; i++) {
+    if (arr1[i] !== arr2[i]) return false;
   }
 
+  // Otherwise, return true
+  return true;
+  };
+
+
+  // Define the image side orders
+  img_side_order1 = ["noun", "verb", "noun", "verb", "noun", "verb", "noun", "verb", "noun", "verb", "noun", "verb"];
+  img_side_order2 = ["verb", "noun", "verb", "noun", "verb", "noun", "verb", "noun", "verb", "noun", "verb", "noun"];
+
+  // Define the filler vs. main trial orders
+  repeat_cond = [exp.condition, exp.condition, exp.condition];
+  repeat_verb_filler = ["verb_filler", "verb_filler", "verb_filler"];
+  repeat_noun_filler = ["noun_filler", "noun_filler", "noun_filler"];
+
+  while (true) {
+
+    if (exp.condition == "noun") {
+      exp.order = _.shuffle(["noun", "noun", "noun", "noun", "verb_filler", "verb_filler", "verb_filler", "verb_filler"]);
+    }
+
+    if (exp.condition == "verb") {
+      exp.order = _.shuffle(["verb", "verb", "verb", "verb", "noun_filler", "noun_filler", "noun_filler", "noun_filler"]);
+    }
+
+    if (exp.condition == "baseline") {
+      exp.order = _.shuffle(["verb_filler", "verb_filler", "verb_filler", "verb_filler", "noun_filler", "noun_filler", "noun_filler", "noun_filler"]);
+    }
+
+    // check that we don't have too many repeated trials; if we do, regenerate the order
+    order_triplet_checks = [];
+
+    for (i = 0; i < 8; i++) {
+      elem = exp.order[i];
+      elem_triplet = [elem, exp.order[i+1], exp.order[i+2]];
+      if (arraysMatch(elem_triplet, repeat_cond) | arraysMatch(elem_triplet, repeat_verb_filler) | arraysMatch(elem_triplet, repeat_noun_filler)) {
+        order_triplet_checks.push(false);
+        // there are repeated trials, so this fails
+      }
+      else {
+        order_triplet_checks.push(true);
+        // there aren't too many repeated trials, so this passes
+      }
+    }
+
+    // if the whole exp.order passes, we can stop generating orders
+    if (!order_triplet_checks.includes(false)){
+      break
+    }
+
+  }
+
+  exp.order = exp.order.concat(["novel", "novel", "novel", "novel"]);
 
   //create experiment order and make slides
-  exp.structure=[/*"i0",  "training_and_calibration", "sound_test", */"single_trial", "subj_info", "thanks"];
+  exp.structure=["i0",  "training_and_calibration", "sound_test", "single_trial", "subj_info", "thanks"];
   exp.slides = make_slides(exp);
   exp.nQs = utils.get_exp_length();
 
@@ -275,9 +316,9 @@ function init_explogic() {
 
 
   // EXPERIMENT FUNCTIONS
-  exp.display_imgs = function(){
+  exp.run_trial = function(){
 
-    // Set up videos
+    // SET UP VIDEOS
     webgazer.resume()
     if (document.getElementById("img_table") != null){
       $("#img_table tr").remove();
@@ -325,23 +366,54 @@ function init_explogic() {
     // hide second image until first image preview is done playing
     img2.style.visibility = 'hidden';
     $("#continue_button").hide();
-  
+
+
+
+    // CREATE AUDIO ELEMENTS
+
+    // get audio intros
+    audio_intros = _.sample([1, 2, 3, 4, 5, 6], 2);
+
+    // audio preview 1
+    audio_preview1 = document.createElement('audio');
+    audio_preview1.src = 'static/audio/intro' + audio_intros[0] + '.wav';
+    audio_preview1.play();
+
+    // audio preview 2
+    audio_preview2 = document.createElement('audio');
+    audio_preview2.src = 'static/audio/intro' + audio_intros[1] + '.wav';
+
+    // contrast
+    audio_contrast = document.createElement('audio');
+    audio_contrast.src = 'static/audio/contrast' + _.sample([1, 2, 3, 4]) + '.wav';
+
+    // EVENT
+    audio_event = document.createElement('audio');
+    audio_event_name = audio_names[img_pair_name][exp.trial_type]; 
+    audio_event.src = 'static/audio/' + audio_event_name + '.wav';
+
+
+
+    // RUN TRIALS
 
     //audio preview
     setTimeout(function(){
       exp.end_pre1_time = Date.now();
       img1.style.visibility = 'hidden';
       img2.style.visibility = 'visible';
+      end_pre1_time = Date.now() - _s.trial_start;
       img_reset();
-    }, 6000)
+      audio_preview2.play();
+    }, 5000)
 
     img_reset = function(){
       setTimeout(function(){
         exp.end_pre2_time = Date.now();
         img1.style.visibility = 'hidden';
         img2.style.visibility = 'hidden';
+        end_pre2_time = Date.now() - _s.trial_start;
         start_contrast();
-      }, 6000)
+      }, 5000)
     }
 
     // contrast: both images at once
@@ -350,7 +422,9 @@ function init_explogic() {
         exp.end_pre2_time = Date.now();
         img1.style.visibility = 'visible';
         img2.style.visibility = 'visible';
+        end_img_reset_time = Date.now() - _s.trial_start;
         img_event_reset();
+        audio_contrast.play();
       }, 1000)
     }
 
@@ -359,15 +433,27 @@ function init_explogic() {
         exp.end_contrast_time = Date.now();
         img1.style.visibility = 'hidden';
         img2.style.visibility = 'hidden';
+        end_contrast_time = Date.now() - _s.trial_start;
         start_event();
         }, 6000)
     }
 
+    // event phase: key part of trial
     start_event = function(){
       setTimeout(function(){
         img1.style.visibility = 'visible';
         img2.style.visibility = 'visible';
+        end_event_img_reset_time = Date.now() - _s.trial_start;
+        end_event();
+        audio_event.play();
         }, 1000)
+    }
+
+    end_event = function(){
+      setTimeout(function(){
+        end_event_time = Date.now() - _s.trial_start;
+        $("#continue_button").show();
+        }, 8000)
     }
 
   }

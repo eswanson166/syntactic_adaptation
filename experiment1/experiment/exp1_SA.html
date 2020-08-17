@@ -57,8 +57,8 @@
   <body onload="init_explogic();">
     <script src="js/webgazer_tools/webgazer.js" type="text/javascript"></script>
 
-    <div class="progress">
-    <span>Progress:</span>
+    <div class="progress_bar_class">
+    <div class="progress_text">Progress:</div>
     <div class="bar-wrapper">
       <div class="bar" width="0%">
       </div>
@@ -68,8 +68,14 @@
     <noscript>This task requires JavaScript.</noscript>
     <div class="slide" id="i0" >
       <div class="text-center">
-        <img src="eyes.png" alt="user" id="userpic"></img>
-        <p id="study_title"><b> Select the person described! </b></p>
+        <br>
+        <br>
+        <img src="stanford.png" alt="Stanford University">
+        <br>
+        <br>
+        <p id="study_title">
+          <b> Picture Study </b></p>
+
         <!-- <br> -->
 
         <div class="card bg-light mb-3">
@@ -275,7 +281,7 @@
                 </div>
                 <br>
                 <div class="text-center">
-                  <button id = "continue_button" onclick="_s.continue()" style="width:100px; height:30px"> Continue </button> </p>
+                  <button id = "continue_button" onclick="_s.next_trial()" style="width:100px; height:30px"> Continue </button> </p>
                   <button id = "next_button" onclick="_s.next_trial()" style="width:50px; height:30px"> Next </button> </p>
                   <p class="err"><font color="red">Please select a person </font></p>
                 </div>
