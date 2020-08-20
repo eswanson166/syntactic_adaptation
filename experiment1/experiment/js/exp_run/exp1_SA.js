@@ -8,6 +8,7 @@ function make_slides(f) {
     }
   });
 
+
   slides.training_and_calibration = slide({
     name: "training_and_calibration",
     start_camera : function(e) {
@@ -78,6 +79,14 @@ function make_slides(f) {
     }
   });
 
+  slides.instructions = slide({
+    name: "instructions",
+    start_task: function(e){
+      exp.go()
+    }
+  });
+
+
   slides.single_trial = slide({
     name: "single_trial",
     present: exp.img_pairs,
@@ -122,6 +131,7 @@ function make_slides(f) {
     },
 
     next_trial : function(e){
+        end_trial_time = Date.now();
         exp.keep_going = false;
         this.log_responses();
         console.log(exp.data_trials);
@@ -134,6 +144,7 @@ function make_slides(f) {
     log_responses : function (){
       exp.data_trials.push({
         "condition": exp.condition,
+        'img_side_order' : exp.img_side_order,
         "trial_no" : exp.trial_no,
         "img_pair_name" : img_pair_name,
         'trial_type': exp.trial_type,
@@ -141,6 +152,7 @@ function make_slides(f) {
         'target_audio' : audio_event_name,
         'left_img' : img1_name,
         'right_img' : img2_name,
+        'exp.clicked' : exp.clicked,
         "start_time" : _s.trial_start,
         "current_windowW" : window.innerWidth,
         "current_windowH" : window.innerHeight,
@@ -148,8 +160,11 @@ function make_slides(f) {
         "end_pre2_time" : end_pre2_time,
         'end_img_reset_time': end_img_reset_time,
         "end_contrast_time" : end_contrast_time,
-        'end_event_img_reset_time': end_event_img_reset_time,
+        'start_event_time': start_event_time,
         "end_event_time" : end_event_time,
+        'end_trial_time' : end_trial_time,
+        'start_event_timept': start_event_timept,
+        'end_event_timept': end_event_timept,
         'time' : exp.tlist,
         'x' : exp.xlist,
         'y': exp.ylist
@@ -299,7 +314,7 @@ function init_explogic() {
   exp.order = exp.order.concat(["novel", "novel", "novel", "novel"]);
 
   //create experiment order and make slides
-  exp.structure=["i0",  "training_and_calibration", "sound_test", "single_trial", "subj_info", "thanks"];
+  exp.structure=["i0", "training_and_calibration", "sound_test", "instructions", "single_trial", "subj_info", "thanks"];
   exp.slides = make_slides(exp);
   exp.nQs = utils.get_exp_length();
 
@@ -318,7 +333,8 @@ function init_explogic() {
   // EXPERIMENT FUNCTIONS
   exp.run_trial = function(){
 
-    // SET UP VIDEOS
+    // SET UP IMAGES
+    $("#click_img_txt").hide();
     webgazer.resume()
     if (document.getElementById("img_table") != null){
       $("#img_table tr").remove();
@@ -341,6 +357,18 @@ function init_explogic() {
       img1.width = IMG_WIDTH;
       img1.style.marginRight = (cellwidth - IMG_WIDTH)  + 'px';
 
+      // click function for last trial
+      img1.onclick = function(){
+        if (exp.trial_no == 12){
+          var id = $(this).attr("id");
+          exp.clicked = id;
+          $(this).css("border","2px solid red");
+          $("#click_img_text").hide();
+          $("#continue_button").show();
+
+        }
+      }
+
     // second image
     var img2_td = document.createElement('td');
       img2_td.style.width = cellwidth+'px';
@@ -357,6 +385,17 @@ function init_explogic() {
       img2_td.appendChild(img2);
       tr.appendChild(img1_td);
       tr.appendChild(img2_td);
+
+      // click function for last trial
+      img2.onclick = function(){
+        if (exp.trial_no == 12){
+          var id = $(this).attr("id");
+          exp.clicked = id;
+          $(this).css("border","2px solid red");
+          $("#click_img_text").hide();
+          $("#continue_button").show();
+        }
+      }
       
  
     table.setAttribute('id', 'img_table');
@@ -443,7 +482,8 @@ function init_explogic() {
       setTimeout(function(){
         img1.style.visibility = 'visible';
         img2.style.visibility = 'visible';
-        end_event_img_reset_time = Date.now() - _s.trial_start;
+        start_event_time = Date.now() - _s.trial_start;
+        start_event_timept = Date.now();
         end_event();
         audio_event.play();
         }, 1000)
@@ -452,7 +492,14 @@ function init_explogic() {
     end_event = function(){
       setTimeout(function(){
         end_event_time = Date.now() - _s.trial_start;
-        $("#continue_button").show();
+        end_event_timept = Date.now();
+        webgazer.pause();
+        if (exp.trial_no == 12) {
+          $("#click_img_text").show();
+        }
+        else {
+          $("#continue_button").show();
+        }
         }, 8000)
     }
 

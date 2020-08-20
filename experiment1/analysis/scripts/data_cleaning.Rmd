@@ -1,0 +1,162 @@
+---
+title: "Experiment 1 data cleaning"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(readr)
+```
+
+## Loading data
+
+We first load the individual participant files and then combine them into one dataset.
+```{r}
+dir <- "../data/raw_data"
+participant_files <- list.files(path = dir, full.names = TRUE)
+et_data <- plyr::ldply(participant_files, function(x) {
+  read_csv(x)
+})
+et_data <- et_data %>% mutate_if(is.character, factor)
+```
+
+## Cleaning data
+
+We take out data points that were simply used to test the experiment (and therefore had the experimenter's name in the comments).
+```{r}
+et_data <- et_data %>% filter(!grepl("Elizabeth",comments))
+```
+
+We also remove participants who do not list English as their native language.
+```{r}
+unique(et_data$language)
+et_data <- et_data %>% filter(grepl("english", 
+                                    ignore.case=TRUE,language))
+```
+
+We also take out participants who did not complete at least 50% of trials.
+```{r}
+# add a column with number of trials completed
+et_data <- et_data %>% group_by(participant_id) %>% 
+  mutate(trials_completed = length(unique(trial_no)))
+
+# filter out participants who have completed <5 trials
+et_data <- et_data %>% filter(trials_completed >= 5)
+```
+
+We remove trials with a window width of less than 1280 pixels.
+```{r}
+et_data <- et_data %>% filter(screenW >= 1280)
+```
+
+
+## Time of the trial
+
+We need to add a new column that gives the time since the beginning of the trial.
+```{r}
+# make a column with the datapoint number during the trial
+et_data <- et_data %>% group_by(participant_id, trial_no) %>%
+  mutate(data_point_no = seq_along(time))
+
+# make a column with starting time of the trial
+et_data <- et_data %>% group_by(participant_id, trial_no) %>%
+  mutate(starting_time = time[data_point_no == 1])
+
+# make a column with the time since the beginning of the trial
+et_data$time <- as.numeric(et_data$time)
+et_data <- et_data %>% mutate(time_since_trial_start = time - starting_time)
+```
+
+
+We also add a column stating what part of the video is playing at that data point.
+```{r}
+et_data$trial_stage <- "left_preview"
+et_data$trial_stage[et_data$time_since_trial_start > et_data$end_pre1_time] <- "right_preview"
+et_data$trial_stage[et_data$time_since_trial_start > et_data$end_pre2_time] <- "img_reset"
+et_data$trial_stage[et_data$time_since_trial_start > et_data$end_img_reset_time] <- "contrast"
+et_data$trial_stage[et_data$time_since_trial_start > et_data$end_contrast_time] <- "img_reset_event"
+et_data$trial_stage[et_data$time_since_trial_start > et_data$start_event_time] <- "event"
+```
+
+
+## Adding AOIs
+
+We also add the AOIs for this experiment. Note that this is based on the size of the specific images we used (400 pixels wide and 288 pixels high). Since the Webgazer measures are messy, we add 150 pixels of padding around each edge of the video.
+
+First, add the coordinates for the video on the left (image 1).
+```{r}
+margin_left <- (et_data$screenW - 1280)/2
+margin_top <- (et_data$screenH - 288)/2
+
+et_data$img1_left_x <- margin_left - 150
+et_data$img1_right_x <- margin_left + 400 + 150
+et_data$top_y <- margin_top - 150
+et_data$bottom_y <- margin_top + 288 + 150
+```
+
+Then, add the coordinates for the image on the right (image 2). The y coordinates for the image on the right are the same as the image on the left.
+```{r}
+et_data$img2_left_x <- margin_left + 880 - 150
+et_data$img2_right_x <- margin_left + 1280 + 150
+```
+
+We add a column that is TRUE if the participant was looking at the image on the left.
+```{r}
+et_data$look_left_img <- FALSE
+et_data$look_left_img[(et_data$img1_left_x <= et_data$x) & (et_data$x <= et_data$img1_right_x) & (et_data$top_y <= et_data$y) & (et_data$y <= et_data$bottom_y)] <- TRUE
+```
+
+We add a column that is TRUE if the participant was looking at the video on the right.
+```{r}
+et_data$look_right_img <- FALSE
+et_data$look_right_img[(et_data$img2_left_x <= et_data$x) & (et_data$x <= et_data$img2_right_x) & (et_data$top_y <= et_data$y) & (et_data$y <= et_data$bottom_y)] <- TRUE
+```
+
+
+## Looking at action or object image
+
+Create lists of the action and object images.
+```{r}
+action_imgs <- c("cry", "eat", "wave", "draw", "sleep", "read", "drink", "sit", "dax_verb", "nup_verb", "smick_verb", "vash_verb", "fep_verb")
+object_imgs <- c("dog", "doll", "horse", "shoe", "ball", "box", "book", "hat", "dax_noun", "nup_noun", "smick_noun", "vash_noun", "fep_noun")
+```
+
+We add a column that states whether the action video was on the left or the right.
+```{r}
+et_data$action_img <- "right"
+et_data$action_img[et_data$left_img %in% action_imgs] <- "left"
+```
+
+We also add a column that is TRUE if the participant was looking at the action image.
+```{r}
+et_data$look_action_img <- FALSE
+et_data$look_action_img[et_data$look_left_img == TRUE & et_data$action_img == "left"] <- TRUE
+et_data$look_action_img[et_data$look_right_img == TRUE & et_data$action_img == "right"] <- TRUE
+```
+
+We also add a column that is TRUE if the participant was looking at the noun image. (Since we discount looks that are not to either image, this is not really needed for this analysis, but would be useful if we did not discount those looks.)
+```{r}
+et_data$look_object_img <- FALSE
+et_data$look_object_img[et_data$look_left_img == TRUE & et_data$action_img == "right"] <- TRUE
+et_data$look_object_img[et_data$look_right_img == TRUE & et_data$action_img == "left"] <- TRUE
+```
+
+
+## Previous look
+
+We add columns that indicate whether the participant was looking at the action image or the noun video on the previous image.
+```{r}
+et_data <- et_data %>% group_by(participant_id, trial_no) %>%
+  mutate(previous_look_action_img = lag(look_action_img),
+         previous_look_object_img = lag(look_object_img))
+```
+
+
+## Write the data to a .csv file
+
+Now the data is ready for visualization and analysis. We write it to a .csv file. Note that this is an extremely large file, so it is stored in a .zip file on GitHub. 
+```{r}
+write.csv(et_data, "../data/clean_data.csv")
+```
+

@@ -144,3 +144,30 @@ ggsave("../graphs/participant_prop_action.pdf", width = 8, height = 5)
 ggsave("../graphs/participant_prop_action.jpg", width = 8, height = 5)
 ```
 
+## Overall proportion of selecting action
+
+Calculate the overall proportion of trials on which the action was selected, for familiar and novel words.
+```{r}
+mean(audio_df$action_selected)
+
+audio_avg <- audio_df %>% group_by(img_type) %>% 
+  summarise(m = mean(action_selected),
+            CI.low = ci.low(action_selected),
+            CI.high = ci.high(action_selected)) %>%
+  mutate(YMin = m - CI.low, 
+         YMax = m + CI.high)
+```
+
+Graph the overall proportions.
+```{r}
+ggplot(img_avg, aes(x = img_type, y = m, 
+                        fill = img_type)) +
+  geom_bar(stat = "identity") +
+  xlab("trial type") +
+  ylab("proportion who selected action image") +
+  geom_errorbar(aes(ymin = m-CI.low, 
+                    ymax = m+CI.high), width = .2) +
+  scale_fill_manual(name = "trial type", values = c("#eb4731", "#4e8df2")) +
+  ggtitle("Proportion of trials with action image selected: Version 2")
+ggsave("../graphs/overall_prop_action_v2.pdf", width = 5, height = 5)
+```

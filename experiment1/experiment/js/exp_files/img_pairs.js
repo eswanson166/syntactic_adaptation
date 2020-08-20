@@ -10,7 +10,7 @@ var fam_img_pairs = [
 ]
 
 var nov_img_pairs = [
-{"item": "pair9", "noun": "fep_noun", "verb": "fep_verb"},
+{"item": "pair9", "noun": "dax_noun", "verb": "dax_verb"},
 {"item": "pair10", "noun": "nup_noun", "verb": "nup_verb"},
 {"item": "pair11", "noun": "smick_noun", "verb": "smick_verb"},
 {"item": "pair12", "noun": "vash_noun", "verb": "vash_verb"}

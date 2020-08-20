@@ -204,7 +204,7 @@ function init_explogic() {
         exp.endPreview = true
         exp.endPreviewTime = Date.now(); }, 2000);
 
-    // create table with img elements on L and R side. show these for 2 seconds (as a 'preview') and then show the Continue button to play audio
+    // create table with img elements on L and R side.
     for (i = 0; i < NUM_COLS; i++) {
       var img_td = document.createElement('td');
       img_td.style.width = cellwidth+'px';

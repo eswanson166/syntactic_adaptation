@@ -28,8 +28,8 @@ $file_handle = fopen('results/participant_codes.txt', 'a');
 fwrite($file_handle, $participant_id.',');
 fclose($file_handle);
 
-echo("<h2><b>Thanks for participating!</b> <p>Please return to: </p> <a href='https://app.prolific.co/submissions/complete?cc=812DF77C'>Prolific</a></h2>")
+echo("<h2><b>Thanks for participating!</b> <p>Please return to: </p> <a href='https://app.prolific.co/submissions/complete?cc=799F9C0F'>Prolific</a></h2>")
 
 
-// header( 'https://stanford.edu/~elizswan/cgi-bin/audio_norm/results' );   
+// header( 'https://stanford.edu/~elizswan/cgi-bin/exp1_SA/results' );   
 ?>

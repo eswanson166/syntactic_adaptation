@@ -7,7 +7,7 @@ var audio_names = {
 "pair6": {"noun": "box", "verb": "read", "noun_filler": "box_filler", "verb_filler": "read_filler"},
 "pair7": {"noun": "book", "verb": "drink", "noun_filler": "book_filler", "verb_filler": "drink_filler"},
 "pair8": {"noun": "hat", "verb": "sit", "noun_filler": "hat_filler", "verb_filler": "sit_filler"},
-"pair9": {"novel": "fep"},
+"pair9": {"novel": "dax"},
 "pair10": {"novel": "nup"},
 "pair11": {"novel": "smick"},
 "pair12": {"novel": "vash"}
