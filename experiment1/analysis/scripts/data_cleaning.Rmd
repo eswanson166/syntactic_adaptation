@@ -122,7 +122,7 @@ action_imgs <- c("cry", "eat", "wave", "draw", "sleep", "read", "drink", "sit", 
 object_imgs <- c("dog", "doll", "horse", "shoe", "ball", "box", "book", "hat", "dax_noun", "nup_noun", "smick_noun", "vash_noun", "fep_noun")
 ```
 
-We add a column that states whether the action video was on the left or the right.
+We add a column that states whether the action image was on the left or the right.
 ```{r}
 et_data$action_img <- "right"
 et_data$action_img[et_data$left_img %in% action_imgs] <- "left"
