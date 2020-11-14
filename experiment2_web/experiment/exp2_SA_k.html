@@ -1,0 +1,379 @@
+
+<html>
+<head>
+  <META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+    <title> Picture study </title>
+
+
+    <!--  general js utilities -->
+    <script src="js/general_utils/jquery-1.11.1.min.js "></script>
+    <script src="js/general_utils/jquery-ui.min.js"></script>
+    <script src="js/general_utils/underscore-min.js"></script>
+    <script src="js/general_utils/sweetalert.min.js"></script>
+    <script src="js/general_utils/bootstrap.min.js"></script>
+
+    <!-- experiment logic, and experiment utilities -->
+    <script src="js/exp_run/exp-V2.js"></script>
+    <script src="js/exp_run/stream-V2.js"></script>
+    <script src="js/exp_run/mmturkey.js"></script>
+    <script src="js/exp_run/browserCheck.js"></script>
+    <script src="js/exp_run/utils.js"></script>
+    <script src="js/exp_run/preload.js"></script>
+    <script src="js/exp_run/uniqueturker.js"></script>
+
+    <!-- main experiment logic: -->
+    <script src="js/exp_run/exp2_SA_k.js"></script>
+
+    <!--CSS-->
+    <link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+    <link href="css/style.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- webgazer tools -->
+    <script src="js/webgazer_tools/resize_canvas.js"></script>
+    <script src="js/webgazer_tools/calibration_functions.js"></script>
+    <script src="js/webgazer_tools/main.js"></script>
+    <script src="js/webgazer_tools/precision_calculation.js"></script>
+    <script src="js/webgazer_tools/precision_store_points.js"></script>
+    <script src="js/webgazer_tools/params.mjs"></script>
+    <script src="js/webgazer_tools/webgazer_start_stop.js"></script>
+
+    <!-- experiment files for stimuli-->
+    <script src="js/exp_files/img_pairs.js"></script> <!-- image pairs -->
+    <script src="js/exp_files/audio_names.js"></script> <!-- audio recording names -->
+    
+
+    <!-- INSERT UNIQUE TURKER ID HERE -->
+    <script type="text/JavaScript">
+    $(document).ready(function(){
+      var ut_id = "[INSERT YOUR UNIQUE TURKER ID HERE]"
+      if (UTWorkerLimitReached(ut_id)) {
+        $(".slide").hide();
+        $("body").html("You have already completed the maximum number of HITs allowed by this requester. Please click 'Return HIT' to avoid any impact on your approval rating.");
+      }});
+    </script>
+
+
+  </head>
+
+  <body onload="init_explogic();">
+    <script src="js/webgazer_tools/webgazer.js" type="text/javascript"></script>
+
+    <div class="progress" style="float:right">
+                  <span>Progress:</span>
+                    <div class="bar-wrapper">
+                      <div class="bar" width="0%">
+                    </div>
+                  </div>
+                </div>
+
+    <noscript>This task requires JavaScript.</noscript>
+    <div class="slide" id="i0" >
+      <div class="text-center">
+        <br>
+        <br>
+        <!--img src="stanford.png" alt="Stanford University"-->
+        <img src="kids.jpeg" id="kids_photo">
+        <br>
+        <br>
+        <p id="study_title">
+          <b> Language game </b></p>
+
+        <!-- <br> -->
+
+        <div class="card bg-light mb-3">
+          <div class="card-body">
+            <p class="card-text">Hi, parents! In this game, your child will see pairs of pictures described by a narrator.
+              <br> Since this game is made for children, some of the phrases may seem strange.</p>
+            </div>
+          </div>
+
+
+
+          <div class="card bg-light mb-3" >
+            <div class="card-body">
+              <p class="card-text">
+                While your child plays the game, we will measure where their eyes are looking on the screen. We are interested in how they will use what they know about a speaker to learn new words later on.
+                <br>
+                We will NOT record images of your child's face at any point: we will only record the coordinates of their eye movements. <br>
+              </div>
+            </div>
+
+            <div class="card border-danger mb-3" >
+            <div class="card-body text-danger">
+              <p class="card-text">
+                Please try not to help your child as they play. There are no right or wrong answers!
+                <br>
+                Your child is free to stop playing at any time.</p>
+              </div>
+            </div>
+
+            <div class="card border-success mb-3">
+              <div class="card-body">
+                <h5 class="card-title"> Browser Width</h5>
+                <p class="card-text"> Your browser window must be at least 1280 pixels wide.
+                  <br>
+                  Please make sure your browser is maximized throughout the game.
+                  <br>
+                </p>
+                  <!--b> Your current browser width is: <span id="dimensions"></span></b>
+                  <script>
+                  $(window).resize(function() {
+                    $("#dimensions").html($(window).width());
+                  }).resize(); </script-->
+                </div>
+              </div>
+
+              <div class="card border-success mb-3">
+                <div class="card-body">
+                  <h5 class="card-title">Sound</h5>
+                  <p class="card-text">Make sure that your sound is turned on so your child can hear the words!
+                  </p>
+                </div>
+              </div>
+
+
+              <!--div class="card border-success mb-3">
+                <div class="card-body">
+                  <h5 class="card-title"> Browser version </h5>
+
+                  <p class="card-text">You must be using one of the following browser versions:
+                    <ul>
+                      <p class="text-left">
+                        <li> <b> Google Chrome (version 53 or newer) - (Recommended browser) </b> </li>
+                        <li> Microsoft Edge (version 12 or newer) </li>
+                        <li> Mozilla Firefox (version 42 or newer) </li>
+                        <li> Opera (version 40 or newer) </li>
+                        <li> Safari (version 11 or newer) </li>
+                      </p>
+                    </ul>
+                  </p>
+                </div>
+              </div-->
+
+
+              <!--div class="card border-success mb-3">
+                <div class="card-body">
+                  <h5 class="card-title"> Device and Lighting </h5>
+                  <p class="card-text">
+                    <ul>
+                      <li> You must be using a desktop or laptop with a web camera - you cannot use a tablet or cell phone </li>
+                      <li> Your device must be placed on a hard surface (e.g. table or desk), with the camera at your eye level </li>
+                      <li> You must be in a brightly lit room, with your face fully illuminated  </li>
+                      <li> You must stay in the same position and keep your head still throughout the calibration phase and task (around 7.5 mins)</li>
+                      <li> You must keep your browser maximized throughout the task </li>
+                      <li> If you can read the screen comfortably without glasses, please complete the task without them </li>
+                    </ul>
+                  </p>
+                </div>
+              </div-->
+
+              <div class="card border-success mb-3">
+                <div class="card-body">
+                  <h5 class="card-title"> Calibration Phase </h5>
+                  <p class="card-text">
+                    Before starting the game, we will do a brief calibration to make sure the camera can pick up your child's eyes. We will ask you to help your child click on three images to calibrate the camera.
+                      <br>
+                    </p>
+                  </div>
+                </div>
+
+                Please only click <b> Start </b> if you agree to all the above.
+
+                <br>
+                <br>
+
+                <p id="windowsize_err"><font color="red"> Your browser window must be at least 1280 pixels wide. Please maximize it. If you cannot maximize it to at least 1280 pixels wide, please return the task. </font></p>
+                <button id="start_button" type="button">Start</button> <br><br>
+
+                <p id="legal"> <b>LEGAL INFORMATION:</b>
+                  By answering the following questions, you and your child are participating in a study being conducted by the Stanford Department of Linguistics. If you have questions about this research, please contact <b>Elizabeth Swanson</b> at <a href="mailto:elizswan@stanford.edu">elizswan@stanford.edu</a>. You must be at least 18 years old to consent to having your child participate. Your participation in this research is voluntary. You or your child may decline to answer any or all of the following questions. You and your child may decline further participation, at any time, without adverse consequences. Your anonymity is assured; the researchers who have requested your participation will not receive any personal information about you.
+                  <br>
+                  If you agree to participate, please proceed to the study tasks. </p>
+                </div>
+              </div>
+
+
+              <div class="slide"  id="training_and_calibration">
+                <!-- <p> CALIBRATION INSTRUCTIONS </p> -->
+                <canvas id="plotting_canvas" width="1" height="1" style="cursor:crosshair;"></canvas>
+
+                <!-- NAVIGATION BAR -->
+                <nav id="webgazerNavbar" class="navbar navbar-nav navbar-fixed-top">
+                  <div class="container-fluid">
+                    <div class="navbar-header">
+                      <audio id="calibration_aud" controls src='static/instructions/calibration3.mp3' hidden> </audio>
+                      <button id="start_camera" onclick="_s.start_camera()">Start Camera</button>
+                      <button id="start_calibration" onclick="Restart()"> Calibrate</button>
+                      <!--button id="restart_calibration" onclick="Restart()">recalibrate</button--> <!--hide until done once -->
+                      <button id = 'begin_task' onclick="_s.finish_calibration_start_task()"> Begin Game</button>
+                      <button id = 'helpbutton' onclick="helpModalShow()"> Help </button>
+
+                      <a class id="Accuracy"> </a>
+                    </div>
+                  </div>
+                </nav>
+
+
+                <!-- Calibration points -->
+                <div class="calibrationDiv">
+                  <img src="dog.png" class="Calibration_img" id="Img1">
+                  <img src="dog2.jpeg" class="Calibration_img" id="Img2">
+                  <img src="dog3.jpeg" class="Calibration_img" id="Img3">
+                  <input type="button" class="Calibration" id="Pt1"></input>
+                  <input type="button" class="Calibration" id="Pt2"></input>
+                  <input type="button" class="Calibration" id="Pt3"></input>
+                  <!--input type="button" class="Calibration" id="Pt4"></input>
+                  <input type="button" class="Calibration" id="Pt5"></input>
+                  <input type="button" class="Calibration" id="Pt6"></input>
+                  <input type="button" class="Calibration" id="Pt7"></input>
+                  <input type="button" class="Calibration" id="Pt8"></input>
+                  <input type="button" class="Calibration" id="Pt9"></input-->
+                </div>
+
+
+                <!-- Modal -->
+                <div id="helpModal" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="text-center">
+                        <br>
+                      <img src="kids.jpeg" id="kids_photo2" width="289px" height="175px">
+                      <br>
+                    </div>
+                      <div class="modal-body" id="modal-body" style="display:none;">
+                        <div class="text-center" id="calibration_instructions" style="display: none;">
+                        Audio instructions:
+                        <br>
+                        <br>
+                        <audio id="calibration2" controls src='static/instructions/calibration3.mp3'></audio>
+                      </div>
+                        <img src="helpmodalimg.png" class="img-responsive" id = "helpModalImg">
+
+                      </div>
+                      <div class="modal-footer">
+                        <button id="closeBtn" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="start_camera" data-dismiss="modal" onclick="_s.start_camera()">Start Camera</button>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+
+
+              <div class="slide" id="sound_test">
+              <br>
+              <br>
+              <div class="text-center">
+                  Parents, press the play button to make sure you can hear the audio clip, and adjust the volume as necessary.
+                  <br>
+                  <br>
+                  <audio id="soundtest" controls src='soundtest.mp3'> </audio>
+                  <br>
+                  <br>
+                  <button id = "soundtest_OK" onclick="_s.soundtest_OK()"> Parents, click here if you can hear the audio clearly! </button> </p>
+                </div>
+              </div>
+
+
+              <div class="slide" id="instructions">
+              <br>
+              <br>
+              <h2 align="center">About the game</h2>
+              <p class="text-center" id="intro_text">In this game, my friend is going to talk about some pictures. You might not know all the words she says, but try to look at the picture that she talks about. You can point to the picture if you want! 
+                <br>
+                Once you finish the game, we’ll get to sing a song with Elmo!
+              <br>
+              <br>
+              <!--button id="start_task_button" type="button" class="btn btn-default" onclick="_s.start_task()">Start game</button-->
+              </p>
+              </div> 
+
+
+              <div class="slide" id="single_trial">
+                <br>
+                <br>
+                <p class="text-center" id="click_img_text" style="color:red; display: none;">Please click on the image you think the narrator was talking about.
+
+                  <!--audio id="aud" controls autoplay> </audio-->
+                </p>
+                <div class ="imgwrapper" id="imgwrapper">
+                </div>
+                <br>
+                <div class="text-center">
+                  <button id = "continue_button"  style="width:100px; height:30px"> Continue </button> </p>
+                  <!--button id = "next_button" onclick="_s.next_trial()" style="width:50px; height:30px"> Next </button> </p-->
+                  <!--p class="err"><font color="red">Please select a person </font></p-->
+                </div>
+              </div>
+
+
+              <div class="slide" id="elmo">
+                <p class="text-center">
+                <video id = "elmo_moves" width="1200px" controls>
+                  <source src="elmo-moves.mp4" type="video/mp4">
+                  </video>
+                </p>
+              </div>
+
+
+
+              <div class="slide"  id="subj_info">
+                <div class="text-center">
+                  <br>
+                  <br>
+                  <p class="subj_info_title">Parents, please answer the questions below!</p>
+                  <br>
+                  <div class="subj_info_title">About your child</div>
+                </div>
+
+                <div class="text-left" style="margin-left:50px">
+                  <p>First Language(s) (the language(s) you speak at home: <input type="text" id="language"/> </p>
+
+                  <p>Gender:
+                    <select id="gender">
+                      <label><option value=""/></label>
+                      <label><option value="Male"/>Male</label>
+                      <label><option value="Female"/>Female</label>
+                      <label><option value="Other"/>Other</label>
+                    </select>
+                  </p>
+
+                  <p>Age: 
+                    <br>
+                    Years:
+                    <input type="text" id="years"/>
+                    Months:
+                    <input type="text" id="months"/>
+                  </p>
+
+
+                </div>
+
+                <div class = "text-center">
+                  <div class="subj_info_title">About the game </div> </div>
+
+                  <div class="text-left" style="margin-left:50px">
+
+                  <p>(Optional) Do you have any comments about the game (any problems, etc.) ? </p>
+                  <textarea id="comments" rows="3" cols="50"></textarea>
+                  <br>
+                </div>
+                <div class="text-center">
+                  <p class="err_part2" style="display: none;"><font color="red">Please complete all non-optional questions! </font></p>
+                  <button onclick="_s.submit()"> Finish </button>
+                </div>
+              </div>
+
+
+              <div id="thanks" class="slide js" >
+                <br>
+                <p  class="text-center">Thanks for your time! One moment please...</p>
+              </div>
+
+            </body>
+            </html>

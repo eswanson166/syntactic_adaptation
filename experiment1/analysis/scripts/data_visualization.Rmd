@@ -8,9 +8,7 @@ output: word_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 source("helpers.R")
-library(dplyr)
 library(tidyverse)
-library(ggplot2)
 library(lme4)
 library(wesanderson)
 
@@ -32,123 +30,7 @@ We want to examine the test trials, specifically during the event stage when par
 test_data <- et_data %>% filter(target_audio_type == "novel",
                                 trial_stage == "event",
                                 look_left_img == TRUE | 
-                                  look_right_img == TRUE,
-                                time_since_trial_start >= start_event_time &  time_since_trial_start <= 26300)
-```
-
-Add a column for proportion of looks to the action image on each test trial, and a column with each participant's mean proportion of looks across the four test trials (which will be useful for visualization). We will only examine proportion of looks to the action image, since the proportion of looks to the object image is simply 1 - (proportion of looks to the action image).
-```{r}
-test_data <- test_data %>% group_by(participant_id, trial_no) %>% mutate(proportion_look_action = mean(look_action_img))
-
-test_data <- test_data %>% group_by(participant_id) %>%
-  mutate(subj_prop_look_action = mean(unique(proportion_look_action)))
-```
-
-We also do this for the left and right videos (which we will use for sanity checks).
-```{r}
-test_data <- test_data %>% group_by(participant_id, trial_no) %>%
-  mutate(prop_look_left = mean(look_left_img),
-         prop_look_right = mean(look_right_img))
-```
-
-
-### Proportion of looks to the left and right videos
-
-Before we go on to the main analysis, we want to verify that there is not a bias toward looking to the left or right videos.
-
-Calculate confidence intervals for the mean proportion of looks to the left and right videos.
-```{r}
-test_left_right <- test_data %>% group_by(participant_id) %>%
-  summarise(left = mean(prop_look_left),
-            right = mean(prop_look_right)) %>%
-  gather(screen_side, mean_prop_looks, left:right, 
-         factor_key = TRUE) %>%
-  group_by(screen_side) %>% 
-  summarise(grd_m_prop_looks = mean(mean_prop_looks),
-            CI.low = ci.low(mean_prop_looks),
-            CI.high = ci.high(mean_prop_looks)) %>%
-  mutate(YMin = grd_m_prop_looks - CI.low, 
-         YMax = grd_m_prop_looks + CI.high)
-```
-
-Graph the mean proportion of looks to the left and right videos.
-```{r}
-ggplot(test_left_right) +
-  aes(x = screen_side, y = grd_m_prop_looks, fill = screen_side) +
-  geom_bar(stat = "identity") +
-  ggtitle("Test trials: Mean proportion of looks to left and right videos") +
-  xlab("Screen side") +
-  ylab("Proportion of looks") +
-  geom_errorbar(aes(ymin = YMin, ymax = YMax), width = .25) +
-  scale_fill_manual(name="Screen side",
-                    values=wes_palette("Royal1")[1:2])
-ggsave(file="../graphs/prop_looks_left_right.pdf",width=5.5,height=4)
-```
-
-There is not a significant difference in the proportion of looks to the left and right videos. This is what we would expect.
-
-### Proportion of looks based on order
-
-We had two possible orders that determined whether participants saw the action video or the object video first on each trial. Note that each order was counterbalanced for which video appeared first and which side of the screen it appeared on, so we do not expect this to affect the proportion of looks.
-
-Calculate confidence intervals for the mean proportion of looks to the action video based on participant order.
-```{r}
-order_sum <- test_data %>% group_by(order) %>% 
-summarise(m_prop_looks_action = mean(unique(subj_prop_look_action)),
-          CI.Low = ci.low(unique(subj_prop_look_action)),
-          CI.High = ci.high(unique(subj_prop_look_action))) %>%
-  mutate(YMin = m_prop_looks_action - CI.Low, 
-         YMax = m_prop_looks_action + CI.High)
-```
-
-Graph these confidence intervals.
-```{r}
-ggplot(order_sum) +
-  aes(x = order, y = m_prop_looks_action, fill = order) +
-  geom_bar(stat = "identity") +
-  scale_fill_manual(name = "Order",values = wes_palette("Royal1")[1:2],
-                    labels = c("order 1", "order 2")) +
-  ggtitle("Test trials: Mean proportion of looks to action video based on order") +
-  xlab("Order") +
-  ylab("Mean proportion of looks") +
-  geom_point(data = test_data, aes(x = order, y = subj_prop_look_action),
-             shape = 21, size = .3) +
-  geom_errorbar(data = order_sum, 
-                aes(ymin = YMin, ymax = YMax), width = .25)
-ggsave(file="../graphs/prop_looks_order.pdf",width=6,height=4)
-```
-
-There is no difference in the proportion of looks based on which order participants were in. This is what we would expect.
-
-### Proportion of looks to the action video: Test trials
-
-This is our main measure of interest: the proportion of looks to the action video on test trials. We expect participants in the verb condition to have a higher proportion of looks to the action video.
-
-Calculate confidence intervals for the mean proportion of looks to the action video by condition.
-```{r}
-test_action_sum <- test_data %>% group_by(condition) %>% 
-summarise(m_prop_looks_action = mean(unique(subj_prop_look_action)),
-          sd = sd(unique(subj_prop_look_action)),
-          CI.Low = ci.low(unique(subj_prop_look_action)),
-          CI.High = ci.high(unique(subj_prop_look_action)), n = length(unique(participant_id))) %>%
-  mutate(YMin = m_prop_looks_action - CI.Low, 
-         YMax = m_prop_looks_action + CI.High)
-```
-
-Then, we can make a plot with the confidence intervals as well as individual dots to represent each participant's mean proportion of looks to the action video.
-```{r}
-ggplot(test_action_sum) +
-  aes(x = condition, y = m_prop_looks_action, fill = condition) +
-  geom_bar(stat = "identity") +
-  scale_fill_manual(name = "Condition",values = c(wes_palette("Royal1")[1], wes_palette("Royal1")[2], "dark blue")) +
-  ggtitle("Test trials: Participants' mean proportion of looks to action image") +
-  xlab("Condition") +
-  ylab("Mean proportion of looks") +
-  geom_point(data = test_data, aes(x = condition, y = subj_prop_look_action),
-             shape = 21, size = .3) +
-  geom_errorbar(data = test_action_sum, 
-                aes(ymin = YMin, ymax = YMax), width = .25)
-ggsave(file="../graphs/prop_looks_test.pdf",width=6,height=4)
+                                  look_right_img == TRUE)
 ```
 
 Also, add trial number:
@@ -163,13 +45,140 @@ test_data <- test_data %>% mutate(trial_name = case_when(
 test_data$trial_name <- factor(test_data$trial_name, levels = c("Trial 9", "Trial 10", "Trial 11", "Trial 12"))
 ```
 
+Pull out looks after the first naming event.
+```{r}
+test_data_event <- test_data %>% 
+  filter(time_since_trial_start >= event_naming_end & 
+           time_since_trial_start <= event_naming_end + 9000)
+```
+
+Add a column for proportion of looks to the action image on each test trial, and a column with each participant's mean proportion of looks across the four test trials (which will be useful for visualization). We will only examine proportion of looks to the action image, since the proportion of looks to the object image is simply 1 - (proportion of looks to the action image).
+```{r}
+test_data_event <- test_data_event %>% group_by(participant_id, trial_no) %>% mutate(proportion_look_action = mean(look_action_img))
+
+test_data_collapse <- test_data_event %>% group_by(participant_id, trial_no) %>%
+  filter(row_number() == 1) %>% group_by(participant_id) %>%
+  mutate(subj_prop_look_action = mean(proportion_look_action))
+```
+
+We also do this for the left and right videos (which we will use for sanity checks).
+```{r}
+test_data_event <- test_data_event %>% group_by(participant_id, trial_no) %>%
+  mutate(prop_look_left = mean(look_left_img),
+         prop_look_right = mean(look_right_img))
+```
+
+
+### Proportion of looks to the left and right videos
+
+Before we go on to the main analysis, we want to verify that there is not a bias toward looking to the left or right videos.
+
+Calculate confidence intervals for the mean proportion of looks to the left and right videos.
+```{r}
+test_left_right <- test_data_event %>% group_by(participant_id) %>%
+  summarise(left = mean(prop_look_left),
+            right = mean(prop_look_right)) %>%
+  gather(screen_side, mean_prop_looks, left:right, 
+         factor_key = TRUE) %>%
+  group_by(screen_side) %>% 
+  summarise(grd_m_prop_looks = mean(mean_prop_looks),
+            CI.low = ci.low(mean_prop_looks),
+            CI.high = ci.high(mean_prop_looks)) %>%
+  mutate(YMin = grd_m_prop_looks - CI.low, 
+         YMax = grd_m_prop_looks + CI.high)
+```
+
+Graph the mean proportion of looks to the left and right images.
+```{r}
+ggplot(test_left_right) +
+  aes(x = screen_side, y = grd_m_prop_looks, fill = screen_side) +
+  geom_bar(stat = "identity") +
+  ggtitle("Test trials: Mean proportion of looks to left and right images") +
+  xlab("Screen side") +
+  ylab("Proportion of looks") +
+  geom_errorbar(aes(ymin = YMin, ymax = YMax), width = .25) +
+  scale_fill_manual(name="Screen side",
+                    values=wes_palette("Royal1")[1:2])
+ggsave(file="../graphs/prop_looks_left_right.pdf",width=5.5,height=4)
+```
+
+There is not a significant difference in the proportion of looks to the left and right images. This is what we would expect.
+
+### Proportion of looks based on order
+
+We had two possible orders that determined whether participants saw the action image or the object image first on each trial. Note that each order was counterbalanced for which image appeared first and which side of the screen it appeared on, so we do not expect this to affect the proportion of looks.
+
+Calculate confidence intervals for the mean proportion of looks to the action video based on participant order.
+```{r}
+order_sum <- test_data_event %>% group_by(img_side_order) %>% 
+summarise(m_prop_looks_action = mean(unique(subj_prop_look_action)),
+          CI.Low = ci.low(unique(subj_prop_look_action)),
+          CI.High = ci.high(unique(subj_prop_look_action))) %>%
+  mutate(YMin = m_prop_looks_action - CI.Low, 
+         YMax = m_prop_looks_action + CI.High)
+```
+
+Graph these confidence intervals.
+```{r}
+ggplot(order_sum) +
+  aes(x = img_side_order, y = m_prop_looks_action, fill = img_side_order) +
+  geom_bar(stat = "identity") +
+  scale_fill_manual(name = "Order",values = wes_palette("Royal1")[1:2],
+                    labels = c("order 1", "order 2")) +
+  ggtitle("Test trials: Mean proportion of looks to action image based on order") +
+  xlab("Order") +
+  ylab("Mean proportion of looks") +
+  geom_point(data = test_data, aes(x = img_side_order, y = subj_prop_look_action),
+             shape = 21, size = .3) +
+  geom_errorbar(data = order_sum, 
+                aes(ymin = YMin, ymax = YMax), width = .25)
+ggsave(file="../graphs/prop_looks_order.pdf",width=6,height=4)
+```
+
+
+
+### Proportion of looks to the action video: Test trials
+
+This is our main measure of interest: the proportion of looks to the action video on test trials. We expect participants in the verb condition to have a higher proportion of looks to the action video.
+
+Calculate confidence intervals for the mean proportion of looks to the action image by condition.
+```{r}
+test_action_sum <- test_data_collapse %>% group_by(participant_id) %>% 
+  filter(row_number() == 1) %>% group_by(condition) %>%
+summarise(m_prop_looks_action = mean(subj_prop_look_action),
+          sd = sd(subj_prop_look_action),
+          CI.Low = ci.low(subj_prop_look_action),
+          CI.High = ci.high(subj_prop_look_action), 
+          n = n()) %>%
+  mutate(YMin = m_prop_looks_action - CI.Low, 
+         YMax = m_prop_looks_action + CI.High)
+```
+
+Then, we can make a plot with the confidence intervals as well as individual dots to represent each participant's mean proportion of looks to the action video.
+```{r}
+ggplot(test_action_sum) +
+  aes(x = condition, y = m_prop_looks_action, fill = condition) +
+  geom_bar(stat = "identity") +
+  scale_fill_manual(name = "Condition",values = c(wes_palette("Royal1")[1], wes_palette("Royal1")[2], "dodgerblue3")) +
+  ggtitle("Test trials: Participants' mean proportion of looks to action image") +
+  xlab("Condition") +
+  ylab("Mean proportion of looks") +
+  geom_point(data = test_data_collapse, aes(x = condition, y = subj_prop_look_action),
+             shape = 21, size = .3) +
+  geom_errorbar(data = test_action_sum, 
+                aes(ymin = YMin, ymax = YMax), width = .25)
+ggsave(file="../graphs/prop_looks_test.pdf",width=6,height=4)
+```
+
 Summarize proportion looking by trial number.
 ```{r}
-test_action_sum_trial <- test_data %>% group_by(condition, trial_name) %>% 
-summarise(m_prop_looks_action = mean(unique(proportion_look_action)),
-          sd = sd(unique(proportion_look_action)),
-          CI.Low = ci.low(unique(proportion_look_action)),
-          CI.High = ci.high(unique(proportion_look_action)), n = length(unique(proportion_look_action))) %>%
+test_action_sum_trial <- test_data_collapse %>% 
+  group_by(condition, trial_name) %>% 
+summarise(m_prop_looks_action = mean(proportion_look_action),
+          sd = sd(proportion_look_action),
+          CI.Low = ci.low(proportion_look_action),
+          CI.High = ci.high(proportion_look_action),
+          n = n()) %>%
   mutate(YMin = m_prop_looks_action - CI.Low, 
          YMax = m_prop_looks_action + CI.High)
 ```
@@ -181,7 +190,7 @@ ggplot(test_action_sum_trial) +
   aes(x = condition, y = m_prop_looks_action, fill = condition) +
   geom_bar(stat = "identity") +
    facet_wrap(trial_name ~ .) +
-  scale_fill_manual(name = "Condition",values = c(wes_palette("Royal1")[1], wes_palette("Royal1")[2], "dark blue")) +
+  scale_fill_manual(name = "Condition",values = c(wes_palette("Royal1")[1], wes_palette("Royal1")[2], "dodgerblue3")) +
   ggtitle("Test trials: Participants' mean proportion of looks to action image") +
   xlab("Condition") +
   ylab("Mean proportion of looks") +
@@ -194,11 +203,13 @@ ggsave(file="../graphs/prop_looks_test_trial.pdf",width=6,height=4)
 
 Summarize proportion looking by image pair name.
 ```{r}
-test_action_sum_item <- test_data %>% group_by(condition, img_pair_name) %>% 
-summarise(m_prop_looks_action = mean(unique(proportion_look_action)),
-          sd = sd(unique(proportion_look_action)),
-          CI.Low = ci.low(unique(proportion_look_action)),
-          CI.High = ci.high(unique(proportion_look_action)), n = length(unique(proportion_look_action))) %>%
+test_action_sum_trial <- test_data_collapse %>% 
+  group_by(condition, img_pair_name) %>% 
+summarise(m_prop_looks_action = mean(proportion_look_action),
+          sd = sd(proportion_look_action),
+          CI.Low = ci.low(proportion_look_action),
+          CI.High = ci.high(proportion_look_action),
+          n = n()) %>%
   mutate(YMin = m_prop_looks_action - CI.Low, 
          YMax = m_prop_looks_action + CI.High)
 ```
@@ -210,7 +221,7 @@ ggplot(test_action_sum_item) +
   aes(x = condition, y = m_prop_looks_action, fill = condition) +
   geom_bar(stat = "identity") +
    facet_wrap(img_pair_name ~ .) +
-  scale_fill_manual(name = "Condition",values = c(wes_palette("Royal1")[1], wes_palette("Royal1")[2], "dark blue")) +
+  scale_fill_manual(name = "Condition",values = c(wes_palette("Royal1")[1], wes_palette("Royal1")[2], "dodgerblue3")) +
   ggtitle("Test trials: Participants' mean proportion of looks to action image") +
   xlab("Condition") +
   ylab("Mean proportion of looks") +
@@ -221,90 +232,107 @@ ggplot(test_action_sum_item) +
 ggsave(file="../graphs/prop_looks_test_trial.pdf",width=6,height=4)
 ```
 
+Group the data by accuracy.
+```{r}
+test_data_collapse <- test_data_collapse %>% mutate(accuracy_group = case_when(
+  accuracy < 65 ~ "Low (50-64%)",
+  accuracy >= 65 ~ "High (over 65%)"
+))
+```
+
+Summarize proportion looking by accuracy.
+```{r}
+test_action_sum_acc <- test_data_collapse %>% group_by(participant_id) %>% 
+  filter(row_number() == 1) %>%
+  group_by(condition, accuracy_group) %>% 
+summarise(m_prop_looks_action = mean(subj_prop_look_action),
+          sd = sd(subj_prop_look_action),
+          CI.Low = ci.low(subj_prop_look_action),
+          CI.High = ci.high(subj_prop_look_action), 
+          n = n()) %>%
+  mutate(YMin = m_prop_looks_action - CI.Low, 
+         YMax = m_prop_looks_action + CI.High)
+```
+
+Graph the data by accuracy.
+```{r}
+ggplot(test_action_sum_acc) +
+  aes(x = condition, y = m_prop_looks_action, fill = condition) +
+  geom_bar(stat = "identity") +
+   facet_wrap(accuracy_group ~ .) +
+  scale_fill_manual(name = "Condition",values = c(wes_palette("Royal1")[1], wes_palette("Royal1")[2], "dodgerblue3")) +
+  ggtitle("Test trials: Participants' mean proportion of looks to action image by accuracy group") +
+  xlab("Condition") +
+  ylab("Mean proportion of looks") +
+  geom_point(data = test_data_collapse, aes(x = condition, y = subj_prop_look_action),
+             shape = 21, size = .3) +
+  geom_errorbar(data = test_action_sum_acc, 
+                aes(ymin = YMin, ymax = YMax), width = .25)
+ggsave(file="../graphs/prop_looks_test_acc.pdf",width=8,height=4)
+```
+
+
 Participants in the verb condition are looking significantly more at the action video.
 
 ### Time course
 
-Plot a single participant's time course data:
+Make a new column for time since naming event.
 ```{r}
-test_data$trial_name <- ifelse(test_data$trial_no == 7, "Trial 7",
-                               ifelse(test_data$trial_no == 8, "Trial 8",
-                                      ifelse(test_data$trial_no == 9, "Trial 9", NA)))
-p1 <- test_data %>% filter(participant_id == 143238)
-unique(p1$condition) # they are in the verb condition
-
-# get the proportion of looks on each test trial
-unique(p1$proportion_look_action)
-
-ggplot(p1) +
-  aes(x = time_since_trial_start, y = look_action_video, color = look_action_video) +
-  geom_point() +
-  facet_grid(trial_name ~ .) +
-  ggtitle("One participant's looks to action video on test trials") +
-  xlab("Time since trial start (ms) during event phase") +
-  ylab("Looking to action video") +
-  scale_color_manual(name="Looking to action video", 
-                     values = wes_palette("Royal1")[1:2])
-ggsave(file="../graphs/single_timecourse.pdf",width=7,height=3.5)
-```
-
-This participant has a high proportion of looks to the action video on trials 7 and 9, and a low proportion of looks on trial 8.
-
-Graph all participants' time course data:
-```{r, eval = FALSE}
-# this is not set to run on its own because it produces so many different graphs, but it is useful for data examination
-
-plyr::d_ply(test_data, .var = "participant_id", .fun = function(x) {
-
-    # Generate the desired plot
-    print(ggplot(x) +
-    aes(x = time_since_trial_start, y = look_action_video, 
-        color = look_action_video) +
-    geom_point() +
-    facet_grid(trial_no ~ .))
-
-})
+test_data <- test_data %>% 
+  mutate(time_since_naming = time_since_trial_start - event_naming_end)
 ```
 
 
 Separate the data into timebins.
 ```{r}
-test_data <- test_data %>% mutate(timebin = plyr::round_any(time_since_trial_start, 50))
+test_data_timecourse <- test_data %>% filter(time_since_naming <= 5800) %>%
+  mutate(timebin = plyr::round_any(time_since_naming, 50))
 ```
 
 Plot the timecourse data by trial number.
 ```{r}
-prop_action_timecourse_sum_trial <- test_data %>% group_by(timebin, condition, trial_name) %>% 
+prop_action_timecourse_sum_trial <- test_data_timecourse %>% 
+  group_by(timebin, condition, trial_name) %>% 
   summarise(timebin_prop_action_look = mean(look_action_img))
+```
 
+Make the graph.
+```{r}
 ggplot(prop_action_timecourse_sum_trial) +
   aes(x = timebin, y = timebin_prop_action_look, color = condition) +
-  geom_line() +
+  geom_point(size = .2) +
+  geom_smooth() +
   facet_grid(trial_name ~ .) +
   ggtitle("Proportion of looks to action video on test trials") +
-  xlab("Time since trial start (ms) during event phase") +
+  xlab("Time since end of naming event (ms) during event phase") +
   ylab("Condition") +
   scale_color_manual(name="Condition", values = c(wes_palette("Royal1")[1], wes_palette("Royal1")[2], "dark blue")) +
-  geom_vline(xintercept = 21000) +
-  geom_vline(xintercept = 23500)
-ggsave(file="../graphs/overall_timecourse_trial.pdf",width=8,height=5)
+  geom_hline(yintercept = .5, linetype = "dashed") +
+  geom_vline(xintercept = 0)
+ggsave(file="../graphs/naming_timecourse_trial_smooth.pdf",width=8,height=6)
 ```
 
 Plot the timecourse collapsing by trial number.
 ```{r}
-prop_action_timecourse_sum <- test_data %>% group_by(timebin, condition) %>% 
+prop_action_timecourse_sum <- test_data_timecourse %>% 
+  group_by(timebin, condition) %>% 
   summarise(timebin_prop_action_look = mean(look_action_img))
+```
 
+Make the plot.
+```{r}
 ggplot(prop_action_timecourse_sum) +
   aes(x = timebin, y = timebin_prop_action_look, color = condition) +
-  geom_line() +
+  geom_point() +
+  geom_smooth() +
+  #geom_line() +
   ggtitle("Proportion of looks to action video on test trials") +
-  xlab("Time since trial start (ms) during event phase") +
+  xlab("Time since end of naming event (ms) during event phase") +
   ylab("Condition") +
   scale_color_manual(name="Condition", values = c(wes_palette("Royal1")[1], wes_palette("Royal1")[2], "dark blue")) +
-  geom_vline(xintercept = 21000) +
-  geom_vline(xintercept = 23500)
-ggsave(file="../graphs/overall_timecourse.pdf",width=8,height=5)
+  geom_hline(yintercept = .5, linetype = "dashed") +
+  geom_vline(xintercept = 0)
+ggsave(file="../graphs/naming_timecourse_smooth.pdf",width=8,height=5)
 ```
 
 ## Training trials analysis
@@ -313,28 +341,152 @@ We can analyze the training trial data to confirm that participants are looking 
 
 Select the training trials only (not including the filler trials).
 ```{r}
-train_data <- et_data %>% filter(descriptor_condition == "noun" |
-                                   descriptor_condition == "verb",
-                                  look_left_video == TRUE |
-                                    look_right_video == TRUE)
+train_data <- et_data %>% filter(target_audio_type != "novel",
+                                look_left_img == TRUE | 
+                                  look_right_img == TRUE)
 ```
 
-### Looks to action video during event stage
+Also, add trial number:
+```{r}
+train_data <- train_data %>% mutate(trial_name = case_when(
+  trial_no == 1 ~ "Trial 1",
+  trial_no == 2 ~ "Trial 2",
+  trial_no == 3 ~ "Trial 3",
+  trial_no == 4 ~ "Trial 4",
+  trial_no == 5 ~ "Trial 5",
+  trial_no == 6 ~ "Trial 6",
+  trial_no == 7 ~ "Trial 7",
+  trial_no == 8 ~ "Trial 8"
+))
+
+train_data$trial_name <- factor(train_data$trial_name, levels = c("Trial 1", "Trial 2", "Trial 3", "Trial 4", "Trial 5", "Trial 6", "Trial 7", "Trial 8"))
+```
+
+### Looks to action image during event stage
 
 First, we examine the event stage, which is when participants hear the descriptor. Partipants in the verb condition hear a phrase with a verb, while participants in the noun condition hear a phrase with a noun.
 ```{r}
-train_event <- train_data %>% filter(video_stage == "event")
+train_event_naming <- train_data %>% 
+  filter(trial_stage == "event",
+         time_since_trial_start >= event_naming_end & 
+           time_since_trial_start <= event_naming_end + 9000)
 ```
 
-Add a column for proportion of looks on each training trial.
+Add a column for proportion of looks to the action image on each trial.
 ```{r}
-train_event <- train_event %>% group_by(participant_id, trial_no) %>% mutate(proportion_look_action = mean(look_action_video),
-         proportion_look_object = mean(look_object_video))
+train_event_naming <- train_event_naming %>% 
+  group_by(participant_id, trial_no) %>% 
+  mutate(proportion_look_action = mean(look_action_img))
+
+train_event_collapse <- train_event_naming %>% 
+  group_by(participant_id, trial_no) %>%
+  filter(row_number() == 1) %>% group_by(participant_id, trial_type) %>%
+  mutate(subj_prop_look_action = mean(proportion_look_action))
 ```
 
-Add a column for each participant's mean proportion of looks across the four training trials.
+Calculate confidence intervals for the mean proportion of looks to the action image by condition.
 ```{r}
-train_event <- train_event %>% group_by(participant_id) %>%
+train_action_sum <- train_event_collapse %>% 
+  group_by(participant_id, trial_type) %>% 
+  filter(row_number() == 1) %>% group_by(condition, trial_type) %>%
+summarise(m_prop_looks_action = mean(subj_prop_look_action),
+          sd = sd(subj_prop_look_action),
+          CI.Low = ci.low(subj_prop_look_action),
+          CI.High = ci.high(subj_prop_look_action), 
+          n = n()) %>%
+  mutate(YMin = m_prop_looks_action - CI.Low, 
+         YMax = m_prop_looks_action + CI.High)
+```
+
+Then, we can make a plot with the confidence intervals as well as individual dots to represent each participant's mean proportion of looks to the action video.
+```{r}
+ggplot(train_action_sum) +
+  aes(x = trial_type, y = m_prop_looks_action, fill = condition) +
+  geom_bar(stat = "identity", position = "dodge") +
+  #facet_wrap(condition ~ .) +
+  scale_fill_manual(name = "Condition",values = c(wes_palette("Royal1")[1], wes_palette("Royal1")[2], "dodgerblue3")) +
+  ggtitle("Training trials: Participants' mean proportion of looks to action image") +
+  xlab("Condition") +
+  ylab("Mean proportion of looks") +
+  geom_errorbar(data = train_action_sum, 
+                aes(ymin = YMin, ymax = YMax), position = position_dodge(0.9), width = .25)
+ggsave(file="../graphs/prop_looks_train.pdf",width=6,height=4)
+```
+
+Summarize proportion looking by trial number.
+```{r}
+train_action_sum_trial <- train_data_collapse %>% 
+  group_by(condition, trial_name, trial_type) %>% 
+summarise(m_prop_looks_action = mean(proportion_look_action),
+          sd = sd(proportion_look_action),
+          CI.Low = ci.low(proportion_look_action),
+          CI.High = ci.high(proportion_look_action),
+          n = n()) %>%
+  mutate(YMin = m_prop_looks_action - CI.Low, 
+         YMax = m_prop_looks_action + CI.High)
+```
+
+Graph proportion looking by trial number.
+```{r}
+ggplot(train_action_sum_trial) +
+  aes(x = trial_type, y = m_prop_looks_action, fill = condition) +
+  geom_bar(stat = "identity", position = "dodge") +
+   facet_wrap(trial_name ~ .) +
+  scale_fill_manual(name = "Condition",values = c(wes_palette("Royal1")[1], wes_palette("Royal1")[2], "dark blue", "dark green")) +
+  ggtitle("Test trials: Participants' mean proportion of looks to action image") +
+  xlab("Condition") +
+  ylab("Mean proportion of looks") +
+  geom_point(data = train_data_collapse, aes(x = trial_type, y = proportion_look_action),
+             shape = 21, size = .3) +
+  geom_errorbar(data = train_action_sum_trial, 
+                aes(ymin = YMin, ymax = YMax), width = .25)
+ggsave(file="../graphs/prop_looks_test_trial.pdf",width=6,height=4)
+```
+
+Look at just the first few trials.
+
+Summarize proportion looking by trial number.
+```{r}
+train_action_sum_trial_sm <- train_data_collapse %>% filter(trial_no <= 4) %>%
+  group_by(condition, trial_name, trial_type) %>% 
+summarise(m_prop_looks_action = mean(proportion_look_action),
+          sd = sd(proportion_look_action),
+          CI.Low = ci.low(proportion_look_action),
+          CI.High = ci.high(proportion_look_action),
+          n = n()) %>%
+  mutate(YMin = m_prop_looks_action - CI.Low, 
+         YMax = m_prop_looks_action + CI.High)
+```
+
+Graph proportion looking by trial number.
+```{r}
+ggplot(train_action_sum_trial_sm) +
+  aes(x = trial_type, y = m_prop_looks_action, fill = condition) +
+  geom_bar(stat = "identity", position = "dodge") +
+   facet_wrap(trial_name ~ .) +
+  scale_fill_manual(name = "Condition",values = c(wes_palette("Royal1")[1], wes_palette("Royal1")[2], "dark blue", "dark green")) +
+  ggtitle("Test trials: Participants' mean proportion of looks to action image") +
+  xlab("Condition") +
+  theme(axis.text.x = element_text(angle = 60, hjust = 1)) +
+  ylab("Mean proportion of looks") +
+  #geom_point(data = train_data_collapse[train_data_collapse$trial_no <= 4], aes(x = trial_type, y = proportion_look_action),
+             #shape = 21, size = .3) +
+  geom_errorbar(data = train_action_sum_trial_sm, 
+                aes(ymin = YMin, ymax = YMax), width = .25, position = position_dodge(0.75))
+ggsave(file="../graphs/prop_looks_test_trial.pdf",width=6,height=4)
+```
+
+
+
+
+
+
+
+
+
+Add a column for each participant's mean proportion of looks across the training trials.
+```{r}
+train_event <- train_event %>% group_by(participant_id, trial_no) %>%
   mutate(subj_prop_look_action = mean(unique(proportion_look_action)),
          subj_prop_look_object = mean(unique(proportion_look_object)))
 ```
@@ -541,7 +693,10 @@ clicked_img_sum <- et_data %>% group_by(condition, clicked_img_type) %>%
 
 clicked_img_sum <- clicked_img_sum %>% group_by(condition) %>% mutate(total = sum(n))
 
-clicked_img_sum <- clicked_img_sum %>% mutate(proportion = n/total)
+clicked_img_sum <- clicked_img_sum %>% 
+  mutate(proportion = n/total,
+         CI.Low = proportion + 1.96*sqrt(proportion*(1-proportion)/total),
+         CI.High = proportion - 1.96*sqrt(proportion*(1-proportion)/total))
 ```
 
 Graph the proportion of participants who selected each image type by condition.
@@ -552,7 +707,10 @@ ggplot(clicked_img_sum) +
   scale_fill_manual(name = "Selected image type",values = wes_palette("Royal1")[1:2]) +
   ggtitle("Selected image type on exploratory trial") +
   xlab("Condition") +
-  ylab("Proportion of participants who selected image")
+  ylab("Proportion of participants who selected image") +
+  geom_errorbar(data = clicked_img_sum, 
+                aes(ymin = CI.Low, ymax = CI.High),
+                position = position_dodge(width = .9), width=.25)
 ggsave(file="../graphs/prop_clicked_img.pdf",width=6,height=4)
 ```
 
@@ -567,5 +725,45 @@ prop_action_timecourse_sum_trial <- timecourse_data %>% group_by(timebin, condit
 
 prop_action_timecourse_sum <- timecourse_data %>% group_by(timebin, condition) %>% 
   summarise(timebin_prop_action_look = mean(look_action_img))
+```
+
+
+Compare to French study:
+
+```{r}
+test_action_sum_fr <- test_data_collapse1 %>% group_by(participant_id) %>% 
+  filter(row_number() == 1) %>% group_by(condition) %>%
+summarise(m_prop_looks_action = mean(subj_prop_look_action),
+          sd = sd(subj_prop_look_action),
+          CI.Low = ci.low(subj_prop_look_action),
+          CI.High = ci.high(subj_prop_look_action), 
+          n = n()) %>%
+  mutate(YMin = m_prop_looks_action - CI.Low, 
+         YMax = m_prop_looks_action + CI.High)
+
+test_action_sum_fr$study <- "French"
+test_action_sum$study <- "English"
+
+test_action_combo <- rbind(test_action_sum_fr, test_action_sum)
+test_action_combo$condition <- factor(test_action_combo$condition, levels = c("baseline", "noun", "verb"))
+
+test_action_combo$study <- factor(test_action_combo$study, levels = c("French", "English"))
+```
+
+Then, we can make a plot with the confidence intervals as well as individual dots to represent each participant's mean proportion of looks to the action video.
+```{r}
+ggplot(test_action_combo) +
+  aes(x = condition, y = m_prop_looks_action, fill = condition) +
+  geom_bar(stat = "identity") +
+  facet_grid(study ~ .) +
+  scale_fill_manual(name = "Condition",values = c(wes_palette("Royal1")[1], wes_palette("Royal1")[2], "dodgerblue3")) +
+  ggtitle("French and English studies: Participants' mean proportion of looks to action image") +
+  xlab("Condition") +
+  ylab("Mean proportion of looks") +
+  #geom_point(data = test_data_collapse, aes(x = condition, y = subj_prop_look_action),
+             #shape = 21, size = .3) +
+  geom_errorbar(data = test_action_combo, 
+                aes(ymin = YMin, ymax = YMax), width = .25)
+ggsave(file="../graphs/prop_looks_compare_studies_v.pdf",width=4,height=4)
 ```
 

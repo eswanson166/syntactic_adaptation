@@ -134,7 +134,7 @@ function make_slides(f) {
         end_trial_time = Date.now();
         exp.keep_going = false;
         this.log_responses();
-        console.log(exp.data_trials);
+        //console.log(exp.data_trials);
         _stream.apply(this);
         exp.tlist = [];
         exp.xlist = [];
@@ -152,7 +152,7 @@ function make_slides(f) {
         'target_audio' : audio_event_name,
         'left_img' : img1_name,
         'right_img' : img2_name,
-        'exp.clicked' : exp.clicked,
+        'clicked_img' : exp.clicked,
         "start_time" : _s.trial_start,
         "current_windowW" : window.innerWidth,
         "current_windowH" : window.innerHeight,
@@ -242,9 +242,10 @@ function init_explogic() {
   exp.tlist = []; //TESTING
   exp.xlist = [];
   exp.ylist = [];
-  exp.clicked = null;
+  exp.clicked = "none";
   exp.wrong_soundtests = [];
-  exp.condition = _.sample(["noun", "verb", "baseline"]);
+  //exp.condition = _.sample(["noun", "verb", "baseline"]);
+  exp.condition = "verb";
   exp.img_side_order = _.sample(["img_side_order1", "img_side_order2"]);
   exp.fam_img_pairs = _.shuffle(fam_img_pairs);
   exp.nov_img_pairs = _.shuffle(nov_img_pairs);

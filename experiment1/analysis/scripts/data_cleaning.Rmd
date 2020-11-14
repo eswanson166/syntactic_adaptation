@@ -143,6 +143,57 @@ et_data$look_object_img[et_data$look_right_img == TRUE & et_data$action_img == "
 ```
 
 
+## Start of event phase
+We add a note with the amount of time after which the event phase should start.
+```{r}
+et_data <- et_data %>% mutate(event_naming_interval = case_when(
+  target_audio == "ball" ~ 2828,
+  target_audio == "ball_filler" ~ 3239,
+  target_audio == "book" ~ 3142,
+  target_audio == "book_filler" ~ 3279,
+  target_audio == "box" ~ 3381,
+  target_audio == "box_filler" ~ 3386,
+  target_audio == "cry" ~ 3253,
+  target_audio == "cry_filler" ~ 3183,
+  target_audio == "dog" ~ 3240,
+  target_audio == "dog_filler" ~ 3352,
+  target_audio == "draw" ~ 3137,
+  target_audio == "draw_filler" ~ 2935,
+  target_audio == "drink" ~ 3116,
+  target_audio == "drink_filler" ~ 2881,
+  target_audio == "eat" ~ 3189,
+  target_audio == "eat_filler" ~ 2814,
+  target_audio == "dax" ~ 3354,
+  target_audio == "fep" ~ 3087,
+  target_audio == "hat" ~ 3205,
+  target_audio == "hat_filler" ~ 3409,
+  target_audio == "heth" ~ 3078,
+  target_audio == "horse" ~ 3276,
+  target_audio == "horse_filler" ~ 3459,
+  target_audio == "moop" ~ 2844,
+  target_audio == "nup" ~ 2996,
+  target_audio == "read" ~ 3279,
+  target_audio == "read_filler" ~ 3035,
+  target_audio == "shoe" ~ 3453,
+  target_audio == "shoe_filler" ~ 3136,
+  target_audio == "sit" ~ 3229,
+  target_audio == "sit_filler" ~ 2948,
+  target_audio == "sleep" ~ 3281,
+  target_audio == "sleep_filler" ~ 2991,
+  target_audio == "smick" ~ 3261,
+  target_audio == "vash" ~ 3275,
+  target_audio == "wave" ~ 3284,
+  target_audio == "wave_filler" ~ 2824
+))
+```
+
+Add a column that says when we should consider the first naming event over. 
+```{r}
+et_data <- et_data %>% 
+  mutate(event_naming_end = start_event_time + event_naming_interval)
+```
+
+
 ## Previous look
 
 We add columns that indicate whether the participant was looking at the action image or the noun video on the previous image.
